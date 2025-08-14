@@ -1,0 +1,406 @@
+/* SafeTalk Website Custom Styles */
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f8f9fa;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #7dd3fc;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #059669;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+    transition: all 0.3s ease;
+}
+
+/* Custom focus styles for accessibility */
+*:focus {
+    outline: 2px solid #7dd3fc;
+    outline-offset: 2px;
+}
+
+/* Navigation enhancements */
+nav {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Hero section gradient animation */
+.hero-gradient {
+    background: linear-gradient(-45deg, #059669, #7dd3fc, #a7f3d0, #7dd3fc);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Card hover effects */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Button hover effects */
+.btn-primary {
+    background: linear-gradient(135deg, #7dd3fc, #a7f3d0);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+/* Statistics animation */
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #7dd3fc;
+    display: block;
+}
+
+/* FAQ accordion styling */
+.faq-item {
+    border-left: 4px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.faq-item:hover {
+    border-left-color: #7dd3fc;
+}
+
+/* Form enhancements */
+.form-input {
+    transition: all 0.3s ease;
+    border: 2px solid #e9ecef;
+}
+
+.form-input:focus {
+    border-color: #7dd3fc;
+    box-shadow: 0 0 0 3px rgba(45, 125, 50, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Mobile menu animation */
+#mobile-menu {
+    transition: all 0.3s ease;
+    transform: translateY(-10px);
+    opacity: 0;
+}
+
+#mobile-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Section spacing for better visual hierarchy */
+section:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    * {
+        color: black !important;
+        background: white !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    * {
+        border-color: black !important;
+    }
+    
+    .text-neutral-medium {
+        color: black !important;
+    }
+}
+
+/* Custom utility classes */
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bg-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f8f9fa' fill-opacity='0.05'%3E%3Cpath d='m0 40 40-40h-20l-20 20v20z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Loading animation for future use */
+.loading {
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #7dd3fc;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Slideshow Styles */
+.slideshow-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #f8f9fa;
+}
+
+.slideshow-prev,
+.slideshow-next {
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.slideshow-prev:hover,
+.slideshow-next:hover {
+    transform: translateY(-50%) scale(1.1);
+    background-color: rgba(45, 125, 50, 0.9);
+}
+
+.step-text {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.step-text.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dot {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #7dd3fc;
+}
+
+.dot:not(.active):hover {
+    background-color: #a7f3d0;
+    transform: scale(1.2);
+}
+
+/* Auto-play button styles */
+#play-pause-btn {
+    transition: all 0.3s ease;
+}
+
+#play-pause-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Enhanced responsive slideshow */
+@media (max-width: 1024px) {
+    /* Stack vertically on tablet and below */
+    .slideshow-container {
+        height: 400px;
+    }
+    
+    .step-text h3 {
+        font-size: 1.5rem;
+    }
+    
+    .step-text p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile optimizations */
+    .slideshow-container {
+        height: 350px;
+    }
+    
+    .slideshow-prev,
+    .slideshow-next {
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+    }
+    
+    .slideshow-prev svg,
+    .slideshow-next svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .step-text h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .step-text p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    /* Ensure proper spacing on mobile */
+    .lg\:col-span-2 {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .slideshow-container {
+        height: 300px;
+    }
+    
+    .step-text h3 {
+        font-size: 1.125rem;
+    }
+    
+    .step-text p {
+        font-size: 0.875rem;
+    }
+    
+    .lg\:col-span-2 {
+        padding: 1rem;
+    }
+}
+
+
+/* App Slideshow Styles */
+.app-step-content {
+    display: none;
+}
+
+.app-step-content.active {
+    display: block;
+}
+
+.app-slideshow-prev,
+.app-slideshow-next {
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.app-slideshow-prev:hover,
+.app-slideshow-next:hover {
+    transform: translateY(-50%) scale(1.1);
+    background-color: rgba(45, 125, 50, 0.9);
+}
+
+.app-dot {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.app-dot.active {
+    background-color: #7dd3fc;
+}
+
+.app-dot:not(.active):hover {
+    background-color: #a7f3d0;
+    transform: scale(1.2);
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.2;
+    }
+    
+    h2 {
+        font-size: 2rem !important;
+    }
+    
+    .text-xl {
+        font-size: 1.125rem !important;
+    }
+}
