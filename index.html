@@ -156,8 +156,54 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '529532096376105');
-    fbq('track', 'PageView');
+    
+    // Enhanced error handling and loading protection
+    function initializePixel() {
+        try {
+            fbq('init', '529532096376105');
+            fbq('track', 'PageView');
+            console.log('✅ Meta Pixel: Successfully initialized and PageView tracked');
+            console.log('✅ Meta Pixel: fbq function available:', typeof fbq !== 'undefined');
+        } catch (error) {
+            console.error('❌ Meta Pixel: Error during initialization:', error);
+            // Fallback: Try to load the noscript image
+            var img = new Image(1, 1);
+            img.src = 'https://www.facebook.com/tr?id=529532096376105&ev=PageView&noscript=1';
+            console.log('📧 Meta Pixel: Fallback image pixel sent');
+        }
+    }
+    
+    // Initialize immediately
+    initializePixel();
+    
+    // Retry mechanism - try again after 1 second if script might not be loaded
+    setTimeout(function() {
+        if (typeof fbq === 'undefined' || !window.fbq.loaded) {
+            console.log('🔄 Meta Pixel: Retrying initialization...');
+            initializePixel();
+        } else {
+            console.log('✅ Meta Pixel: Script fully loaded, no retry needed');
+        }
+    }, 1000);
+    
+    // Additional debugging: Monitor network requests to Facebook
+    if (window.performance && window.performance.getEntriesByType) {
+        setTimeout(function() {
+            var entries = performance.getEntriesByType('resource');
+            var fbRequests = entries.filter(function(entry) {
+                return entry.name.includes('facebook.com') || entry.name.includes('connect.facebook.net');
+            });
+            
+            if (fbRequests.length > 0) {
+                console.log('📡 Meta Pixel: Facebook script requests detected:', fbRequests.length);
+                fbRequests.forEach(function(req) {
+                    console.log('📡 Meta Pixel: Request status for ' + req.name + ':', req.responseEnd ? 'SUCCESS' : 'FAILED');
+                });
+            } else {
+                console.log('⚠️ Meta Pixel: No Facebook script requests detected - likely blocked by ad blocker');
+            }
+        }, 2000);
+    }
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=529532096376105&ev=PageView&noscript=1"
