@@ -12,9 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Stripe SDK -->
-    <script src="https://js.stripe.com/v3/"></script>
-    
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/safetalk-logo.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/safetalk-logo.png">
@@ -1063,13 +1060,6 @@
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent transition-colors">
                     </div>
 
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium text-neutral-dark mb-3">Payment Information</label>
-                        <div id="card-element" class="p-4 border border-gray-300 rounded-lg bg-gray-50">
-                            <!-- Stripe Elements will create form elements here -->
-                        </div>
-                        <div id="card-errors" role="alert" class="text-red-600 text-sm mt-2 hidden"></div>
-                    </div>
 
                     <div class="mb-6">
                         <label class="flex items-start">
@@ -1089,7 +1079,7 @@
                     </button>
 
                     <p class="text-xs text-neutral-medium text-center mt-4">
-                        Secure payment processing by Stripe. Your card information is never stored on our servers.
+                        Secure payment processing. You'll receive SMS activation instructions after payment.
                     </p>
                 </form>
             </div>
@@ -2038,15 +2028,10 @@
             new FullscreenViewer();
         });
 
-        // Stripe and Subscription Handling
-        const stripe = Stripe('pk_live_51QN3GpDOtqacfXaiT45VdD6yTeNRHgeiyjHAXaBDbQFfPKHBJqLQheHRgAEp5W6Xenn2Xqs9fVVaidL2zWpUTnrr00bYFxz28r');
-        const elements = stripe.elements();
-        let cardElement;
-        
-        // API Configuration
+        // SafeTalk Subscription Handling
         const API_BASE_URL = 'https://safetalk-singleuser-sms-1.onrender.com';
         
-        // Initialize Stripe Elements and Subscription Form
+        // Initialize Subscription Form
         document.addEventListener('DOMContentLoaded', function() {
             initializeSubscriptionForm();
         });
@@ -2054,37 +2039,6 @@
         function initializeSubscriptionForm() {
             const subscriptionForm = document.getElementById('subscription-form');
             if (!subscriptionForm) return;
-            
-            // Create Stripe card element
-            cardElement = elements.create('card', {
-                style: {
-                    base: {
-                        fontSize: '16px',
-                        color: '#424770',
-                        '::placeholder': {
-                            color: '#aab7c4',
-                        },
-                    },
-                    invalid: {
-                        color: '#9e2146',
-                    },
-                },
-            });
-            
-            // Mount the card element
-            cardElement.mount('#card-element');
-            
-            // Handle real-time validation errors from the card Element
-            cardElement.on('change', function(event) {
-                const displayError = document.getElementById('card-errors');
-                if (event.error) {
-                    displayError.textContent = event.error.message;
-                    displayError.classList.remove('hidden');
-                } else {
-                    displayError.textContent = '';
-                    displayError.classList.add('hidden');
-                }
-            });
             
             // Handle form submission
             subscriptionForm.addEventListener('submit', handleSubscriptionSubmit);
@@ -2103,7 +2057,7 @@
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Processing...
+                Processing Payment...
             `;
             
             try {
@@ -2113,22 +2067,7 @@
                     throw new Error('Please fill in all required fields');
                 }
                 
-                // Create payment method with Stripe
-                const {error, paymentMethod} = await stripe.createPaymentMethod({
-                    type: 'card',
-                    card: cardElement,
-                    billing_details: {
-                        name: formData.clientName,
-                        email: formData.clientEmail,
-                        phone: formData.clientPhone,
-                    },
-                });
-                
-                if (error) {
-                    throw new Error(error.message);
-                }
-                
-                // Call backend API to create subscription and process payment
+                // Call backend API - backend handles Stripe payment processing
                 const response = await fetch(`${API_BASE_URL}/api/subscribe`, {
                     method: 'POST',
                     headers: {
@@ -2139,8 +2078,7 @@
                         clientPhone: formData.clientPhone,
                         coparentName: formData.coparentName,
                         coparentPhone: formData.coparentPhone,
-                        clientEmail: formData.clientEmail,
-                        paymentMethodId: paymentMethod.id
+                        clientEmail: formData.clientEmail
                     })
                 });
                 
@@ -2150,12 +2088,8 @@
                     throw new Error(result.error || 'Subscription failed');
                 }
                 
-                // Handle successful subscription
-                showSubscriptionMessage('🎉 Welcome to SafeTalk! Your subscription is active and you\'ll receive setup instructions via SMS shortly.', 'success');
-                
-                // Clear form
-                document.getElementById('subscription-form').reset();
-                cardElement.clear();
+                // Handle successful subscription - show activation instructions
+                showSuccessPage(formData);
                 
             } catch (error) {
                 console.error('Subscription error:', error);
@@ -2165,6 +2099,58 @@
                 submitButton.disabled = false;
                 submitButton.textContent = originalButtonText;
             }
+        }
+        
+        function showSuccessPage(formData) {
+            // Hide the form
+            const subscriptionForm = document.getElementById('subscription-form');
+            subscriptionForm.style.display = 'none';
+            
+            // Create success message
+            const successHTML = `
+                <div class="text-center py-8">
+                    <div class="text-6xl mb-6">🎉</div>
+                    <h3 class="text-2xl font-bold text-sage-green-dark mb-4">Payment Complete!</h3>
+                    <p class="text-lg text-neutral-medium mb-8">$50.00 charged successfully</p>
+                    
+                    <div class="bg-sage-green-soft border-l-4 border-sage-green p-6 rounded-lg mb-8">
+                        <h4 class="text-xl font-semibold text-sage-green-dark mb-4">🚀 Next Steps to Activate SafeTalk:</h4>
+                        <div class="text-left space-y-3">
+                            <div class="flex items-center">
+                                <span class="bg-sage-green text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">1</span>
+                                <span>Save this number: <strong class="text-sage-green-dark">+1 (855) 973-0497</strong></span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="bg-sage-green text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">2</span>
+                                <span>You text "START" to activate your SafeTalk service</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="bg-sage-green text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">3</span>
+                                <span>Have <strong>${formData.coparentName}</strong> also text "START" to the same number</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="bg-sage-green text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">4</span>
+                                <span>Begin your filtered communication!</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-200 p-4 rounded-lg mb-6">
+                        <p class="text-sm text-neutral-medium">
+                            <strong>Important:</strong> Both parties must text "START" before the service activates.<br>
+                            Questions? Text "HELP" to +1 (855) 973-0497
+                        </p>
+                    </div>
+                    
+                    <button onclick="location.reload()" class="bg-emerald-500 text-white px-6 py-3 rounded-lg hover:bg-emerald-600 transition-colors">
+                        Subscribe Another Account
+                    </button>
+                </div>
+            `;
+            
+            // Replace form with success message
+            const formContainer = subscriptionForm.parentElement;
+            formContainer.innerHTML = successHTML;
         }
         
         function validateSubscriptionForm() {
@@ -2184,8 +2170,8 @@
             const errors = [];
             if (!data.clientName) errors.push('Your name is required');
             if (!data.clientPhone) errors.push('Your phone number is required');
-            if (!data.coparentName) errors.push('Co-parent name is required');
-            if (!data.coparentPhone) errors.push('Co-parent phone number is required');
+            if (!data.coparentName) errors.push('Ex-partner name is required');
+            if (!data.coparentPhone) errors.push('Ex-partner phone number is required');
             if (!data.clientEmail) errors.push('Email address is required');
             if (!data.terms) errors.push('You must agree to the terms of service');
             
@@ -2194,13 +2180,15 @@
                 errors.push('Please enter a valid email address');
             }
             
-            // Validate phone formats
-            const phoneRegex = /^\+?[\d\s\-\(\)\.]{10,}$/;
-            if (data.clientPhone && !phoneRegex.test(data.clientPhone)) {
-                errors.push('Please enter a valid phone number for yourself');
+            // Validate phone formats - accept various formats
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            const cleanPhone = (phone) => phone.replace(/\D/g, '');
+            
+            if (data.clientPhone && cleanPhone(data.clientPhone).length < 10) {
+                errors.push('Please enter a valid phone number for yourself (at least 10 digits)');
             }
-            if (data.coparentPhone && !phoneRegex.test(data.coparentPhone)) {
-                errors.push('Please enter a valid phone number for your co-parent');
+            if (data.coparentPhone && cleanPhone(data.coparentPhone).length < 10) {
+                errors.push('Please enter a valid phone number for your ex-partner (at least 10 digits)');
             }
             
             if (errors.length > 0) {
@@ -2228,26 +2216,77 @@
             `;
             messageDiv.classList.remove('hidden');
             
-            // Auto-remove success messages after 10 seconds
-            if (type === 'success') {
+            // Auto-remove error messages after 8 seconds
+            if (type === 'error') {
                 setTimeout(() => {
                     messageDiv.innerHTML = '';
                     messageDiv.classList.add('hidden');
-                }, 10000);
+                }, 8000);
             }
         }
         
-        // Utility function to check subscription status
-        async function checkSubscriptionStatus(phone) {
+        // Status Check Functionality
+        function addStatusCheckSection() {
+            const subscribeSection = document.getElementById('subscribe');
+            if (!subscribeSection) return;
+            
+            const statusHTML = `
+                <div class="max-w-2xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-md border-t-4 border-emerald-500">
+                    <h3 class="text-xl font-semibold text-neutral-dark mb-4">Check Your Subscription Status</h3>
+                    <div class="flex gap-3">
+                        <input type="tel" id="status-phone" placeholder="Enter your phone number" 
+                            class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+                        <button onclick="checkStatus()" 
+                            class="bg-emerald-500 text-white px-6 py-2 rounded-lg hover:bg-emerald-600 transition-colors">
+                            Check Status
+                        </button>
+                    </div>
+                    <div id="status-result" class="mt-4 hidden"></div>
+                </div>
+            `;
+            
+            subscribeSection.insertAdjacentHTML('beforeend', statusHTML);
+        }
+        
+        async function checkStatus() {
+            const phoneInput = document.getElementById('status-phone');
+            const resultDiv = document.getElementById('status-result');
+            const phone = phoneInput.value.trim();
+            
+            if (!phone) {
+                showStatusMessage('Please enter a phone number', 'error');
+                return;
+            }
+            
             try {
                 const response = await fetch(`${API_BASE_URL}/api/status/${encodeURIComponent(phone)}`);
                 const result = await response.json();
-                return result;
+                
+                if (response.ok) {
+                    if (result.subscribed) {
+                        showStatusMessage(`✅ Active subscription found! Service is ${result.active ? 'active' : 'inactive'}.`, 'success');
+                    } else {
+                        showStatusMessage('❌ No active subscription found for this number.', 'error');
+                    }
+                } else {
+                    showStatusMessage(result.error || 'Unable to check status', 'error');
+                }
             } catch (error) {
-                console.error('Status check error:', error);
-                return { error: 'Unable to check status' };
+                showStatusMessage('Error checking status. Please try again.', 'error');
             }
         }
+        
+        function showStatusMessage(message, type) {
+            const resultDiv = document.getElementById('status-result');
+            resultDiv.className = `mt-4 p-3 rounded-lg ${type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+            resultDiv.textContent = message;
+            resultDiv.classList.remove('hidden');
+        }
+        
+        // Add status check when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(addStatusCheckSection, 1000); // Add after other elements load
+        });
 
         // Form Enhancement and Handling for Formspree forms
         document.addEventListener('DOMContentLoaded', function() {
