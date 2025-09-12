@@ -1066,8 +1066,9 @@
                             <input type="checkbox" id="terms" name="terms" required 
                                 class="mt-1 mr-3 text-sage-green">
                             <span class="text-sm text-neutral-medium">
-                                I agree to SafeTalk's terms of service and privacy policy. 
-                                I understand this is a monthly subscription that can be cancelled at any time by texting "STOP" to the SafeTalk number.
+                                I agree to SafeTalk's <a href="#" onclick="showTermsModal()" class="text-sage-green-dark underline cursor-pointer">Terms of Service</a> 
+                                and <a href="#" onclick="showPrivacyModal()" class="text-sage-green-dark underline cursor-pointer">Privacy Policy</a>. 
+                                I understand this is a monthly subscription that can be cancelled at any time by texting "STOP".
                             </span>
                         </label>
                     </div>
@@ -2394,6 +2395,238 @@
                 }
             }
         });
+        // Terms of Service and Privacy Policy Modals
+        function showTermsModal() {
+            document.getElementById('terms-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function showPrivacyModal() {
+            document.getElementById('privacy-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const termsModal = document.getElementById('terms-modal');
+            const privacyModal = document.getElementById('privacy-modal');
+            if (event.target === termsModal) {
+                closeModal('terms-modal');
+            }
+            if (event.target === privacyModal) {
+                closeModal('privacy-modal');
+            }
+        }
     </script>
+
+    <!-- Terms of Service Modal -->
+    <div id="terms-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-4xl max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b p-6 flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-neutral-dark">Terms of Service</h2>
+                <button onclick="closeModal('terms-modal')" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <div class="p-6 space-y-6 text-sm leading-relaxed">
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">1. Service Description and Voluntary Use</h3>
+                    <p>SafeTalk provides an SMS message filtering and mediation service ("Service") that receives text messages from designated contacts, processes them through artificial intelligence to neutralize toxic or inflammatory language, and provides you with filtered messages along with professionally crafted response options. <strong>Your use of this Service is entirely voluntary and at your own discretion.</strong> You choose to engage with SafeTalk's AI-powered communication tools of your own free will, and you maintain full control over whether and how to use our suggested responses.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">2. Subscription and Payment</h3>
+                    <p>The Service is provided on a monthly subscription basis for $50.00 per month ("Subscription Fee"). By subscribing, you authorize SafeTalk to charge your payment method on a recurring monthly basis. Your subscription begins when both you and your designated contact activate the service by texting "START" to the SafeTalk number. The first payment is due immediately upon signup.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">3. Service Activation and Usage</h3>
+                    <p>To activate the Service: (a) You must provide accurate contact information for yourself and the other party; (b) Both parties must text "START" to the provided SafeTalk number; (c) Once activated, all communications between parties should be directed through the SafeTalk number. You agree to use the Service only for its intended purpose of facilitating respectful communication.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">4. Cancellation and Refunds</h3>
+                    <p>You may cancel your subscription at any time by texting "STOP" to the SafeTalk number or contacting our support team. Cancellation takes effect at the end of your current billing period. No refunds are provided for partial months of service. Upon cancellation, the Service will cease to function, and messages will no longer be filtered or forwarded.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">5. Privacy and Data Handling</h3>
+                    <p>SafeTalk processes your messages to provide the filtering service. We employ industry-standard security measures to protect your communications. Message content is processed by artificial intelligence systems and may be reviewed by human moderators for quality assurance. We do not sell or share your personal communications with third parties except as required by law.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">6. AI Limitations and User Responsibility</h3>
+                    <p>SafeTalk is a communication facilitation tool and does not provide legal, therapeutic, or counseling services. <strong>You acknowledge that your use of SafeTalk's AI-powered features is voluntary and at your own discretion.</strong> Due to the probabilistic nature of machine learning, AI output may not always be accurate, complete, or appropriate for your specific situation. <strong>You are solely responsible for evaluating the accuracy and appropriateness of all AI-generated content before using it.</strong> You should use human review and judgment before sending any AI-suggested responses. SafeTalk is not responsible for the content of original messages or the outcomes of your voluntary use of filtered communications or suggested responses.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">7. User Responsibilities and Voluntary Actions</h3>
+                    <p>By choosing to use SafeTalk, you voluntarily agree to: (a) Provide accurate information during signup; (b) Use the Service legally and respectfully of your own free will; (c) Not attempt to circumvent or manipulate the filtering system; (d) Exercise your own judgment when reviewing AI-generated content; (e) Take full responsibility for any messages you choose to send using our suggested responses; (f) Maintain the confidentiality of your account information. <strong>You understand that all actions taken through SafeTalk are your own voluntary decisions.</strong></p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">8. Prohibited Uses</h3>
+                    <p>You may not use the Service for: (a) Illegal activities; (b) Harassment, threats, or abuse; (c) Sharing of explicit, harmful, or inappropriate content; (d) Commercial solicitation or spam; (e) Any activity that could damage or interfere with the Service infrastructure.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">9. Service Availability</h3>
+                    <p>While we strive for 99.9% uptime, SafeTalk cannot guarantee uninterrupted service. We may temporarily suspend the Service for maintenance, updates, or technical issues. We will provide reasonable notice of planned maintenance when possible.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">10. Limitation of Liability</h3>
+                    <p>SafeTalk's liability is limited to the amount you paid for the Service in the month preceding any claim. We are not liable for indirect, incidental, or consequential damages. This includes but is not limited to damages from miscommunication, service interruptions, or filtered message accuracy.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">11. Modifications to Terms</h3>
+                    <p>SafeTalk reserves the right to modify these Terms at any time. Material changes will be communicated via email or SMS. Your continued use of the Service after changes constitutes acceptance of the new Terms.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">12. Voluntary Consent and Acknowledgment</h3>
+                    <p><strong>By using SafeTalk, you explicitly acknowledge that:</strong> (a) Your participation in this service is completely voluntary; (b) You have the freedom to choose whether to use AI-generated responses or ignore them entirely; (c) You maintain full autonomy over your communications; (d) SafeTalk is a tool that you choose to use at your own discretion; (e) You accept full responsibility for your voluntary actions and decisions while using the service. <strong>No aspect of SafeTalk compels, requires, or mandates any specific communication behavior.</strong></p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">13. Governing Law and Disputes</h3>
+                    <p>These Terms are governed by applicable law. Any disputes will be resolved through binding arbitration in accordance with the rules of the American Arbitration Association. You waive any right to participate in class action lawsuits.</p>
+                </div>
+
+                <div class="text-xs text-gray-500 mt-8">
+                    <p>Last Updated: December 2024</p>
+                    <p>Version 1.0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-4xl max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b p-6 flex justify-between items-center">
+                <h2 class="text-2xl font-bold text-neutral-dark">Privacy Policy</h2>
+                <button onclick="closeModal('privacy-modal')" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <div class="p-6 space-y-6 text-sm leading-relaxed">
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">1. Information We Collect (With Your Voluntary Consent)</h3>
+                    <p><strong>By choosing to use SafeTalk, you voluntarily provide:</strong></p>
+                    <p><strong>Personal Information:</strong> Your name, phone number, email address, and the contact information of the other party during registration - all provided by your own free choice.</p>
+                    <p><strong>Communication Data:</strong> Text messages that you voluntarily send through our service, which you choose to have filtered and processed for response generation.</p>
+                    <p><strong>Payment Information:</strong> Billing information that you voluntarily provide through Stripe, our payment processor. SafeTalk does not store credit card information.</p>
+                    <p><strong>Usage Data:</strong> Service usage statistics, error logs, and performance metrics collected as you voluntarily use our service.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">2. How We Use Your Information</h3>
+                    <p>We use your information to:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>Provide and operate the SafeTalk SMS filtering service</li>
+                        <li>Process and filter your messages using AI technology</li>
+                        <li>Generate appropriate response options</li>
+                        <li>Process payments and manage your subscription</li>
+                        <li>Provide customer support and technical assistance</li>
+                        <li>Improve our service quality and filtering algorithms</li>
+                        <li>Comply with legal obligations and prevent fraud</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">3. Data Processing and AI Analysis</h3>
+                    <p>Your messages are processed by advanced AI systems to:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>Identify and neutralize toxic, inflammatory, or inappropriate language</li>
+                        <li>Generate contextually appropriate, professional response options</li>
+                        <li>Maintain conversation flow while reducing conflict potential</li>
+                    </ul>
+                    <p class="mt-3">Message content may occasionally be reviewed by trained human moderators for quality assurance and system improvement purposes. All reviewers are bound by strict confidentiality agreements.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">4. Data Storage and Security</h3>
+                    <p>We implement industry-standard security measures including:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>End-to-end encryption for message transmission</li>
+                        <li>Secure database storage with access controls</li>
+                        <li>Regular security audits and vulnerability assessments</li>
+                        <li>Employee background checks and confidentiality training</li>
+                    </ul>
+                    <p class="mt-3">Message data is retained for 30 days to ensure service quality, then permanently deleted unless required for legal compliance.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">5. Information Sharing and Disclosure</h3>
+                    <p>We do not sell, trade, or rent your personal information. We may share information only in these circumstances:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Service Providers:</strong> With trusted third-party providers (Stripe for payments, cloud hosting services) under strict confidentiality agreements</li>
+                        <li><strong>Legal Requirements:</strong> When required by law, court order, or to protect against fraud and abuse</li>
+                        <li><strong>Safety Concerns:</strong> To prevent harm to individuals or respond to emergency situations</li>
+                        <li><strong>Business Transfer:</strong> In the event of a merger or sale, with the same privacy protections maintained</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">6. Your Privacy Rights</h3>
+                    <p>You have the right to:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Access:</strong> Request copies of your personal data</li>
+                        <li><strong>Correction:</strong> Update or correct inaccurate information</li>
+                        <li><strong>Deletion:</strong> Request deletion of your personal data (subject to legal retention requirements)</li>
+                        <li><strong>Portability:</strong> Request transfer of your data in a portable format</li>
+                        <li><strong>Objection:</strong> Object to certain uses of your personal information</li>
+                    </ul>
+                    <p class="mt-3">To exercise these rights, contact us through the SafeTalk service with your request and identity verification.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">7. Third-Party Services</h3>
+                    <p><strong>Stripe:</strong> We use Stripe for payment processing. Stripe's privacy policy governs their handling of your payment information.</p>
+                    <p><strong>Twilio:</strong> We use Twilio for SMS messaging services. Messages are processed according to Twilio's privacy and security standards.</p>
+                    <p><strong>Cloud Services:</strong> We use secure cloud infrastructure providers for hosting and data storage.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">8. International Data Transfers</h3>
+                    <p>Your data may be processed and stored in servers located in different countries. We ensure that any international transfers comply with applicable privacy laws and maintain the same level of protection as required in your jurisdiction.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">9. Children's Privacy</h3>
+                    <p>SafeTalk is not intended for use by individuals under 18 years of age. We do not knowingly collect personal information from children. If we become aware of such collection, we will delete the information immediately.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">10. California Privacy Rights (CCPA)</h3>
+                    <p>California residents have additional rights under the California Consumer Privacy Act, including the right to know what personal information is collected, to delete personal information, and to opt-out of the sale of personal information. SafeTalk does not sell personal information.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">11. European Privacy Rights (GDPR)</h3>
+                    <p>If you are in the European Union, you have additional rights under the General Data Protection Regulation, including the right to data portability, the right to object to processing, and the right to lodge a complaint with a supervisory authority.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">12. Changes to This Privacy Policy</h3>
+                    <p>We may update this Privacy Policy to reflect changes in our practices or legal requirements. We will notify you of material changes via email or SMS. Your continued use of SafeTalk after changes indicates acceptance of the updated policy.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-3">13. Your Voluntary Participation</h3>
+                    <p><strong>Remember: Your use of SafeTalk is entirely voluntary.</strong> You choose to share information with us, you choose to use our AI filtering service, and you choose how to respond to our suggestions. You maintain complete control over your participation in SafeTalk and can discontinue the service at any time by texting "STOP".</p>
+                </div>
+
+                <div class="text-xs text-gray-500 mt-8">
+                    <p>Last Updated: December 2024</p>
+                    <p>Version 1.0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
