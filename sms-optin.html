@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeTalk SMS Opt-in (Via Text)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-open-sans bg-gray-50">
+    <div class="container mx-auto max-w-4xl px-4 py-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">SafeTalk SMS Opt-in (Via Text)</h1>
+
+        <p class="text-lg mb-8">
+            To sign up for SafeTalk text (SMS) messages, text <strong>START</strong> to <strong>(855) 973-0497</strong>.
+        </p>
+
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">How it works (double opt-in)</h2>
+        <ol class="list-decimal list-inside mb-8 space-y-2">
+            <li>You text <strong>START</strong> to (855) 973-0497.</li>
+            <li>You receive a disclosure message via SMS (STOP/HELP, message frequency, and carrier rates). You must reply <strong>YES</strong> to confirm consent.</li>
+            <li>After you reply <strong>YES</strong>, you receive a Welcome message and SafeTalk SMS begins.</li>
+        </ol>
+
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Sample SMS messages</h2>
+
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+            <p class="font-semibold">Disclosure (after START):</p>
+            <p class="text-gray-700 mt-2">
+                SafeTalk: You're signing up to receive text (SMS) messages to help manage co-parenting communication. Message frequency varies.
+                Msg&amp;data rates may apply. Reply <strong>YES</strong> to confirm. Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help.
+            </p>
+        </div>
+
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-4">
+            <p class="font-semibold">Welcome (after YES):</p>
+            <p class="text-gray-700 mt-2">
+                Welcome to SafeTalk! You've confirmed your SMS subscription. You'll receive filtered co-parenting messages and suggested responses.
+                Reply <strong>HELP</strong> for help, <strong>STOP</strong> to unsubscribe. Msg&amp;data rates may apply.
+            </p>
+        </div>
+
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8">
+            <p class="font-semibold">STOP confirmation:</p>
+            <p class="text-gray-700 mt-2">
+                You're opted out of SafeTalk SMS. No more messages will be sent. Reply START to re-subscribe.
+            </p>
+        </div>
+
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Disclosures</h2>
+        <ul class="list-disc list-inside mb-8 space-y-2">
+            <li><strong>Message frequency:</strong> varies based on co-parent communication</li>
+            <li><strong>Carrier charges:</strong> standard message &amp; data rates may apply</li>
+            <li><strong>Opt out:</strong> reply <strong>STOP</strong> anytime to unsubscribe</li>
+            <li><strong>Help:</strong> reply <strong>HELP</strong> for assistance</li>
+        </ul>
+
+        <div class="bg-yellow-50 border border-yellow-200 p-6 rounded-lg mb-8">
+            <p class="text-gray-800">
+                By replying <strong>YES</strong> after the disclosure message, you provide express consent to receive SafeTalk SMS at the number you used to text START.
+            </p>
+        </div>
+
+        <div class="text-center">
+            <button onclick="copyToClipboard('(855) 973-0497')" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors mr-4">
+                📋 Copy Phone Number
+            </button>
+            <a href="/" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors inline-block">
+                Back to Main Site
+            </a>
+        </div>
+
+        <footer class="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-600">
+            <p>
+                <a href="/terms" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Terms of Service</a> |
+                <a href="/privacy" target="_blank" rel="noopener" class="text-blue-600 hover:underline">Privacy Policy</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                // Show temporary success message
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✓ Copied!';
+                button.className = button.className.replace('bg-blue-500 hover:bg-blue-600', 'bg-green-500 hover:bg-green-600');
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.className = button.className.replace('bg-green-500 hover:bg-green-600', 'bg-blue-500 hover:bg-blue-600');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+                alert('Phone number: ' + text);
+            });
+        }
+    </script>
+</body>
+</html>

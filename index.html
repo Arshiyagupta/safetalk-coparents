@@ -1063,24 +1063,23 @@
 
                     <div class="mb-4">
                         <label class="flex items-start">
-                            <input type="checkbox" id="sms-consent" name="smsConsent" required
+                            <input type="checkbox" id="smsConsent" name="smsConsent" required
                                 class="mt-1 mr-3 text-sage-green">
                             <span class="text-sm text-neutral-medium">
-                                I provide my express written consent to receive <strong>text (SMS) messages</strong> from SafeTalk at the phone number provided above.
-                                I understand message frequency varies based on co-parent communication needs.
-                                Standard message & data rates may apply.
-                                I can reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance at any time.
+                                I provide my express written consent to receive <strong>text (SMS) messages</strong> from SafeTalk at the phone number I provide.
+                                Message frequency varies based on co-parent communication. Standard message &amp; data rates may apply.
+                                Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance at any time.
                             </span>
                         </label>
+                        <p class="text-xs text-neutral-medium mt-2 ml-6">You'll receive a confirmation text after sign-up.</p>
                     </div>
                     <div class="mb-6">
                         <label class="flex items-start">
-                            <input type="checkbox" id="terms" name="terms" required
+                            <input type="checkbox" id="agreeLegal" name="agreeLegal" required
                                 class="mt-1 mr-3 text-sage-green">
                             <span class="text-sm text-neutral-medium">
-                                I agree to SafeTalk's <a href="#" onclick="showTermsModal()" class="text-sage-green-dark underline cursor-pointer">Terms of Service</a>
-                                and <a href="#" onclick="showPrivacyModal()" class="text-sage-green-dark underline cursor-pointer">Privacy Policy</a>.
-                                I understand this is a monthly subscription that can be cancelled at any time by texting "STOP".
+                                I agree to SafeTalk's <a href="/terms" target="_blank" rel="noopener" class="text-sage-green-dark underline cursor-pointer">Terms of Service</a> and
+                                <a href="/privacy" target="_blank" rel="noopener" class="text-sage-green-dark underline cursor-pointer">Privacy Policy</a>.
                             </span>
                         </label>
                     </div>
@@ -2090,7 +2089,12 @@
                         clientPhone: formData.clientPhone,
                         coparentName: formData.coparentName,
                         coparentPhone: formData.coparentPhone,
-                        clientEmail: formData.clientEmail
+                        clientEmail: formData.clientEmail,
+                        smsConsent: formData.smsConsent,
+                        optInMethod: "web_form",
+                        consentTimestamp: new Date().toISOString(),
+                        consentTextVersion: "sms-consent-v1-2025-09-14",
+                        userAgent: navigator.userAgent
                     })
                 });
                 
@@ -2121,6 +2125,9 @@
             // Create success message
             const successHTML = `
                 <div class="text-center py-8">
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+                        <strong>Thanks! You've opted in to receive SafeTalk SMS. You'll receive a welcome text shortly.</strong>
+                    </div>
                     <div class="text-6xl mb-6">🎉</div>
                     <h3 class="text-2xl font-bold text-sage-green-dark mb-4">Payment Complete!</h3>
                     <p class="text-lg text-neutral-medium mb-8">$50.00 charged successfully</p>
@@ -2134,7 +2141,7 @@
                             </div>
                             <div class="flex items-center">
                                 <span class="bg-sage-green text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">2</span>
-                                <span>You text "START" to activate your SafeTalk service</span>
+                                <span>You text "START" to activate your SafeTalk service (you've already consented)</span>
                             </div>
                             <div class="flex items-center">
                                 <span class="bg-sage-green text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">3</span>
@@ -2176,7 +2183,7 @@
                 coparentPhone: formData.get('coparentPhone')?.trim(),
                 clientEmail: formData.get('clientEmail')?.trim(),
                 smsConsent: formData.get('smsConsent'),
-                terms: formData.get('terms')
+                agreeLegal: formData.get('agreeLegal')
             };
             
             // Validate required fields
@@ -2187,7 +2194,7 @@
             if (!data.coparentPhone) errors.push('Ex-partner phone number is required');
             if (!data.clientEmail) errors.push('Email address is required');
             if (!data.smsConsent) errors.push('You must consent to receive SMS messages');
-            if (!data.terms) errors.push('You must agree to the terms of service');
+            if (!data.agreeLegal) errors.push('You must agree to the Terms of Service and Privacy Policy');
             
             // Validate email format
             if (data.clientEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.clientEmail)) {
@@ -2466,7 +2473,12 @@
                     <p><strong>Express Written Consent:</strong> By providing your phone number and checking the SMS consent checkbox during registration, you provide your express written consent to receive text (SMS) messages from SafeTalk at the phone number you provided. This consent is separate from and in addition to agreeing to these Terms of Service.</p>
                     <p><strong>TCPA Compliance:</strong> SafeTalk complies with the Telephone Consumer Protection Act (TCPA) and related regulations. Your consent is specific to SafeTalk and cannot be transferred. Message frequency varies based on your co-parent communication needs. Standard message and data rates may apply from your wireless carrier.</p>
                     <p><strong>Opt-Out Rights:</strong> You may withdraw your consent at any time by texting "STOP" to any SafeTalk number. You may also text "HELP" for assistance. Upon opting out, you will receive one final confirmation message, after which no further messages will be sent unless you re-consent.</p>
-                    <p><strong>Double Opt-In Process:</strong> After registration, you will receive a confirmation text requiring you to reply "YES" to activate SMS communications. This double opt-in process ensures clear consent and compliance with carrier requirements.</p>
+                    <p><strong>Two Opt-In Methods:</strong> SafeTalk supports two ways to provide SMS consent:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1 mb-3">
+                        <li><strong>Web Form Opt-In:</strong> If you sign up via our website, checking the SMS consent checkbox provides sufficient express written consent. No additional SMS confirmation is required.</li>
+                        <li><strong>SMS Keyword Opt-In:</strong> If you opt in by texting START to (855) 973-0497, you will receive a disclosure message and must reply YES to confirm consent before receiving messages.</li>
+                    </ul>
+                    <p><strong>Service Activation:</strong> Web form users who text START are activating their pre-consented service. SMS keyword users are beginning the consent process and must complete the YES confirmation.</p>
                 </div>
 
                 <div>
@@ -2547,10 +2559,10 @@
 
                 <div>
                     <h3 class="font-semibold text-lg mb-3">2. SMS Communication Consent and TCPA Compliance</h3>
-                    <p><strong>Consent Collection Process:</strong> We collect your express written consent to receive SMS messages through a two-step process:</p>
+                    <p><strong>Consent Collection Methods:</strong> We collect your express written consent to receive SMS messages through two different methods:</p>
                     <ul class="list-disc list-inside ml-4 space-y-1">
-                        <li><strong>Web Form Consent:</strong> During registration, you must check a dedicated SMS consent checkbox providing express written consent</li>
-                        <li><strong>Double Opt-In Confirmation:</strong> After registration, you receive a confirmation text requiring a "YES" reply to activate SMS communications</li>
+                        <li><strong>Web Form Consent:</strong> During website registration, checking our SMS consent checkbox provides complete express written consent. No additional SMS confirmation is required.</li>
+                        <li><strong>SMS Keyword Consent:</strong> If you text START to our toll-free number, you receive a disclosure message and must reply YES to provide express consent. This double opt-in process is required for SMS keyword opt-ins.</li>
                     </ul>
                     <p class="mt-3"><strong>TCPA Compliance:</strong> Our consent process complies with the Telephone Consumer Protection Act (TCPA) and Cellular Telecommunications Industry Association (CTIA) guidelines. Your consent is specific to SafeTalk and cannot be transferred to other entities.</p>
                     <p><strong>Consent Management:</strong> We maintain detailed records of your consent including timestamp, IP address, and confirmation responses. You can withdraw consent at any time by texting "STOP" to any SafeTalk number.</p>
