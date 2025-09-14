@@ -1061,13 +1061,25 @@
                     </div>
 
 
-                    <div class="mb-6">
+                    <div class="mb-4">
                         <label class="flex items-start">
-                            <input type="checkbox" id="terms" name="terms" required 
+                            <input type="checkbox" id="sms-consent" name="smsConsent" required
                                 class="mt-1 mr-3 text-sage-green">
                             <span class="text-sm text-neutral-medium">
-                                I agree to SafeTalk's <a href="#" onclick="showTermsModal()" class="text-sage-green-dark underline cursor-pointer">Terms of Service</a> 
-                                and <a href="#" onclick="showPrivacyModal()" class="text-sage-green-dark underline cursor-pointer">Privacy Policy</a>. 
+                                I provide my express written consent to receive <strong>text (SMS) messages</strong> from SafeTalk at the phone number provided above.
+                                I understand message frequency varies based on co-parent communication needs.
+                                Standard message & data rates may apply.
+                                I can reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance at any time.
+                            </span>
+                        </label>
+                    </div>
+                    <div class="mb-6">
+                        <label class="flex items-start">
+                            <input type="checkbox" id="terms" name="terms" required
+                                class="mt-1 mr-3 text-sage-green">
+                            <span class="text-sm text-neutral-medium">
+                                I agree to SafeTalk's <a href="#" onclick="showTermsModal()" class="text-sage-green-dark underline cursor-pointer">Terms of Service</a>
+                                and <a href="#" onclick="showPrivacyModal()" class="text-sage-green-dark underline cursor-pointer">Privacy Policy</a>.
                                 I understand this is a monthly subscription that can be cancelled at any time by texting "STOP".
                             </span>
                         </label>
@@ -2163,6 +2175,7 @@
                 coparentName: formData.get('coparentName')?.trim(),
                 coparentPhone: formData.get('coparentPhone')?.trim(),
                 clientEmail: formData.get('clientEmail')?.trim(),
+                smsConsent: formData.get('smsConsent'),
                 terms: formData.get('terms')
             };
             
@@ -2173,6 +2186,7 @@
             if (!data.coparentName) errors.push('Ex-partner name is required');
             if (!data.coparentPhone) errors.push('Ex-partner phone number is required');
             if (!data.clientEmail) errors.push('Email address is required');
+            if (!data.smsConsent) errors.push('You must consent to receive SMS messages');
             if (!data.terms) errors.push('You must agree to the terms of service');
             
             // Validate email format
