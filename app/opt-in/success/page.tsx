@@ -5,12 +5,12 @@ import Link from 'next/link';
 export default function OptInSuccessPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
-      <div className="max-w-lg mx-auto bg-white rounded-2xl p-6 shadow-lg text-center space-y-6">
+      <div className="max-w-lg mx-auto bg-white rounded-2xl p-6 shadow-lg text-center space-y-6" role="main" aria-labelledby="success-heading">
         {/* Success Icon */}
         <div className="text-6xl">✅</div>
 
         {/* Success Heading */}
-        <h1 className="text-2xl font-bold text-green-700">
+        <h1 className="text-2xl font-bold text-green-700" id="success-heading">
           You&apos;re opted in to SafeTalk SMS
         </h1>
 
@@ -36,14 +36,16 @@ export default function OptInSuccessPage() {
         <div className="space-y-3">
           <Link
             href="/"
-            className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors"
+            className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            style={{ fontSize: '16px', minHeight: '48px', lineHeight: '48px' }}
           >
             Go to Home
           </Link>
 
           <Link
             href="/opt-in"
-            className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors"
+            className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+            style={{ fontSize: '16px', minHeight: '48px', lineHeight: '48px' }}
           >
             Opt In Another Number
           </Link>

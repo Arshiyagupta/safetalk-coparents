@@ -3,16 +3,16 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Input from '@/components/Input';
-import ConsentCheckbox from '@/components/ConsentCheckbox';
+import MultiConsentCheckboxes, { ConsentState } from '@/components/MultiConsentCheckboxes';
 
-// Exact consent copy as specified (do not alter)
-const CONSENT_COPY = "SMS Consent (SafeTalk): I agree to receive SMS text messages from SafeTalk to help organize and clarify co-parenting communication. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out, HELP for help. See Terms and Privacy.";
+// Consent version for tracking
+const CONSENT_VERSION = "v4.1-2025-09-15";
 
 interface FormData {
   name: string;
   phoneE164: string;
   email: string;
-  consentChecked: boolean;
+  consentState: ConsentState;
 }
 
 interface FormErrors {
@@ -27,10 +27,17 @@ export default function OptInPage() {
     name: '',
     phoneE164: '',
     email: '',
-    consentChecked: false
+    consentState: {
+      smsConsent: false,
+      processingStorage: false,
+      smsDisclosures: false,
+      termsPrivacy: false
+    }
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [consentRecorded, setConsentRecorded] = useState(false);
+  const [consentTimestamp, setConsentTimestamp] = useState<string>('');
   const [clientInfo, setClientInfo] = useState({
     userAgent: '',
     referer: '',
@@ -87,7 +94,8 @@ export default function OptInPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm() || !formData.consentChecked) return;
+    const allConsentsChecked = Object.values(formData.consentState).every(Boolean);
+    if (!validateForm() || !allConsentsChecked) return;
 
     setIsSubmitting(true);
 
@@ -99,8 +107,9 @@ export default function OptInPage() {
         tzIana: clientInfo.tzIana,
         userAgent: clientInfo.userAgent,
         referer: clientInfo.referer,
-        consentVersion: 'v1-2025-09-15',
-        webFormShownCopy: CONSENT_COPY,
+        consent_checked: true,
+        consent_text_version: CONSENT_VERSION,
+        consent_state: formData.consentState,
         submittedAtUtcIso: new Date().toISOString()
       };
 
@@ -113,7 +122,24 @@ export default function OptInPage() {
       });
 
       if (response.ok) {
-        router.push('/opt-in/success');
+        const result = await response.json();
+        if (result.consent_timestamp_iso) {
+          setConsentTimestamp(new Date(result.consent_timestamp_iso).toLocaleString('en-US', {
+            timeZone: 'UTC',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZoneName: 'short'
+          }));
+          setConsentRecorded(true);
+        }
+
+        // Navigate to success page after a brief delay to show consent confirmation
+        setTimeout(() => {
+          router.push('/opt-in/success');
+        }, 2000);
       } else {
         throw new Error('Submission failed');
       }
@@ -126,10 +152,22 @@ export default function OptInPage() {
   };
 
   // Check if form is valid for submission
+  const allConsentsChecked = Object.values(formData.consentState).every(Boolean);
   const isFormValid = formData.name.trim().length >= 2 &&
                      validatePhone(formData.phoneE164) &&
                      (!formData.email.trim() || validateEmail(formData.email)) &&
-                     formData.consentChecked;
+                     allConsentsChecked;
+
+  // Handle consent state changes
+  const handleConsentChange = (field: keyof ConsentState, checked: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      consentState: {
+        ...prev.consentState,
+        [field]: checked
+      }
+    }));
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -139,7 +177,7 @@ export default function OptInPage() {
         visible consent text, checkbox states (unchecked → checked), and submit button for verification proof.
       </div>
 
-      <div className="max-w-lg mx-auto bg-white rounded-2xl p-6 shadow-lg space-y-6">
+      <div className="max-w-lg mx-auto bg-white rounded-2xl p-6 shadow-lg space-y-6" role="main" aria-labelledby="main-heading">
         {/* Header with SafeTalk Branding */}
         <div className="text-center border-b pb-4">
           <div className="text-2xl font-bold text-gray-800 mb-1">
@@ -152,13 +190,21 @@ export default function OptInPage() {
 
         {/* Page Title */}
         <div className="text-center">
-          <h1 className="text-xl font-semibold text-gray-800">
+          <h1 className="text-xl font-semibold text-gray-800" id="main-heading">
             SafeTalk SMS Opt-In
           </h1>
+          <p className="text-sm text-gray-600 mt-2">
+            Complete all four required consents to receive SafeTalk SMS notifications
+          </p>
         </div>
 
         {/* Opt-In Form */}
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5" noValidate aria-label="SafeTalk SMS Opt-in Form">
+          {!isFormValid && (
+            <div id="form-validation-error" className="sr-only" aria-live="polite">
+              Please complete all required fields and provide all four consents to continue.
+            </div>
+          )}
           {/* Full Name */}
           <Input
             id="name"
@@ -196,13 +242,12 @@ export default function OptInPage() {
             helpText="Optional"
           />
 
-          {/* SMS Consent Checkbox - VISIBLE AND PROMINENT */}
-          <ConsentCheckbox
-            id="sms-consent"
-            checked={formData.consentChecked}
-            onChange={(checked) => setFormData({ ...formData, consentChecked: checked })}
-            consentText={CONSENT_COPY}
-            required
+          {/* Multi-Consent Checkboxes - ALL FOUR REQUIRED */}
+          <MultiConsentCheckboxes
+            consentState={formData.consentState}
+            onChange={handleConsentChange}
+            showConsentRecorded={consentRecorded}
+            consentTimestamp={consentTimestamp}
           />
 
           {/* Account Holder Disclaimer */}
@@ -214,19 +259,23 @@ export default function OptInPage() {
           <button
             type="submit"
             disabled={!isFormValid || isSubmitting}
-            className={`w-full py-3 px-4 rounded-lg font-medium transition-all ${
+            className={`w-full py-3 px-4 rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
               isFormValid && !isSubmitting
                 ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg'
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed opacity-60'
+                : 'bg-gray-300 text-gray-500 cursor-not-allowed opacity-50'
             }`}
+            style={{ fontSize: '16px', minHeight: '48px' }} // Ensure 16px+ font and 48px touch target
+            aria-describedby={!isFormValid ? 'form-validation-error' : undefined}
           >
             {isSubmitting ? (
               <div className="flex items-center justify-center">
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
                 Submitting...
               </div>
+            ) : consentRecorded ? (
+              'Redirecting to Confirmation...'
             ) : (
-              'Submit SMS Opt-In'
+              'Continue / Sign Up'
             )}
           </button>
         </form>

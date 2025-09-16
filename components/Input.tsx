@@ -31,6 +31,7 @@ export default function Input({
       <label
         htmlFor={id}
         className="block text-sm font-medium text-gray-700"
+        style={{ fontSize: '16px' }} // Ensure 16px+ for mobile
       >
         {label}
         {required && <span className="text-red-500 ml-1">*</span>}
@@ -48,11 +49,12 @@ export default function Input({
         aria-describedby={
           error ? `${id}-error` : helpText ? `${id}-help` : undefined
         }
-        className={`block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${
+        className={`block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-colors text-base ${
           hasError
             ? 'border-red-300 focus:border-red-500 bg-red-50'
             : 'border-gray-300 focus:border-blue-500 bg-white'
         }`}
+        style={{ fontSize: '16px', minHeight: '44px' }} // Ensure 16px+ font and 44px touch target for mobile
       />
 
       {/* Help text */}

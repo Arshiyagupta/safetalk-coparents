@@ -38,20 +38,63 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-3">2. SMS Communications</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">2. User-Initiated Messaging</h2>
             <p className="text-gray-700 leading-relaxed">
-              By opting in to our SMS service, you agree to receive text messages from SafeTalk
-              to facilitate co-parenting communication. Message frequency varies based on your
-              communication needs. Standard messaging and data rates may apply from your carrier.
+              SafeTalk may filter or suggest options, but <strong>no message is sent unless you explicitly approve it</strong>.
+              All outbound messages are user-initiated and non-promotional. SafeTalk provides communication
+              filtering and mediation services, but you maintain complete control over what messages are sent.
             </p>
             <p className="text-gray-700 leading-relaxed mt-2">
-              You may opt out at any time by replying <strong>STOP</strong> to any message.
-              For help, reply <strong>HELP</strong>.
+              <strong>100% User Control:</strong> Every message sent through SafeTalk requires your personal
+              choice, editing, or approval. We may suggest message options to improve communication tone,
+              but the final message content and the decision to send are always yours.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-3">3. Privacy and Data</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">3. SMS Disclosures</h2>
+            <p className="text-gray-700 leading-relaxed">
+              Message frequency varies based on user actions (approximately one message per user action).
+              Standard message and data rates may apply from your carrier. You may opt out at any time
+              by replying <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">4. Legal Compliance and Indemnification</h2>
+
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-lg font-medium text-gray-800 mb-2">All-Party Consent Laws</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  Some states, including California, Massachusetts, and Pennsylvania, require the consent
+                  of all parties to a communication. <strong>You agree to use SafeTalk only in compliance
+                  with applicable law</strong>, and you are responsible for obtaining and maintaining your
+                  co-parent's consent where required.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-medium text-gray-800 mb-2">Indemnification</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  You release and hold harmless SafeTalk from any claims arising from your use of the
+                  service without such consent, and you agree to indemnify SafeTalk for any costs,
+                  claims, or damages that result from your failure to obtain required consents.
+                </p>
+              </div>
+
+              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-4">
+                <p className="text-yellow-800 font-medium text-sm">
+                  <strong>Important:</strong> Before using SafeTalk to communicate with your co-parent,
+                  ensure you have their consent to record or process communications if required by your
+                  state's laws. SafeTalk cannot provide legal advice regarding consent requirements.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">5. Privacy and Data</h2>
             <p className="text-gray-700 leading-relaxed">
               We respect your privacy and handle your data in accordance with our
               <Link href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</Link>.
@@ -61,7 +104,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-3">4. Contact Information</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">6. Contact Information</h2>
             <p className="text-gray-700 leading-relaxed">
               For questions about these terms or our service, please contact us at:
             </p>

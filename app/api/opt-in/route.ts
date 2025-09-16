@@ -3,6 +3,13 @@ import { promises as fs } from 'fs';
 import path from 'path';
 
 // TypeScript interfaces
+interface ConsentState {
+  smsConsent: boolean;
+  processingStorage: boolean;
+  smsDisclosures: boolean;
+  termsPrivacy: boolean;
+}
+
 interface ClientPayload {
   name: string;
   phoneE164: string;
@@ -10,14 +17,18 @@ interface ClientPayload {
   tzIana: string;
   userAgent: string;
   referer: string;
-  consentVersion: string;
-  webFormShownCopy: string;
+  consent_checked: boolean;
+  consent_text_version: string;
+  consent_state: ConsentState;
   submittedAtUtcIso: string;
 }
 
 interface ServerRecord extends ClientPayload {
   ip: string;
   receivedAtUtcIso: string;
+  consent_timestamp_iso: string;
+  first_touch_sms_sent?: boolean;
+  sms_sent_timestamp?: string;
 }
 
 // Extract IP address from request headers (server-side only)
@@ -51,6 +62,35 @@ function isValidE164(phone: string): boolean {
 function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
+}
+
+// Send first confirmation SMS
+async function sendFirstConfirmationSMS(phoneE164: string): Promise<{ success: boolean; timestamp?: string }> {
+  const smsTemplate = `SafeTalk: Your SMS notifications are set. Messages are 100% user-initiated—nothing is sent unless you approve it. Msg&Data rates may apply. ~1 msg per user action. Reply STOP to end or HELP for help.`;
+
+  try {
+    // TODO: Replace with actual Twilio integration
+    // const twilio = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+    // await twilio.messages.create({
+    //   body: smsTemplate,
+    //   from: process.env.TWILIO_PHONE_NUMBER,
+    //   to: phoneE164
+    // });
+
+    console.log('FIRST CONFIRMATION SMS TEMPLATE:', {
+      to: phoneE164,
+      message: smsTemplate,
+      timestamp: new Date().toISOString()
+    });
+
+    return {
+      success: true,
+      timestamp: new Date().toISOString()
+    };
+  } catch (error) {
+    console.error('Failed to send first confirmation SMS:', error);
+    return { success: false };
+  }
 }
 
 // Persist consent record to temporary JSON file
@@ -131,8 +171,15 @@ export async function POST(request: NextRequest) {
       errors.push('Email must be valid if provided');
     }
 
-    if (!clientPayload.consentVersion || !clientPayload.webFormShownCopy) {
-      errors.push('Consent version and copy are required');
+    if (!clientPayload.consent_checked || !clientPayload.consent_text_version) {
+      errors.push('Consent confirmation and version are required');
+    }
+
+    // Validate all four consents are checked
+    const requiredConsents = ['smsConsent', 'processingStorage', 'smsDisclosures', 'termsPrivacy'] as const;
+    const missingConsents = requiredConsents.filter(consent => !clientPayload.consent_state[consent]);
+    if (missingConsents.length > 0) {
+      errors.push(`Missing required consents: ${missingConsents.join(', ')}`);
     }
 
     if (errors.length > 0) {
@@ -144,12 +191,19 @@ export async function POST(request: NextRequest) {
 
     // Extract IP address on server-side (crucial for compliance)
     const ip = extractIpAddress(request);
+    const consentTimestamp = new Date().toISOString();
+
+    // Send first confirmation SMS
+    const smsResult = await sendFirstConfirmationSMS(clientPayload.phoneE164);
 
     // Build complete server-side record
     const serverRecord: ServerRecord = {
       ...clientPayload,
       ip,
-      receivedAtUtcIso: new Date().toISOString()
+      receivedAtUtcIso: new Date().toISOString(),
+      consent_timestamp_iso: consentTimestamp,
+      first_touch_sms_sent: smsResult.success,
+      sms_sent_timestamp: smsResult.timestamp
     };
 
     // Log the complete record for audit trail
@@ -158,7 +212,10 @@ export async function POST(request: NextRequest) {
       phone: serverRecord.phoneE164,
       name: serverRecord.name,
       ip: serverRecord.ip,
-      consentVersion: serverRecord.consentVersion,
+      consentVersion: serverRecord.consent_text_version,
+      consentTimestamp: serverRecord.consent_timestamp_iso,
+      allConsentsChecked: Object.values(serverRecord.consent_state).every(Boolean),
+      firstSMSSent: serverRecord.first_touch_sms_sent,
       userAgent: serverRecord.userAgent.substring(0, 100) + '...', // Truncate for readability
     });
 
@@ -171,17 +228,17 @@ export async function POST(request: NextRequest) {
     // TODO: Replace with database persistence
     // await upsertToSupabase(serverRecord);
 
-    // TODO: Trigger welcome SMS via Twilio
-    // await sendWelcomeSMS(serverRecord.phoneE164);
-
     // TODO: Add to marketing automation/CRM
     // await addToCustomerList(serverRecord);
 
-    // Return success
+    // Return success with consent timestamp
     return NextResponse.json({
       ok: true,
       message: 'SMS consent recorded successfully',
-      timestamp: serverRecord.receivedAtUtcIso
+      timestamp: serverRecord.receivedAtUtcIso,
+      consent_timestamp_iso: serverRecord.consent_timestamp_iso,
+      first_touch_sms_sent: serverRecord.first_touch_sms_sent,
+      consent_version: serverRecord.consent_text_version
     });
 
   } catch (error) {

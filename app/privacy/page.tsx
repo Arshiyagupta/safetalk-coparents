@@ -44,7 +44,43 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-3">2. How We Use Your Information</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">2. Message Processing</h2>
+            <p className="text-gray-700 leading-relaxed">
+              With your consent, SafeTalk processes and stores communications solely to filter and deliver messages.
+              Our processing includes:
+            </p>
+            <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
+              <li>Analyzing message content for tone and sentiment</li>
+              <li>Filtering inappropriate or inflammatory language</li>
+              <li>Suggesting alternative phrasings to improve communication</li>
+              <li>Storing communications temporarily for delivery and quality purposes</li>
+            </ul>
+            <p className="text-gray-700 leading-relaxed mt-3">
+              <strong>Important:</strong> No message is ever sent without your explicit approval.
+              All SafeTalk messages are 100% user-initiated.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">3. Suggested Messages</h2>
+            <p className="text-gray-700 leading-relaxed">
+              SafeTalk may suggest responses to help improve communication tone and reduce conflict.
+              However, <strong>you control final content and the decision to send</strong>. Our suggestion
+              process involves:
+            </p>
+            <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
+              <li>Analyzing incoming messages for appropriate response options</li>
+              <li>Generating alternative phrasings that maintain your intent</li>
+              <li>Providing tone improvements while preserving your message</li>
+              <li>Offering multiple options for you to choose from or modify</li>
+            </ul>
+            <p className="text-gray-700 leading-relaxed mt-3">
+              You always have the final say on message content and whether to send it.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">4. How We Use Your Information</h2>
             <p className="text-gray-700 leading-relaxed">
               We use your information to:
             </p>
@@ -58,22 +94,29 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-3">3. SMS Consent and TCPA Compliance</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">5. Consent Records</h2>
             <p className="text-gray-700 leading-relaxed">
-              Your SMS consent is collected through our web form with express written agreement.
-              We comply with the Telephone Consumer Protection Act (TCPA) and maintain records
-              of your consent including:
+              We log opt-in details (timestamp, IP, user agent, and phone number) for telecom compliance.
+              Your SMS consent is collected through our web form with express written agreement for all
+              four required consent categories. We comply with the Telephone Consumer Protection Act (TCPA)
+              and maintain detailed records of your consent including:
             </p>
             <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
-              <li>Timestamp of consent</li>
-              <li>IP address and technical details</li>
-              <li>Exact consent language shown</li>
-              <li>Your agreement to receive SMS communications</li>
+              <li>Consent timestamp (server time in UTC)</li>
+              <li>IP address and technical details for verification</li>
+              <li>User agent and browser information</li>
+              <li>Exact consent language version shown (v4.1-2025-09-15)</li>
+              <li>Individual confirmation for each of the four consent categories</li>
+              <li>Your phone number and contact information</li>
             </ul>
+            <p className="text-gray-700 leading-relaxed mt-3">
+              These records are maintained for compliance purposes and to demonstrate that
+              consent was properly obtained for all SMS communications.
+            </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-3">4. Your Rights and Choices</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">6. Your Rights and Choices</h2>
             <p className="text-gray-700 leading-relaxed">
               You have the right to:
             </p>
@@ -87,7 +130,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-3">5. Data Security</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">7. Data Security</h2>
             <p className="text-gray-700 leading-relaxed">
               We implement industry-standard security measures to protect your information,
               including encryption, secure servers, and access controls. Your SMS communications
@@ -96,7 +139,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-3">6. Contact Us</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">8. Contact Us</h2>
             <p className="text-gray-700 leading-relaxed">
               For privacy-related questions or to exercise your rights, contact us:
             </p>
