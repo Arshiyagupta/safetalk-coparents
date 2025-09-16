@@ -12,10 +12,10 @@ export default function TermsPage() {
               <p className="text-gray-600 mt-2">SafeTalk Co-parenting Communication Service</p>
             </div>
             <Link
-              href="/opt-in"
+              href="/signup"
               className="text-blue-600 hover:text-blue-700 text-sm font-medium"
             >
-              ← Back to Opt-In
+              ← Back to Sign Up
             </Link>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function TermsPage() {
             <h2 className="text-xl font-semibold text-gray-800 mb-3">5. Privacy and Data</h2>
             <p className="text-gray-700 leading-relaxed">
               We respect your privacy and handle your data in accordance with our
-              <Link href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</Link>.
+              <Link href="/privacy-policy" className="text-blue-600 hover:underline">Privacy Policy</Link>.
               Your communications are processed to provide our filtering service and improve
               the tone of co-parenting interactions.
             </p>
@@ -128,16 +128,16 @@ export default function TermsPage() {
         {/* Footer Navigation */}
         <div className="border-t mt-8 pt-6 flex justify-between">
           <Link
-            href="/privacy"
+            href="/privacy-policy"
             className="text-blue-600 hover:text-blue-700 font-medium"
           >
             Privacy Policy →
           </Link>
           <Link
-            href="/opt-in"
+            href="/signup"
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors"
           >
-            Opt In to SMS
+            Sign Up for SMS
           </Link>
         </div>
       </div>

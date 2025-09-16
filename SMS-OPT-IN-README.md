@@ -14,6 +14,15 @@ Based on Twilio customer support feedback, this version includes:
 3. **Enhanced SMS disclosure messages** with clear SafeTalk identification
 4. **Standalone signup form** as primary opt-in method
 
+### 🔗 Standalone URL Structure (v4.3-2025-09-16)
+
+Updated to use professional, SEO-friendly URLs for Twilio compliance:
+- **Signup Form**: `/signup` (was `/opt-in`)
+- **Privacy Policy**: `/privacy-policy` (was `/privacy`)
+- **Terms of Service**: `/terms-of-service` (was `/terms`)
+- **All popups removed** - direct navigation only
+- **Prominent Sign Up button** added to main site
+
 ## 📸 Twilio Screenshot Requirements
 
 When taking screenshots for Twilio verification, capture:
@@ -43,8 +52,8 @@ npm install
 # Run development server
 npm run dev
 
-# Visit the opt-in page
-open http://localhost:3000/opt-in
+# Visit the signup page
+open http://localhost:3000/signup
 ```
 
 ### Pages Router Adaptation
@@ -52,11 +61,11 @@ open http://localhost:3000/opt-in
 If your project uses Pages Router instead of App Router, move files as follows:
 
 ```
-pages/opt-in/index.tsx          ← app/opt-in/page.tsx
-pages/opt-in/success.tsx        ← app/opt-in/success/page.tsx
+pages/signup/index.tsx          ← app/signup/page.tsx
+pages/signup/success.tsx        ← app/signup/success/page.tsx
 pages/api/opt-in.ts             ← app/api/opt-in/route.ts
-pages/terms.tsx                 ← app/terms/page.tsx
-pages/privacy.tsx               ← app/privacy/page.tsx
+pages/terms-of-service.tsx      ← app/terms-of-service/page.tsx
+pages/privacy-policy.tsx        ← app/privacy-policy/page.tsx
 ```
 
 Update API route for Pages Router:
@@ -77,16 +86,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 ```
 app/
-├── opt-in/
-│   ├── page.tsx                 # Main SMS opt-in form
+├── signup/
+│   ├── page.tsx                 # Main SMS signup form
 │   └── success/
 │       └── page.tsx             # Success confirmation
 ├── api/
 │   └── opt-in/
 │       └── route.ts             # Consent API endpoint
-├── terms/
+├── terms-of-service/
 │   └── page.tsx                 # Terms of Service
-├── privacy/
+├── privacy-policy/
 │   └── page.tsx                 # Privacy Policy
 components/
 ├── ConsentCheckbox.tsx          # Reusable consent component
@@ -146,7 +155,7 @@ The exact consent text that appears next to the checkbox (Updated for Twilio Com
 
 ### Manual Testing Checklist
 
-1. **Load `/opt-in`**
+1. **Load `/signup`**
    - ✅ SafeTalk branding visible
    - ✅ Consent text fully visible
    - ✅ Checkbox unchecked by default
@@ -170,8 +179,8 @@ The exact consent text that appears next to the checkbox (Updated for Twilio Com
    - ✅ Navigation back to home
 
 5. **Legal Pages**
-   - ✅ `/terms` accessible from consent text
-   - ✅ `/privacy` accessible from consent text
+   - ✅ `/terms-of-service` accessible from consent text
+   - ✅ `/privacy-policy` accessible from consent text
    - ✅ Real links (not placeholders)
 
 ### Console Output Example

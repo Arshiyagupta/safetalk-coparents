@@ -12,10 +12,10 @@ export default function PrivacyPage() {
               <p className="text-gray-600 mt-2">SafeTalk Co-parenting Communication Service</p>
             </div>
             <Link
-              href="/opt-in"
+              href="/signup"
               className="text-blue-600 hover:text-blue-700 text-sm font-medium"
             >
-              ← Back to Opt-In
+              ← Back to Sign Up
             </Link>
           </div>
         </div>
@@ -170,16 +170,16 @@ export default function PrivacyPage() {
         {/* Footer Navigation */}
         <div className="border-t mt-8 pt-6 flex justify-between">
           <Link
-            href="/terms"
+            href="/terms-of-service"
             className="text-blue-600 hover:text-blue-700 font-medium"
           >
             ← Terms of Service
           </Link>
           <Link
-            href="/opt-in"
+            href="/signup"
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors"
           >
-            Opt In to SMS
+            Sign Up for SMS
           </Link>
         </div>
       </div>

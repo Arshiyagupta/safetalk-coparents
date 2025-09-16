@@ -141,19 +141,15 @@ export default function MultiConsentCheckboxes({
           <div>
             I acknowledge that I have read and understood SafeTalk&apos;s{' '}
             <Link
-              href="/terms"
+              href="/terms-of-service"
               className="text-blue-600 hover:text-blue-700 underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               Terms of Service
             </Link>
             {' '}and{' '}
             <Link
-              href="/privacy"
+              href="/privacy-policy"
               className="text-blue-600 hover:text-blue-700 underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               Privacy Policy
             </Link>

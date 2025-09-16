@@ -28,19 +28,15 @@ export default function ConsentCheckbox({
           {parts[0]}
           See{' '}
           <Link
-            href="/terms"
+            href="/terms-of-service"
             className="text-blue-600 hover:text-blue-700 underline"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Terms
           </Link>
           {' '}and{' '}
           <Link
-            href="/privacy"
+            href="/privacy-policy"
             className="text-blue-600 hover:text-blue-700 underline"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Privacy
           </Link>

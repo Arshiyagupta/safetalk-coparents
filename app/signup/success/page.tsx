@@ -43,18 +43,18 @@ export default function OptInSuccessPage() {
           </Link>
 
           <Link
-            href="/opt-in"
+            href="/signup"
             className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
             style={{ fontSize: '16px', minHeight: '48px', lineHeight: '48px' }}
           >
-            Opt In Another Number
+            Sign Up Another Number
           </Link>
         </div>
 
         {/* Support Information */}
         <div className="border-t pt-4 text-xs text-gray-500 space-y-1">
           <p>Need help? Reply <strong>HELP</strong> to any SafeTalk message</p>
-          <p>Or visit our <Link href="/terms" className="text-blue-600 hover:underline">Terms</Link> and <Link href="/privacy" className="text-blue-600 hover:underline">Privacy</Link> pages</p>
+          <p>Or visit our <Link href="/terms-of-service" className="text-blue-600 hover:underline">Terms</Link> and <Link href="/privacy-policy" className="text-blue-600 hover:underline">Privacy</Link> pages</p>
         </div>
       </div>
     </div>
