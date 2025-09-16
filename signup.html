@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SafeTalk SMS Signup - TCPA compliant SMS opt-in for co-parenting communication service">
+    <title>SafeTalk SMS Signup - Co-parenting Communication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sage-green': '#7dd3fc',
+                        'sage-green-light': '#a7f3d0',
+                        'sage-green-dark': '#059669',
+                        'sage-green-soft': '#f0fdf4',
+                        'ocean-blue': '#60a5fa',
+                        'ocean-blue-light': '#93c5fd',
+                        'ocean-blue-dark': '#2563eb',
+                        'ocean-blue-soft': '#eff6ff',
+                        'neutral-soft': '#fafbfc',
+                        'neutral-medium': '#64748b',
+                        'neutral-dark': '#334155',
+                        'accent-gold': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'open-sans': ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-open-sans">
+    <div class="min-h-screen bg-gray-50 py-8 px-4">
+        <!-- README Note for Twilio Screenshot -->
+        <div class="max-w-lg mx-auto mb-4 p-3 bg-blue-50 border border-blue-200 rounded text-xs text-blue-800">
+            <strong>📸 Twilio Screenshot Guide:</strong> Capture full viewport showing SafeTalk branding,
+            visible consent text, checkbox states (unchecked → checked), and submit button for verification proof.
+        </div>
+
+        <div class="max-w-lg mx-auto bg-white rounded-2xl p-6 shadow-lg space-y-6" role="main" aria-labelledby="main-heading">
+            <!-- Header with SafeTalk Branding -->
+            <div class="text-center border-b pb-4">
+                <div class="text-2xl font-bold text-gray-800 mb-1">
+                    SafeTalk
+                </div>
+                <div class="text-sm text-gray-600">
+                    Co-parenting communication
+                </div>
+            </div>
+
+            <!-- Page Title -->
+            <div class="text-center">
+                <h1 class="text-xl font-semibold text-gray-800" id="main-heading">
+                    SafeTalk SMS Signup
+                </h1>
+                <p class="text-sm text-gray-600 mt-2">
+                    Complete all four required consents to receive SafeTalk SMS notifications
+                </p>
+            </div>
+
+            <!-- Signup Form -->
+            <form id="signup-form" class="space-y-5" novalidate aria-label="SafeTalk SMS Signup Form">
+                <div id="form-validation-error" class="sr-only" aria-live="polite">
+                    Please complete all required fields and provide all four consents to continue.
+                </div>
+
+                <!-- Full Name -->
+                <div class="space-y-2">
+                    <label for="name" class="block text-sm font-medium text-gray-700" style="font-size: 16px;">
+                        Full Name
+                        <span class="text-red-500 ml-1">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="name"
+                        required
+                        placeholder="Enter your full name"
+                        class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-colors text-base bg-white focus:border-blue-500"
+                        style="font-size: 16px; min-height: 44px;"
+                    />
+                    <p id="name-error" class="text-xs text-red-600 hidden" role="alert" aria-live="polite">
+                        ⚠ Name must be at least 2 characters
+                    </p>
+                </div>
+
+                <!-- Mobile Number -->
+                <div class="space-y-2">
+                    <label for="phoneE164" class="block text-sm font-medium text-gray-700" style="font-size: 16px;">
+                        Mobile Number
+                        <span class="text-red-500 ml-1">*</span>
+                    </label>
+                    <input
+                        type="tel"
+                        id="phoneE164"
+                        required
+                        placeholder="+14155551234"
+                        class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-colors text-base bg-white focus:border-blue-500"
+                        style="font-size: 16px; min-height: 44px;"
+                    />
+                    <p id="phone-help" class="text-xs text-gray-500">
+                        E.164 format required (+ followed by country code and number)
+                    </p>
+                    <p id="phone-error" class="text-xs text-red-600 hidden" role="alert" aria-live="polite">
+                        ⚠ Phone must be in E.164 format (e.g., +14155551234)
+                    </p>
+                </div>
+
+                <!-- Email (Optional) -->
+                <div class="space-y-2">
+                    <label for="email" class="block text-sm font-medium text-gray-700" style="font-size: 16px;">
+                        Email
+                    </label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="your.email@example.com"
+                        class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-colors text-base bg-white focus:border-blue-500"
+                        style="font-size: 16px; min-height: 44px;"
+                    />
+                    <p class="text-xs text-gray-500">Optional</p>
+                    <p id="email-error" class="text-xs text-red-600 hidden" role="alert" aria-live="polite">
+                        ⚠ Please enter a valid email address
+                    </p>
+                </div>
+
+                <!-- Multi-Consent Checkboxes - ALL FOUR REQUIRED -->
+                <div class="space-y-4">
+                    <!-- Header -->
+                    <div class="text-center pb-2">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                            Required Consents
+                        </h3>
+                        <p class="text-sm text-gray-600">
+                            All four consents are required to proceed with SafeTalk SMS notifications
+                        </p>
+                    </div>
+
+                    <!-- Checkbox 1 - SMS Consent -->
+                    <div class="flex items-start space-x-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                        <div class="flex-shrink-0 pt-1">
+                            <input
+                                type="checkbox"
+                                id="sms-consent"
+                                required
+                                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded focus:ring-2"
+                            />
+                        </div>
+                        <label for="sms-consent" class="flex-1 text-sm leading-relaxed text-gray-800 cursor-pointer font-medium" style="font-size: 16px;">
+                            <div class="space-y-2">
+                                <div class="font-semibold text-gray-900">
+                                    SMS Consent (User-Initiated Messaging)
+                                </div>
+                                <div>
+                                    I provide my express written consent to receive text (SMS) messages from SafeTalk at the phone number I provide. Message frequency varies. Standard message &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for help. View our Privacy Policy.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Checkbox 2 - Processing & Storage -->
+                    <div class="flex items-start space-x-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                        <div class="flex-shrink-0 pt-1">
+                            <input
+                                type="checkbox"
+                                id="processing-storage"
+                                required
+                                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded focus:ring-2"
+                            />
+                        </div>
+                        <label for="processing-storage" class="flex-1 text-sm leading-relaxed text-gray-800 cursor-pointer font-medium" style="font-size: 16px;">
+                            <div class="space-y-2">
+                                <div class="font-semibold text-gray-900">
+                                    Processing &amp; Storage
+                                </div>
+                                <div>
+                                    I consent to SafeTalk processing and storing my communications for the purpose of filtering and delivering messages between co-parents.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Checkbox 3 - SMS Disclosures -->
+                    <div class="flex items-start space-x-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                        <div class="flex-shrink-0 pt-1">
+                            <input
+                                type="checkbox"
+                                id="sms-disclosures"
+                                required
+                                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded focus:ring-2"
+                            />
+                        </div>
+                        <label for="sms-disclosures" class="flex-1 text-sm leading-relaxed text-gray-800 cursor-pointer font-medium" style="font-size: 16px;">
+                            <div class="space-y-2">
+                                <div class="font-semibold text-gray-900">
+                                    SMS Disclosures (STOP/HELP/Frequency/Rates)
+                                </div>
+                                <div>
+                                    Message frequency varies based on co-parent communication through SafeTalk (one message per user action). Standard message &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance at any time. You'll receive a confirmation text after SafeTalk sign-up.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Checkbox 4 - Terms & Privacy -->
+                    <div class="flex items-start space-x-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                        <div class="flex-shrink-0 pt-1">
+                            <input
+                                type="checkbox"
+                                id="terms-privacy"
+                                required
+                                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded focus:ring-2"
+                            />
+                        </div>
+                        <label for="terms-privacy" class="flex-1 text-sm leading-relaxed text-gray-800 cursor-pointer font-medium" style="font-size: 16px;">
+                            <div class="space-y-2">
+                                <div class="font-semibold text-gray-900">
+                                    Terms &amp; Privacy
+                                </div>
+                                <div>
+                                    I acknowledge that I have read and understood SafeTalk's
+                                    <a href="/terms-of-service.html" class="text-blue-600 hover:text-blue-700 underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1">Terms of Service</a>
+                                    and
+                                    <a href="/privacy-policy.html" class="text-blue-600 hover:text-blue-700 underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1">Privacy Policy</a>,
+                                    and I agree to comply with them.
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Validation Message -->
+                    <div id="consent-validation" class="text-sm text-red-600 bg-red-50 p-3 rounded border border-red-200 hidden" role="alert" aria-live="polite">
+                        <span class="font-medium">⚠ All four consents are required</span> to proceed with SafeTalk SMS notifications.
+                    </div>
+
+                    <!-- Success State -->
+                    <div id="consent-success" class="text-sm text-green-600 bg-green-50 p-3 rounded border border-green-200 hidden" role="status" aria-live="polite">
+                        <span class="font-medium">✓ All consents provided</span> — Ready to continue with SafeTalk SMS service setup.
+                    </div>
+
+                    <!-- Compliance Notes -->
+                    <div class="text-xs text-gray-500 space-y-1 border-t pt-3">
+                        <p>✓ Your consent details are recorded with timestamp and IP for telecom compliance</p>
+                        <p>✓ You can withdraw consent anytime by replying STOP to any SafeTalk SMS message</p>
+                        <p>✓ All SafeTalk messages are 100% user-initiated — nothing sent without your explicit approval</p>
+                    </div>
+                </div>
+
+                <!-- Account Holder Disclaimer -->
+                <div class="text-xs text-gray-500 text-center">
+                    By submitting you confirm you are the account holder or have permission to use this phone number.
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                    type="submit"
+                    id="submit-button"
+                    disabled
+                    class="w-full py-3 px-4 rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 bg-gray-300 text-gray-500 cursor-not-allowed opacity-50"
+                    style="font-size: 16px; min-height: 48px;"
+                >
+                    Continue / Sign Up
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Consent version for tracking
+        const CONSENT_VERSION = "v4.2-2025-09-16";
+
+        // Form state
+        const formData = {
+            name: '',
+            phoneE164: '',
+            email: '',
+            consentState: {
+                smsConsent: false,
+                processingStorage: false,
+                smsDisclosures: false,
+                termsPrivacy: false
+            }
+        };
+
+        // Auto-detect timezone and capture client info
+        const clientInfo = {
+            userAgent: navigator.userAgent,
+            referer: document.referrer || '',
+            tzIana: Intl.DateTimeFormat().resolvedOptions().timeZone
+        };
+
+        // Validation functions
+        function validatePhone(phone) {
+            const e164Regex = /^\+[1-9]\d{1,14}$/;
+            return e164Regex.test(phone);
+        }
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function validateForm() {
+            let isValid = true;
+            const errors = {};
+
+            // Name validation
+            const nameInput = document.getElementById('name');
+            const nameError = document.getElementById('name-error');
+            if (!nameInput.value.trim() || nameInput.value.trim().length < 2) {
+                errors.name = 'Name must be at least 2 characters';
+                nameError.classList.remove('hidden');
+                nameInput.classList.add('border-red-300', 'focus:border-red-500', 'bg-red-50');
+                nameInput.classList.remove('border-gray-300', 'focus:border-blue-500', 'bg-white');
+                isValid = false;
+            } else {
+                nameError.classList.add('hidden');
+                nameInput.classList.remove('border-red-300', 'focus:border-red-500', 'bg-red-50');
+                nameInput.classList.add('border-gray-300', 'focus:border-blue-500', 'bg-white');
+            }
+
+            // Phone validation
+            const phoneInput = document.getElementById('phoneE164');
+            const phoneError = document.getElementById('phone-error');
+            const phoneHelp = document.getElementById('phone-help');
+            if (!phoneInput.value.trim()) {
+                phoneError.textContent = '⚠ Phone number is required';
+                phoneError.classList.remove('hidden');
+                phoneHelp.classList.add('hidden');
+                phoneInput.classList.add('border-red-300', 'focus:border-red-500', 'bg-red-50');
+                phoneInput.classList.remove('border-gray-300', 'focus:border-blue-500', 'bg-white');
+                isValid = false;
+            } else if (!validatePhone(phoneInput.value)) {
+                phoneError.textContent = '⚠ Phone must be in E.164 format (e.g., +14155551234)';
+                phoneError.classList.remove('hidden');
+                phoneHelp.classList.add('hidden');
+                phoneInput.classList.add('border-red-300', 'focus:border-red-500', 'bg-red-50');
+                phoneInput.classList.remove('border-gray-300', 'focus:border-blue-500', 'bg-white');
+                isValid = false;
+            } else {
+                phoneError.classList.add('hidden');
+                phoneHelp.classList.remove('hidden');
+                phoneInput.classList.remove('border-red-300', 'focus:border-red-500', 'bg-red-50');
+                phoneInput.classList.add('border-gray-300', 'focus:border-blue-500', 'bg-white');
+            }
+
+            // Email validation (optional but must be valid if provided)
+            const emailInput = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            if (emailInput.value.trim() && !validateEmail(emailInput.value)) {
+                emailError.classList.remove('hidden');
+                emailInput.classList.add('border-red-300', 'focus:border-red-500', 'bg-red-50');
+                emailInput.classList.remove('border-gray-300', 'focus:border-blue-500', 'bg-white');
+                isValid = false;
+            } else {
+                emailError.classList.add('hidden');
+                emailInput.classList.remove('border-red-300', 'focus:border-red-500', 'bg-red-50');
+                emailInput.classList.add('border-gray-300', 'focus:border-blue-500', 'bg-white');
+            }
+
+            return isValid;
+        }
+
+        function checkConsents() {
+            const consents = ['sms-consent', 'processing-storage', 'sms-disclosures', 'terms-privacy'];
+            const allChecked = consents.every(id => document.getElementById(id).checked);
+
+            const consentValidation = document.getElementById('consent-validation');
+            const consentSuccess = document.getElementById('consent-success');
+
+            if (!allChecked) {
+                consentValidation.classList.remove('hidden');
+                consentSuccess.classList.add('hidden');
+            } else {
+                consentValidation.classList.add('hidden');
+                consentSuccess.classList.remove('hidden');
+            }
+
+            return allChecked;
+        }
+
+        function updateSubmitButton() {
+            const formValid = validateForm();
+            const consentsChecked = checkConsents();
+            const submitButton = document.getElementById('submit-button');
+
+            if (formValid && consentsChecked) {
+                submitButton.disabled = false;
+                submitButton.className = 'w-full py-3 px-4 rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg';
+            } else {
+                submitButton.disabled = true;
+                submitButton.className = 'w-full py-3 px-4 rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 bg-gray-300 text-gray-500 cursor-not-allowed opacity-50';
+            }
+        }
+
+        // Event listeners
+        document.getElementById('name').addEventListener('input', updateSubmitButton);
+        document.getElementById('phoneE164').addEventListener('input', updateSubmitButton);
+        document.getElementById('email').addEventListener('input', updateSubmitButton);
+
+        // Consent checkboxes
+        ['sms-consent', 'processing-storage', 'sms-disclosures', 'terms-privacy'].forEach(id => {
+            document.getElementById(id).addEventListener('change', updateSubmitButton);
+        });
+
+        // Form submission
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!validateForm() || !checkConsents()) return;
+
+            const submitButton = document.getElementById('submit-button');
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<div class="flex items-center justify-center"><div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>Submitting...</div>';
+
+            try {
+                const payload = {
+                    name: document.getElementById('name').value.trim(),
+                    phoneE164: document.getElementById('phoneE164').value.trim(),
+                    email: document.getElementById('email').value.trim() || undefined,
+                    tzIana: clientInfo.tzIana,
+                    userAgent: clientInfo.userAgent,
+                    referer: clientInfo.referer,
+                    consent_checked: true,
+                    consent_text_version: CONSENT_VERSION,
+                    consent_state: {
+                        smsConsent: document.getElementById('sms-consent').checked,
+                        processingStorage: document.getElementById('processing-storage').checked,
+                        smsDisclosures: document.getElementById('sms-disclosures').checked,
+                        termsPrivacy: document.getElementById('terms-privacy').checked
+                    },
+                    submittedAtUtcIso: new Date().toISOString()
+                };
+
+                const response = await fetch('/api/opt-in', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                });
+
+                if (response.ok) {
+                    submitButton.innerHTML = 'Redirecting to Confirmation...';
+                    // Navigate to success page after a brief delay
+                    setTimeout(() => {
+                        window.location.href = '/signup-success.html';
+                    }, 2000);
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert('There was an error submitting your information. Please try again.');
+                submitButton.disabled = false;
+                submitButton.innerHTML = 'Continue / Sign Up';
+                updateSubmitButton();
+            }
+        });
+
+        // Initial validation check
+        updateSubmitButton();
+    </script>
+</body>
+</html>

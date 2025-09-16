@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SafeTalk SMS Signup Success - You're now signed up for SafeTalk SMS notifications">
+    <title>SafeTalk SMS Signup Success</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sage-green': '#7dd3fc',
+                        'sage-green-light': '#a7f3d0',
+                        'sage-green-dark': '#059669',
+                        'sage-green-soft': '#f0fdf4',
+                        'ocean-blue': '#60a5fa',
+                        'ocean-blue-light': '#93c5fd',
+                        'ocean-blue-dark': '#2563eb',
+                        'ocean-blue-soft': '#eff6ff',
+                        'neutral-soft': '#fafbfc',
+                        'neutral-medium': '#64748b',
+                        'neutral-dark': '#334155',
+                        'accent-gold': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'open-sans': ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-open-sans">
+    <div class="min-h-screen bg-gray-50 py-8 px-4">
+        <div class="max-w-lg mx-auto bg-white rounded-2xl p-6 shadow-lg text-center space-y-6" role="main" aria-labelledby="success-heading">
+            <!-- Success Icon -->
+            <div class="text-6xl">✅</div>
+
+            <!-- Success Heading -->
+            <h1 class="text-2xl font-bold text-green-700" id="success-heading">
+                You're signed up for SafeTalk SMS
+            </h1>
+
+            <!-- Confirmation Message -->
+            <div class="space-y-4 text-gray-700">
+                <p class="text-base leading-relaxed">
+                    You may receive service messages to help organize and clarify co-parenting communication.
+                    Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help.
+                    Message frequency varies; msg &amp; data rates may apply.
+                </p>
+
+                <!-- Additional Info -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm">
+                    <p class="text-blue-800">
+                        <strong>What's next?</strong> You'll receive SMS messages from SafeTalk to help
+                        facilitate respectful co-parenting communication. Our service filters and improves
+                        message tone to reduce conflict.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="space-y-3">
+                <a
+                    href="/"
+                    class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    style="font-size: 16px; min-height: 48px; line-height: 48px;"
+                >
+                    Go to Home
+                </a>
+
+                <a
+                    href="/signup.html"
+                    class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                    style="font-size: 16px; min-height: 48px; line-height: 48px;"
+                >
+                    Sign Up Another Number
+                </a>
+            </div>
+
+            <!-- Support Information -->
+            <div class="border-t pt-4 text-xs text-gray-500 space-y-1">
+                <p>Need help? Reply <strong>HELP</strong> to any SafeTalk message</p>
+                <p>Or visit our <a href="/terms-of-service.html" class="text-blue-600 hover:underline">Terms</a> and <a href="/privacy-policy.html" class="text-blue-600 hover:underline">Privacy</a> pages</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
