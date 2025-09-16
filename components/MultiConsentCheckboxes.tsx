@@ -84,7 +84,7 @@ export default function MultiConsentCheckboxes({
             SMS Consent (User-Initiated Messaging)
           </div>
           <div>
-            By checking this box, I give my express written consent to receive text (SMS) messages from SafeTalk at the phone number I provide. I understand that <strong>all messages sent through SafeTalk are 100% user-initiated</strong> — no message will ever be sent unless I personally choose, edit, or approve it. SafeTalk may suggest options, but the final message content and the decision to send are always mine.
+            I provide my express written consent to receive text (SMS) messages from SafeTalk at the phone number I provide. Message frequency varies. Standard message &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for help. View our Privacy Policy.
           </div>
         </div>
       </CheckboxItem>
@@ -107,7 +107,7 @@ export default function MultiConsentCheckboxes({
             Processing &amp; Storage
           </div>
           <div>
-            I consent to SafeTalk processing and storing my communications for the purpose of filtering and delivering messages.
+            I consent to SafeTalk processing and storing my communications for the purpose of filtering and delivering messages between co-parents.
           </div>
         </div>
       </CheckboxItem>
@@ -123,7 +123,7 @@ export default function MultiConsentCheckboxes({
             SMS Disclosures (STOP/HELP/Frequency/Rates)
           </div>
           <div>
-            Message frequency varies based on co-parent communication (one message per user action). Standard message &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance at any time. You&apos;ll receive a confirmation text after sign-up.
+            Message frequency varies based on co-parent communication through SafeTalk (one message per user action). Standard message &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance at any time. You&apos;ll receive a confirmation text after SafeTalk sign-up.
           </div>
         </div>
       </CheckboxItem>
@@ -172,15 +172,15 @@ export default function MultiConsentCheckboxes({
       {/* Success State */}
       {allChecked && (
         <div className="text-sm text-green-600 bg-green-50 p-3 rounded border border-green-200" role="status" aria-live="polite">
-          <span className="font-medium">✓ All consents provided</span> — Ready to continue with SafeTalk SMS setup.
+          <span className="font-medium">✓ All consents provided</span> — Ready to continue with SafeTalk SMS service setup.
         </div>
       )}
 
       {/* Compliance Notes */}
       <div className="text-xs text-gray-500 space-y-1 border-t pt-3">
         <p>✓ Your consent details are recorded with timestamp and IP for telecom compliance</p>
-        <p>✓ You can withdraw consent anytime by replying STOP to any SafeTalk message</p>
-        <p>✓ All messages are 100% user-initiated — nothing sent without your explicit approval</p>
+        <p>✓ You can withdraw consent anytime by replying STOP to any SafeTalk SMS message</p>
+        <p>✓ All SafeTalk messages are 100% user-initiated — nothing sent without your explicit approval</p>
       </div>
     </div>
   );

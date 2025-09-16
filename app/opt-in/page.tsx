@@ -6,7 +6,7 @@ import Input from '@/components/Input';
 import MultiConsentCheckboxes, { ConsentState } from '@/components/MultiConsentCheckboxes';
 
 // Consent version for tracking
-const CONSENT_VERSION = "v4.1-2025-09-15";
+const CONSENT_VERSION = "v4.2-2025-09-16";
 
 interface FormData {
   name: string;

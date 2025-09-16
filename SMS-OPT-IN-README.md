@@ -6,6 +6,14 @@ This implementation addresses Twilio toll-free verification errors:
 - **Error 30506**: Opt-ins must clearly reflect the end business
 - **Error 30513**: Explicit SMS consent at point of collection
 
+### 🆕 TCPA Compliance Updates (v4.2-2025-09-16)
+
+Based on Twilio customer support feedback, this version includes:
+1. **Explicit SafeTalk branding** in all consent language per TCPA requirements
+2. **Mandatory mobile marketing clause** added to Privacy Policy
+3. **Enhanced SMS disclosure messages** with clear SafeTalk identification
+4. **Standalone signup form** as primary opt-in method
+
 ## 📸 Twilio Screenshot Requirements
 
 When taking screenshots for Twilio verification, capture:
@@ -107,11 +115,11 @@ components/
 
 ## 📝 Consent Copy (Verbatim)
 
-The exact consent text that appears next to the checkbox:
+The exact consent text that appears next to the checkbox (Updated for Twilio Compliance):
 
-> SMS Consent (SafeTalk): I agree to receive SMS text messages from SafeTalk to help organize and clarify co-parenting communication. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out, HELP for help. See Terms and Privacy.
+> I provide my express written consent to receive text (SMS) messages from SafeTalk at the phone number I provide. Message frequency varies. Standard message & data rates may apply. Reply STOP to unsubscribe or HELP for help. View our Privacy Policy.
 
-**🚨 Do not modify this text** - it's specifically crafted for Twilio compliance.
+**🚨 Do not modify this text** - it's specifically crafted for Twilio TCPA compliance and matches their exact requirements.
 
 ## 🔒 API Payload Structure
 
@@ -227,8 +235,8 @@ vercel env add SUPABASE_ANON_KEY
 
 ## 📋 Acceptance Criteria
 
-- [x] SafeTalk branding prominently displayed
-- [x] Consent text visible without scrolling
+- [x] SafeTalk branding prominently displayed throughout all consent forms
+- [x] Consent text visible without scrolling and explicitly mentions SafeTalk
 - [x] Checkbox unchecked by default
 - [x] Submit disabled until consent given
 - [x] Server-side IP tracking implemented
@@ -236,6 +244,9 @@ vercel env add SUPABASE_ANON_KEY
 - [x] Mobile responsive design
 - [x] Accessibility compliant
 - [x] Real Terms/Privacy links functional
+- [x] Privacy Policy includes mandatory TCPA mobile marketing clause
+- [x] All consent checkboxes feature explicit SafeTalk branding
+- [x] SMS disclosure messages explicitly mention SafeTalk as sender
 
 ## 🎉 Success Metrics
 

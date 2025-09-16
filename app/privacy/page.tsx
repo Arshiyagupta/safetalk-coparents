@@ -139,7 +139,14 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-gray-800 mb-3">8. Contact Us</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">8. Mobile Information Sharing Policy</h2>
+            <p className="text-gray-700 leading-relaxed">
+              <strong>TCPA Compliance:</strong> We do not share mobile contact information with third parties or affiliates for marketing or promotional purposes. Information may be shared with subcontractors in support services, such as customer service. All other categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-gray-800 mb-3">9. Contact Us</h2>
             <p className="text-gray-700 leading-relaxed">
               For privacy-related questions or to exercise your rights, contact us:
             </p>
