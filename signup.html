@@ -43,7 +43,7 @@
 
         <div class="max-w-4xl mx-auto bg-white rounded-2xl p-8 shadow-lg space-y-6" role="main" aria-labelledby="main-heading">
             <!-- Header with SafeTalk Logo -->
-            <div class="text-center border-b pb-6">
+            <div class="text-center pb-6">
                 <div class="flex items-center justify-center">
                     <img src="/images/safetalk-logo.png" alt="SafeTalk Logo" class="h-16 w-auto">
                 </div>
@@ -55,14 +55,14 @@
                     SafeTalk SMS Signup
                 </h1>
                 <p class="text-sm text-gray-600 mt-2">
-                    Complete all four required consents to receive SafeTalk SMS notifications
+                    Complete both required consents to receive SafeTalk SMS notifications
                 </p>
             </div>
 
             <!-- Signup Form -->
             <form id="signup-form" class="space-y-5" novalidate aria-label="SafeTalk SMS Signup Form">
                 <div id="form-validation-error" class="sr-only" aria-live="polite">
-                    Please complete all required fields and provide all four consents to continue.
+                    Please complete all required fields and provide both consents to continue.
                 </div>
 
                 <!-- Full Name -->
@@ -124,7 +124,48 @@
                     </p>
                 </div>
 
-                <!-- Multi-Consent Checkboxes - ALL FOUR REQUIRED -->
+                <!-- Co-parent's Full Name -->
+                <div class="space-y-2">
+                    <label for="coparent-name" class="block text-sm font-medium text-gray-700" style="font-size: 16px;">
+                        Co-parent's Full Name
+                        <span class="text-red-500 ml-1">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="coparent-name"
+                        required
+                        placeholder="Enter co-parent's full name"
+                        class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-sage-green-dark focus:ring-offset-1 transition-colors text-base bg-white focus:border-sage-green-dark"
+                        style="font-size: 16px; min-height: 44px;"
+                    />
+                    <p id="coparent-name-error" class="text-xs text-red-600 hidden" role="alert" aria-live="polite">
+                        ⚠ Co-parent name must be at least 2 characters
+                    </p>
+                </div>
+
+                <!-- Co-parent's Mobile Number -->
+                <div class="space-y-2">
+                    <label for="coparent-phone" class="block text-sm font-medium text-gray-700" style="font-size: 16px;">
+                        Co-parent's Mobile Number
+                        <span class="text-red-500 ml-1">*</span>
+                    </label>
+                    <input
+                        type="tel"
+                        id="coparent-phone"
+                        required
+                        placeholder="+14155551234"
+                        class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-sage-green-dark focus:ring-offset-1 transition-colors text-base bg-white focus:border-sage-green-dark"
+                        style="font-size: 16px; min-height: 44px;"
+                    />
+                    <p id="coparent-phone-help" class="text-xs text-gray-500">
+                        E.164 format required (+ followed by country code and number)
+                    </p>
+                    <p id="coparent-phone-error" class="text-xs text-red-600 hidden" role="alert" aria-live="polite">
+                        ⚠ Phone must be in E.164 format (e.g., +14155551234)
+                    </p>
+                </div>
+
+                <!-- Multi-Consent Checkboxes - BOTH REQUIRED -->
                 <div class="space-y-4">
                     <!-- Header -->
                     <div class="text-center pb-2">
@@ -147,14 +188,9 @@
                             />
                         </div>
                         <label for="sms-consent" class="flex-1 text-sm leading-relaxed text-gray-800 cursor-pointer" style="font-size: 14px;">
-                            <div class="space-y-3">
-                                <div class="font-semibold text-gray-900">
-                                    SMS Consent & Data Processing
-                                </div>
-                                <div class="space-y-2">
-                                    <p>I provide my express written consent to receive text (SMS) messages from SafeTalk at the phone number I provide. Message frequency varies based on co-parent communication through SafeTalk (one message per user action). Standard message & data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance at any time.</p>
-                                    <p>I consent to SafeTalk processing and storing my communications for the purpose of filtering and delivering messages between co-parents. You'll receive a confirmation text after SafeTalk sign-up.</p>
-                                </div>
+                            <div class="space-y-2">
+                                <p>I provide my express written consent to receive text (SMS) messages from SafeTalk at the phone number I provide. Message frequency varies based on co-parent communication through SafeTalk (one message per user action). Standard message & data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance at any time.</p>
+                                <p>I consent to SafeTalk processing and storing my communications for the purpose of filtering and delivering messages between co-parents. You'll receive a confirmation text after SafeTalk sign-up.</p>
                             </div>
                         </label>
                     </div>
@@ -170,17 +206,12 @@
                             />
                         </div>
                         <label for="terms-privacy" class="flex-1 text-sm leading-relaxed text-gray-800 cursor-pointer" style="font-size: 14px;">
-                            <div class="space-y-2">
-                                <div class="font-semibold text-gray-900">
-                                    Terms &amp; Privacy
-                                </div>
-                                <div>
-                                    I acknowledge that I have read and understood SafeTalk's
-                                    <a href="/terms-of-service.html" class="text-blue-600 hover:text-blue-700 underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1">Terms of Service</a>
-                                    and
-                                    <a href="/privacy-policy.html" class="text-blue-600 hover:text-blue-700 underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1">Privacy Policy</a>,
-                                    and I agree to comply with them.
-                                </div>
+                            <div>
+                                I acknowledge that I have read and understood SafeTalk's
+                                <a href="/terms-of-service.html" class="text-blue-600 hover:text-blue-700 underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1">Terms of Service</a>
+                                and
+                                <a href="/privacy-policy.html" class="text-blue-600 hover:text-blue-700 underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1">Privacy Policy</a>,
+                                and I agree to comply with them.
                             </div>
                         </label>
                     </div>
@@ -309,6 +340,45 @@
                 emailInput.classList.add('border-gray-300', 'focus:border-blue-500', 'bg-white');
             }
 
+            // Co-parent Name validation
+            const coparentNameInput = document.getElementById('coparent-name');
+            const coparentNameError = document.getElementById('coparent-name-error');
+            if (!coparentNameInput.value.trim() || coparentNameInput.value.trim().length < 2) {
+                coparentNameError.classList.remove('hidden');
+                coparentNameInput.classList.add('border-red-300', 'focus:border-red-500', 'bg-red-50');
+                coparentNameInput.classList.remove('border-gray-300', 'focus:border-blue-500', 'bg-white');
+                isValid = false;
+            } else {
+                coparentNameError.classList.add('hidden');
+                coparentNameInput.classList.remove('border-red-300', 'focus:border-red-500', 'bg-red-50');
+                coparentNameInput.classList.add('border-gray-300', 'focus:border-blue-500', 'bg-white');
+            }
+
+            // Co-parent Phone validation
+            const coparentPhoneInput = document.getElementById('coparent-phone');
+            const coparentPhoneError = document.getElementById('coparent-phone-error');
+            const coparentPhoneHelp = document.getElementById('coparent-phone-help');
+            if (!coparentPhoneInput.value.trim()) {
+                coparentPhoneError.textContent = '⚠ Co-parent phone number is required';
+                coparentPhoneError.classList.remove('hidden');
+                coparentPhoneHelp.classList.add('hidden');
+                coparentPhoneInput.classList.add('border-red-300', 'focus:border-red-500', 'bg-red-50');
+                coparentPhoneInput.classList.remove('border-gray-300', 'focus:border-blue-500', 'bg-white');
+                isValid = false;
+            } else if (!validatePhone(coparentPhoneInput.value)) {
+                coparentPhoneError.textContent = '⚠ Phone must be in E.164 format (e.g., +14155551234)';
+                coparentPhoneError.classList.remove('hidden');
+                coparentPhoneHelp.classList.add('hidden');
+                coparentPhoneInput.classList.add('border-red-300', 'focus:border-red-500', 'bg-red-50');
+                coparentPhoneInput.classList.remove('border-gray-300', 'focus:border-blue-500', 'bg-white');
+                isValid = false;
+            } else {
+                coparentPhoneError.classList.add('hidden');
+                coparentPhoneHelp.classList.remove('hidden');
+                coparentPhoneInput.classList.remove('border-red-300', 'focus:border-red-500', 'bg-red-50');
+                coparentPhoneInput.classList.add('border-gray-300', 'focus:border-blue-500', 'bg-white');
+            }
+
             return isValid;
         }
 
@@ -330,9 +400,47 @@
             return allChecked;
         }
 
+        function isFormValid() {
+            // Check form validity without showing errors
+            const nameInput = document.getElementById('name');
+            const phoneInput = document.getElementById('phoneE164');
+            const emailInput = document.getElementById('email');
+            const coparentNameInput = document.getElementById('coparent-name');
+            const coparentPhoneInput = document.getElementById('coparent-phone');
+
+            const nameValid = nameInput.value.trim().length >= 2;
+            const phoneValid = phoneInput.value.trim() && validatePhone(phoneInput.value);
+            const emailValid = !emailInput.value.trim() || validateEmail(emailInput.value);
+            const coparentNameValid = coparentNameInput.value.trim().length >= 2;
+            const coparentPhoneValid = coparentPhoneInput.value.trim() && validatePhone(coparentPhoneInput.value);
+
+            return nameValid && phoneValid && emailValid && coparentNameValid && coparentPhoneValid;
+        }
+
+        function areConsentsChecked() {
+            // Check consents without showing validation messages
+            const consents = ['sms-consent', 'terms-privacy'];
+            return consents.every(id => document.getElementById(id).checked);
+        }
+
         function updateSubmitButton() {
             const formValid = validateForm();
             const consentsChecked = checkConsents();
+            const submitButton = document.getElementById('submit-button');
+
+            if (formValid && consentsChecked) {
+                submitButton.disabled = false;
+                submitButton.className = 'w-full py-3 px-4 rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-sage-green-dark focus:ring-offset-2 bg-sage-green-dark hover:bg-emerald-700 text-white shadow-md hover:shadow-lg';
+            } else {
+                submitButton.disabled = true;
+                submitButton.className = 'w-full py-3 px-4 rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 bg-gray-300 text-gray-500 cursor-not-allowed opacity-50';
+            }
+        }
+
+        function updateSubmitButtonOnly() {
+            // Update button state without showing validation errors
+            const formValid = isFormValid();
+            const consentsChecked = areConsentsChecked();
             const submitButton = document.getElementById('submit-button');
 
             if (formValid && consentsChecked) {
@@ -348,6 +456,8 @@
         document.getElementById('name').addEventListener('input', updateSubmitButton);
         document.getElementById('phoneE164').addEventListener('input', updateSubmitButton);
         document.getElementById('email').addEventListener('input', updateSubmitButton);
+        document.getElementById('coparent-name').addEventListener('input', updateSubmitButton);
+        document.getElementById('coparent-phone').addEventListener('input', updateSubmitButton);
 
         // Consent checkboxes
         ['sms-consent', 'terms-privacy'].forEach(id => {
@@ -369,6 +479,8 @@
                     name: document.getElementById('name').value.trim(),
                     phoneE164: document.getElementById('phoneE164').value.trim(),
                     email: document.getElementById('email').value.trim() || undefined,
+                    coparentName: document.getElementById('coparent-name').value.trim(),
+                    coparentPhone: document.getElementById('coparent-phone').value.trim(),
                     tzIana: clientInfo.tzIana,
                     userAgent: clientInfo.userAgent,
                     referer: clientInfo.referer,
@@ -376,8 +488,6 @@
                     consent_text_version: CONSENT_VERSION,
                     consent_state: {
                         smsConsent: document.getElementById('sms-consent').checked,
-                        processingStorage: document.getElementById('processing-storage').checked,
-                        smsDisclosures: document.getElementById('sms-disclosures').checked,
                         termsPrivacy: document.getElementById('terms-privacy').checked
                     },
                     submittedAtUtcIso: new Date().toISOString()
@@ -409,8 +519,8 @@
             }
         });
 
-        // Initial validation check
-        updateSubmitButton();
+        // Initial button state check (without showing validation errors)
+        updateSubmitButtonOnly();
     </script>
 </body>
 </html>
