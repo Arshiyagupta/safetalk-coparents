@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SafeTalk Admin Content - Hidden sections for future use">
+    <title>SafeTalk Admin Content</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/safetalk-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/safetalk-logo.png">
+    <link rel="shortcut icon" href="images/safetalk-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/safetalk-logo.png">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sage-green': '#7dd3fc',
+                        'sage-green-light': '#a7f3d0',
+                        'sage-green-dark': '#059669',
+                        'sage-green-soft': '#f0fdf4',
+                        'ocean-blue': '#60a5fa',
+                        'ocean-blue-light': '#93c5fd',
+                        'ocean-blue-dark': '#2563eb',
+                        'ocean-blue-soft': '#eff6ff',
+                        'neutral-soft': '#fafbfc',
+                        'neutral-medium': '#64748b',
+                        'neutral-dark': '#334155',
+                        'accent-gold': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'open-sans': ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Slideshow transitions */
+        .app-step-content, .app-step-text {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .app-step-content.active, .app-step-text.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Getting started slideshow */
+        .slide, .step-text {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .slide.active, .step-text.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Fullscreen modal */
+        #fullscreen-modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #fullscreen-modal.show {
+            opacity: 1;
+        }
+
+        #fullscreen-modal.hide {
+            opacity: 0;
+        }
+
+        /* Fullscreen image container */
+        .fullscreen-image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Fullscreen trigger button */
+        .fullscreen-trigger {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+            opacity: 0;
+        }
+
+        .fullscreen-image-container:hover .fullscreen-trigger {
+            opacity: 1;
+        }
+
+        .fullscreen-trigger:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Ensure images are clickable area */
+        .fullscreen-clickable {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .fullscreen-clickable:hover {
+            transform: scale(1.02);
+        }
+
+        /* Image container and zoom functionality */
+        #image-container.dragging {
+            cursor: grabbing !important;
+        }
+
+        #fullscreen-image {
+            transition: transform 0.2s ease-out;
+            max-width: none !important;
+            max-height: none !important;
+        }
+
+        /* Custom CSS Grid positioning classes - replacement for Tailwind grid positioning */
+        /* Removed media query to fix Vercel production issues */
+        .grid-col-1 { grid-column-start: 1 !important; }
+        .grid-col-4 { grid-column-start: 4 !important; }
+        .grid-col-7 { grid-column-start: 7 !important; }
+        .grid-row-1 { grid-row-start: 1 !important; }
+        .grid-row-2 { grid-row-start: 2 !important; }
+        .grid-row-span-2 { grid-row: span 2 !important; }
+    </style>
+</head>
+<body class="font-open-sans">
+    <div class="min-h-screen bg-gray-50 py-8 px-4">
+        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6">SafeTalk Admin Content</h1>
+            <p class="text-gray-600 mb-8">This page contains sections temporarily removed from the main website. Access: /admin-content.html</p>
+
+            <!-- MOVED CONTENT WILL BE ADDED HERE -->
+
+        </div>
+    </div>
+</body>
+</html>
