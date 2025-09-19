@@ -149,7 +149,107 @@
             <h1 class="text-3xl font-bold text-gray-800 mb-6">SafeTalk Admin Content</h1>
             <p class="text-gray-600 mb-8">This page contains sections temporarily removed from the main website. Access: /admin-content.html</p>
 
-            <!-- MOVED CONTENT WILL BE ADDED HERE -->
+            <!-- MOVED CONTENT -->
+
+            <!-- SUBSCRIPTION FORM SECTION -->
+            <section id="subscribe" class="py-20 bg-gradient-to-b from-sage-green-soft to-white">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <h2 class="font-inter text-3xl md:text-4xl font-bold text-sage-green-dark mb-6">
+                            Start Your SafeTalk Journey Today
+                        </h2>
+                        <p class="text-lg text-neutral-medium max-w-3xl mx-auto">
+                            Get instant protection from toxic messages. SafeTalk processes and re-frames harmful communication into neutral language, giving you peace of mind and supportive response guidance.
+                        </p>
+                        <div class="mt-6 p-4 bg-white rounded-lg shadow-sm border-l-4 border-sage-green inline-block">
+                            <p class="text-2xl font-bold text-sage-green-dark">$50/month</p>
+                            <p class="text-sm text-neutral-medium">Digital parenting coordinator service</p>
+                        </div>
+                    </div>
+
+                    <div class="max-w-2xl mx-auto">
+                        <form id="subscription-form" class="bg-white rounded-2xl shadow-xl p-8">
+                            <div id="form-messages" class="mb-6 hidden"></div>
+
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="clientName" class="block text-sm font-medium text-neutral-dark mb-2">
+                                        Your Name *
+                                    </label>
+                                    <input type="text" id="clientName" name="clientName" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent transition-colors">
+                                </div>
+                                <div>
+                                    <label for="clientPhone" class="block text-sm font-medium text-neutral-dark mb-2">
+                                        Your Phone Number *
+                                    </label>
+                                    <input type="tel" id="clientPhone" name="clientPhone" required
+                                        placeholder="+1 (555) 123-4567"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent transition-colors">
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="coparentName" class="block text-sm font-medium text-neutral-dark mb-2">
+                                        Ex-Partner Name *
+                                    </label>
+                                    <input type="text" id="coparentName" name="coparentName" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent transition-colors">
+                                </div>
+                                <div>
+                                    <label for="coparentPhone" class="block text-sm font-medium text-neutral-dark mb-2">
+                                        Ex-Partner Phone Number *
+                                    </label>
+                                    <input type="tel" id="coparentPhone" name="coparentPhone" required
+                                        placeholder="+1 (555) 123-4567"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent transition-colors">
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="clientEmail" class="block text-sm font-medium text-neutral-dark mb-2">
+                                    Email Address *
+                                </label>
+                                <input type="email" id="clientEmail" name="clientEmail" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent transition-colors">
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="flex items-start">
+                                    <input type="checkbox" id="smsConsent" name="smsConsent" required
+                                        class="mt-1 mr-3 text-sage-green">
+                                    <span class="text-sm text-neutral-medium">
+                                        I provide my express written consent to receive <strong>text (SMS) messages</strong> from SafeTalk at the phone number I provide.
+                                        Message frequency varies based on co-parent communication. Standard message &amp; data rates may apply.
+                                        Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance at any time.
+                                    </span>
+                                </label>
+                                <p class="text-xs text-neutral-medium mt-2 ml-6">You'll receive a confirmation text after sign-up.</p>
+                            </div>
+                            <div class="mb-6">
+                                <label class="flex items-start">
+                                    <input type="checkbox" id="agreeLegal" name="agreeLegal" required
+                                        class="mt-1 mr-3 text-sage-green">
+                                    <span class="text-sm text-neutral-medium">
+                                        I agree to SafeTalk's <a href="/terms-of-service" class="text-sage-green-dark underline cursor-pointer">Terms of Service</a> and
+                                        <a href="/privacy-policy" class="text-sage-green-dark underline cursor-pointer">Privacy Policy</a>.
+                                    </span>
+                                </label>
+                            </div>
+
+                            <button type="submit" id="submit-button"
+                                class="w-full bg-gradient-to-r from-sage-green to-sage-green-dark text-white font-semibold py-4 px-8 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                                Start SafeTalk Service - $50/month
+                            </button>
+
+                            <p class="text-xs text-neutral-medium text-center mt-4">
+                                Secure payment processing. You'll receive SMS activation instructions after payment.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </section>
 
         </div>
     </div>

@@ -142,6 +142,40 @@
         .grid-row-1 { grid-row-start: 1 !important; }
         .grid-row-2 { grid-row-start: 2 !important; }
         .grid-row-span-2 { grid-row: span 2 !important; }
+
+        /* App Screenshot Optimizations */
+        .app-screenshot {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+
+        .app-screenshot:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive App Images */
+        @media (max-width: 768px) {
+            .hero-phone-mockup {
+                transform: rotate(3deg) scale(0.9);
+            }
+
+            .feature-phone-mockup img {
+                width: 160px !important;
+            }
+        }
+
+        /* Loading optimization */
+        .app-image {
+            background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
+            background-size: 400% 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 100% 50%; }
+            100% { background-position: -100% 50%; }
+        }
         
         
     </style>
@@ -266,10 +300,24 @@
                     </div>
                 </div>
                 
-                <!-- Image Content -->
+                <!-- App Screenshot Content -->
                 <div class="flex justify-center lg:justify-end">
                     <div class="relative">
-                        <img src="images/hero-coparents.jpg" alt="Co-parents using SafeTalk Parenting Coordination service peacefully in separate calm environments" class="w-full max-w-lg h-80 lg:h-96 object-cover rounded-lg shadow-xl">
+                        <!-- Phone Mockup Container -->
+                        <div class="hero-phone-mockup relative inline-block transform rotate-6 hover:rotate-3 transition-transform duration-300">
+                            <!-- Phone Frame -->
+                            <div class="relative bg-gray-900 rounded-[2.5rem] p-2 shadow-2xl app-screenshot">
+                                <!-- Screen -->
+                                <div class="bg-white rounded-[2rem] overflow-hidden">
+                                    <img src="images/app.png" alt="SafeTalk app interface showing adaptive parenting plan creation and communication features" class="w-full max-w-xs lg:max-w-sm h-auto object-cover app-image" loading="eager">
+                                </div>
+                                <!-- Home Indicator -->
+                                <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-300 rounded-full"></div>
+                            </div>
+                            <!-- Floating Elements for Visual Interest -->
+                            <div class="absolute -top-4 -right-4 w-8 h-8 bg-sage-green rounded-full opacity-20 animate-pulse"></div>
+                            <div class="absolute -bottom-6 -left-6 w-12 h-12 bg-ocean-blue rounded-full opacity-15 animate-pulse delay-1000"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -323,24 +371,55 @@
             <!-- Features Grid -->
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Direct Communication with AI Processing -->
-                <div class="bg-white p-8 rounded-lg shadow-md">
-                    <div class="text-sage-green text-4xl mb-4">💬</div>
-                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">Direct Communication with AI Processing</h3>
-                    <p class="text-neutral-medium">Chat directly with your co-parent while AI re-frames and processes messages to avoid conflict before it starts. Transform difficult communication into respectful dialogue automatically.</p>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <!-- App Screenshot -->
+                    <div class="mb-6 flex justify-center">
+                        <div class="relative inline-block feature-phone-mockup">
+                            <div class="bg-gray-900 rounded-2xl p-1 shadow-lg app-screenshot">
+                                <div class="bg-white rounded-xl overflow-hidden">
+                                    <img src="images/app snippet.png" alt="SafeTalk chat interface showing AI-processed messages and conflict prevention" class="w-48 h-auto object-cover app-image" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4 text-center">Direct Communication with AI Processing</h3>
+                    <p class="text-neutral-medium text-center">Chat directly with your co-parent while AI re-frames and processes messages to avoid conflict before it starts. Transform difficult communication into respectful dialogue automatically.</p>
                 </div>
 
                 <!-- Conflict Detection & Resolution -->
-                <div class="bg-white p-8 rounded-lg shadow-md">
-                    <div class="text-ocean-blue text-4xl mb-4">⚖️</div>
-                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">Conflict Detection & Resolution</h3>
-                    <p class="text-neutral-medium">AI detects potential conflicts automatically, or you can flag issues voluntarily. Get guided mediation support until both parties agree the conflict is resolved.</p>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <!-- App Screenshot -->
+                    <div class="mb-6 flex justify-center">
+                        <div class="relative inline-block feature-phone-mockup">
+                            <div class="bg-gray-900 rounded-2xl p-1 shadow-lg app-screenshot">
+                                <div class="bg-white rounded-xl overflow-hidden">
+                                    <img src="images/app.png" alt="SafeTalk mediation interface showing conflict resolution tools and agreement tracking" class="w-48 h-auto object-cover app-image" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4 text-center">Conflict Detection & Resolution</h3>
+                    <p class="text-neutral-medium text-center">AI detects potential conflicts automatically, or you can flag issues voluntarily. Get guided mediation support until both parties agree the conflict is resolved.</p>
                 </div>
 
                 <!-- Dynamic Parenting Plan Creation -->
-                <div class="bg-white p-8 rounded-lg shadow-md">
-                    <div class="text-orange-500 text-4xl mb-4">📋</div>
-                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">Dynamic Parenting Plan Creation</h3>
-                    <p class="text-neutral-medium">Build personalized plans based on how you both perceive each other, your situation, and your mutual goals. Create agreements that lead to mutual respect and adapt as your family grows.</p>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <!-- App Screenshot with Overlay -->
+                    <div class="mb-6 flex justify-center">
+                        <div class="relative inline-block feature-phone-mockup">
+                            <div class="bg-gray-900 rounded-2xl p-1 shadow-lg app-screenshot">
+                                <div class="bg-white rounded-xl overflow-hidden relative">
+                                    <img src="images/app.png" alt="SafeTalk parenting plan creation interface showing dynamic planning tools" class="w-48 h-auto object-cover app-image" loading="lazy">
+                                    <!-- Feature Highlight Overlay -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-sage-green-dark/80 to-transparent flex items-end justify-center p-3">
+                                        <span class="text-white text-sm font-semibold">📋 Plan Creator</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4 text-center">Dynamic Parenting Plan Creation</h3>
+                    <p class="text-neutral-medium text-center">Build personalized plans based on how you both perceive each other, your situation, and your mutual goals. Create agreements that lead to mutual respect and adapt as your family grows.</p>
                 </div>
             </div>
         </div>
@@ -613,106 +692,6 @@
         </div>
     </section>
 
-    <!-- SUBSCRIPTION FORM SECTION -->
-    <section id="subscribe" class="py-20 bg-gradient-to-b from-sage-green-soft to-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="font-inter text-3xl md:text-4xl font-bold text-sage-green-dark mb-6">
-                    Start Your SafeTalk Journey Today
-                </h2>
-                <p class="text-lg text-neutral-medium max-w-3xl mx-auto">
-                    Get instant protection from toxic messages. SafeTalk processes and re-frames harmful communication into neutral language, giving you peace of mind and supportive response guidance.
-                </p>
-                <div class="mt-6 p-4 bg-white rounded-lg shadow-sm border-l-4 border-sage-green inline-block">
-                    <p class="text-2xl font-bold text-sage-green-dark">$50/month</p>
-                    <p class="text-sm text-neutral-medium">Digital parenting coordinator service</p>
-                </div>
-            </div>
-
-            <div class="max-w-2xl mx-auto">
-                <form id="subscription-form" class="bg-white rounded-2xl shadow-xl p-8">
-                    <div id="form-messages" class="mb-6 hidden"></div>
-                    
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label for="clientName" class="block text-sm font-medium text-neutral-dark mb-2">
-                                Your Name *
-                            </label>
-                            <input type="text" id="clientName" name="clientName" required
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent transition-colors">
-                        </div>
-                        <div>
-                            <label for="clientPhone" class="block text-sm font-medium text-neutral-dark mb-2">
-                                Your Phone Number *
-                            </label>
-                            <input type="tel" id="clientPhone" name="clientPhone" required
-                                placeholder="+1 (555) 123-4567"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent transition-colors">
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label for="coparentName" class="block text-sm font-medium text-neutral-dark mb-2">
-                                Ex-Partner Name *
-                            </label>
-                            <input type="text" id="coparentName" name="coparentName" required
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent transition-colors">
-                        </div>
-                        <div>
-                            <label for="coparentPhone" class="block text-sm font-medium text-neutral-dark mb-2">
-                                Ex-Partner Phone Number *
-                            </label>
-                            <input type="tel" id="coparentPhone" name="coparentPhone" required
-                                placeholder="+1 (555) 123-4567"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent transition-colors">
-                        </div>
-                    </div>
-
-                    <div class="mb-6">
-                        <label for="clientEmail" class="block text-sm font-medium text-neutral-dark mb-2">
-                            Email Address *
-                        </label>
-                        <input type="email" id="clientEmail" name="clientEmail" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent transition-colors">
-                    </div>
-
-
-                    <div class="mb-4">
-                        <label class="flex items-start">
-                            <input type="checkbox" id="smsConsent" name="smsConsent" required
-                                class="mt-1 mr-3 text-sage-green">
-                            <span class="text-sm text-neutral-medium">
-                                I provide my express written consent to receive <strong>text (SMS) messages</strong> from SafeTalk at the phone number I provide.
-                                Message frequency varies based on co-parent communication. Standard message &amp; data rates may apply.
-                                Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance at any time.
-                            </span>
-                        </label>
-                        <p class="text-xs text-neutral-medium mt-2 ml-6">You'll receive a confirmation text after sign-up.</p>
-                    </div>
-                    <div class="mb-6">
-                        <label class="flex items-start">
-                            <input type="checkbox" id="agreeLegal" name="agreeLegal" required
-                                class="mt-1 mr-3 text-sage-green">
-                            <span class="text-sm text-neutral-medium">
-                                I agree to SafeTalk's <a href="/terms-of-service" class="text-sage-green-dark underline cursor-pointer">Terms of Service</a> and
-                                <a href="/privacy-policy" class="text-sage-green-dark underline cursor-pointer">Privacy Policy</a>.
-                            </span>
-                        </label>
-                    </div>
-
-                    <button type="submit" id="submit-button" 
-                        class="w-full bg-gradient-to-r from-sage-green to-sage-green-dark text-white font-semibold py-4 px-8 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
-                        Start SafeTalk Service - $50/month
-                    </button>
-
-                    <p class="text-xs text-neutral-medium text-center mt-4">
-                        Secure payment processing. You'll receive SMS activation instructions after payment.
-                    </p>
-                </form>
-            </div>
-        </div>
-    </section>
 
     <!-- CONTACT FORM SECTION -->
     <section id="contact" class="py-20">
