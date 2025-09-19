@@ -177,7 +177,7 @@
                         </p>
                     </div>
 
-                    <!-- Combined SMS & Data Processing Consent -->
+                    <!-- Checkbox 1 - SMS Consent -->
                     <div class="flex items-start space-x-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
                         <div class="flex-shrink-0 pt-1">
                             <input
@@ -188,10 +188,22 @@
                             />
                         </div>
                         <label for="sms-consent" class="flex-1 text-sm leading-relaxed text-gray-800 cursor-pointer" style="font-size: 14px;">
-                            <div class="space-y-2">
-                                <p>I provide my express written consent to receive text (SMS) messages from SafeTalk at the phone number I provide. Message frequency varies based on co-parent communication through SafeTalk (one message per user action). Standard message & data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance at any time.</p>
-                                <p>I consent to SafeTalk processing and storing my communications for the purpose of generating AI-assisted re-framings and suggestions and delivering messages between co-parents. You'll receive a confirmation text after SafeTalk sign-up.</p>
-                            </div>
+                            I provide my express written consent to receive text (SMS) messages from SafeTalk at the phone number I provide. Message frequency varies based on co-parent communication through SafeTalk (one message per user action). Standard message & data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for assistance at any time.
+                        </label>
+                    </div>
+
+                    <!-- Checkbox 2 - Data Processing Consent -->
+                    <div class="flex items-start space-x-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                        <div class="flex-shrink-0 pt-1">
+                            <input
+                                type="checkbox"
+                                id="processing-consent"
+                                required
+                                class="h-4 w-4 text-sage-green-dark focus:ring-sage-green-dark border-gray-300 rounded focus:ring-2"
+                            />
+                        </div>
+                        <label for="processing-consent" class="flex-1 text-sm leading-relaxed text-gray-800 cursor-pointer" style="font-size: 14px;">
+                            I consent to SafeTalk processing and storing my communications for the purpose of generating AI-assisted re-framings and suggestions and delivering messages between co-parents. You'll receive a confirmation text after SafeTalk sign-up.
                         </label>
                     </div>
 
