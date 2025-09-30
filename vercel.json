@@ -17,6 +17,10 @@
       "dest": "/terms-of-service.html"
     },
     {
+      "src": "/support",
+      "dest": "/support.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }

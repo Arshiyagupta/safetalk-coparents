@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SafeTalk Support - Get help with your SafeTalk co-parenting communication app. Contact us for technical support, account questions, and feature requests.">
+    <title>SafeTalk Support - Help & Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/images/safetalk-logo.png">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sage-green': '#7dd3fc',
+                        'sage-green-light': '#a7f3d0',
+                        'sage-green-dark': '#059669',
+                        'sage-green-soft': '#f0fdf4',
+                        'ocean-blue': '#60a5fa',
+                        'ocean-blue-light': '#93c5fd',
+                        'ocean-blue-dark': '#2563eb',
+                        'ocean-blue-soft': '#eff6ff',
+                        'neutral-soft': '#fafbfc',
+                        'neutral-medium': '#64748b',
+                        'neutral-dark': '#334155',
+                        'accent-gold': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'open-sans': ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-open-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <img src="/images/safetalk-logo.png" alt="SafeTalk Logo" class="h-10 w-10">
+                    <h1 class="text-2xl font-bold text-gray-800">SafeTalk Support</h1>
+                </div>
+                <a href="/index.html" class="text-blue-600 hover:text-blue-700 font-medium">
+                    ← Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Contact Information Section -->
+        <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">📧 Get Help & Support</h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-3">Contact Us Directly</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-blue-100 p-2 rounded-full">
+                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-800">Email Support</p>
+                                <a href="mailto:arshiya@safetalk-coparent.com" class="text-blue-600 hover:text-blue-700 text-lg">
+                                    arshiya@safetalk-coparent.com
+                                </a>
+                            </div>
+                        </div>
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-3">
+                            <p class="text-green-800 text-sm">
+                                <strong>Response Time:</strong> We respond to all support emails within 24 hours
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-3">Send Us a Message</h3>
+                    <form action="https://formspree.io/f/mpwydpaj" method="POST" class="space-y-4">
+                        <input type="hidden" name="_subject" value="SafeTalk App Support Request">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your Email *</label>
+                            <input type="email" id="email" name="email" required
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject *</label>
+                            <select id="subject" name="subject" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Select a topic</option>
+                                <option value="Technical Issue">Technical Issue</option>
+                                <option value="Account Question">Account Question</option>
+                                <option value="Feature Request">Feature Request</option>
+                                <option value="Bug Report">Bug Report</option>
+                                <option value="General Question">General Question</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message *</label>
+                            <textarea id="message" name="message" required rows="4"
+                                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                      placeholder="Please describe your issue or question..."></textarea>
+                        </div>
+                        <button type="submit"
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Categories -->
+        <section class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6">🛠️ What Can We Help You With?</h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+                    <div class="text-blue-600 mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Technical Issues</h3>
+                    <p class="text-sm text-gray-600">App crashes, login problems, message delivery issues</p>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+                    <div class="text-green-600 mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Account Help</h3>
+                    <p class="text-sm text-gray-600">Password reset, account settings, subscription questions</p>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+                    <div class="text-purple-600 mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Feature Requests</h3>
+                    <p class="text-sm text-gray-600">Suggest new features or improvements to the app</p>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
+                    <div class="text-red-600 mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.864-.833-2.634 0L4.268 18.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Bug Reports</h3>
+                    <p class="text-sm text-gray-600">Report unexpected behavior or app malfunctions</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6">❓ Frequently Asked Questions</h2>
+
+            <div class="space-y-4">
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="font-medium text-gray-800 mb-2">How do I reset my password?</h3>
+                    <p class="text-gray-600 text-sm">Use the "Forgot Password" link on the login screen, or contact us at arshiya@safetalk-coparent.com for assistance.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="font-medium text-gray-800 mb-2">How do I delete my account?</h3>
+                    <p class="text-gray-600 text-sm">Visit our <a href="/account-deletion.html" class="text-blue-600 hover:underline">account deletion page</a> to submit a deletion request, or email us directly.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="font-medium text-gray-800 mb-2">Is my data secure and private?</h3>
+                    <p class="text-gray-600 text-sm">Yes, we use end-to-end encryption and follow strict privacy guidelines. View our <a href="/privacy-policy.html" class="text-blue-600 hover:underline">privacy policy</a> for details.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="font-medium text-gray-800 mb-2">How does the AI message filtering work?</h3>
+                    <p class="text-gray-600 text-sm">Our AI analyzes messages for tone and suggests calmer alternatives. All AI suggestions require your approval before sending.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="font-medium text-gray-800 mb-2">What is mediation mode?</h3>
+                    <p class="text-gray-600 text-sm">When conflicts are detected, the chat pauses and both parents must work together to resolve the issue before continuing.</p>
+                </div>
+
+                <div class="border-b border-gray-200 pb-4">
+                    <h3 class="font-medium text-gray-800 mb-2">Can I cancel my subscription?</h3>
+                    <p class="text-gray-600 text-sm">Yes, you can cancel anytime through your app store account (Apple App Store or Google Play Store) or contact us for assistance.</p>
+                </div>
+
+                <div class="pb-4">
+                    <h3 class="font-medium text-gray-800 mb-2">The app isn't working properly. What should I do?</h3>
+                    <p class="text-gray-600 text-sm">First, try restarting the app or your device. If issues persist, contact us with details about the problem and your device type.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Resources -->
+        <section class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h2 class="text-lg font-semibold text-blue-800 mb-4">📚 Additional Resources</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-medium text-blue-800 mb-2">Documentation</h3>
+                    <ul class="space-y-1 text-blue-700 text-sm">
+                        <li><a href="/privacy-policy.html" class="hover:underline">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service.html" class="hover:underline">Terms of Service</a></li>
+                        <li><a href="/account-deletion.html" class="hover:underline">Account Deletion</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-medium text-blue-800 mb-2">Support Promise</h3>
+                    <p class="text-blue-700 text-sm">
+                        We're committed to helping you succeed with co-parenting communication. Every message gets a personal response within 24 hours.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-3">
+                <img src="/images/safetalk-logo.png" alt="SafeTalk Logo" class="h-8 w-8">
+                <span class="text-lg font-medium">SafeTalk Support</span>
+            </div>
+            <p class="text-gray-300 text-sm">
+                Need help? Email us at
+                <a href="mailto:arshiya@safetalk-coparent.com" class="text-blue-400 hover:text-blue-300">
+                    arshiya@safetalk-coparent.com
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            if (!email || !subject || !message) {
+                e.preventDefault();
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Show success message after form submission
+            setTimeout(function() {
+                alert('Thank you for contacting SafeTalk support! We will respond within 24 hours.');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
