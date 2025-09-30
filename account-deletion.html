@@ -71,7 +71,7 @@
                         We're sorry to see you go. If you'd like to delete your SafeTalk account and all associated data, please submit a request below. Our team will process your deletion request within 30 days in accordance with data protection regulations.
                     </p>
 
-                    <form id="deletionForm" class="space-y-6">
+                    <form id="deletionForm" action="https://formspree.io/f/mpwydpaj" method="POST" class="space-y-6">
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
                                 Email Address (associated with your SafeTalk account) *
@@ -175,28 +175,27 @@
 
     <script>
         document.getElementById('deletionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
             const formData = new FormData(this);
             const email = formData.get('email');
 
             // Simple email validation
             if (!email || !email.includes('@')) {
+                e.preventDefault();
                 alert('Please enter a valid email address.');
                 return;
             }
 
             if (!formData.get('confirmation')) {
+                e.preventDefault();
                 alert('Please confirm that you understand this action is permanent.');
                 return;
             }
 
-            // In a real implementation, this would send to your backend
-            // For now, we'll show a confirmation message
-            alert('Your account deletion request has been submitted. You will receive a confirmation email within 24 hours. If you don\'t receive an email, please contact support@safetalk.com.');
-
-            // Optionally redirect to home page
-            window.location.href = '/index.html';
+            // Form will submit to Formspree
+            // Show confirmation message after successful submission
+            setTimeout(function() {
+                alert('Your account deletion request has been submitted. You will receive a confirmation email within 24 hours. If you don\'t receive an email, please contact support@safetalk.com.');
+            }, 1000);
         });
     </script>
 </body>
