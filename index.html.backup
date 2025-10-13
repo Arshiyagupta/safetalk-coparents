@@ -1,0 +1,2309 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SafeTalk - From Hurt to Healing. AI-mediated co-parenting that helps both parents release baggage, acknowledge each other's needs, and find win-win solutions. Because hurt people hurt people—but healing is possible.">
+    <title>SafeTalk - Co-Parenting Mediation That Heals & Restores Fairness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/safetalk-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/safetalk-logo.png">
+    <link rel="shortcut icon" href="images/safetalk-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/safetalk-logo.png">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sage-green': '#7dd3fc',
+                        'sage-green-light': '#a7f3d0', 
+                        'sage-green-dark': '#059669',
+                        'sage-green-soft': '#f0fdf4',
+                        'ocean-blue': '#60a5fa',
+                        'ocean-blue-light': '#93c5fd',
+                        'ocean-blue-dark': '#2563eb',
+                        'ocean-blue-soft': '#eff6ff',
+                        'neutral-soft': '#fafbfc',
+                        'neutral-medium': '#64748b',
+                        'neutral-dark': '#334155',
+                        'accent-gold': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'open-sans': ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Slideshow transitions */
+        .app-step-content, .app-step-text {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .app-step-content.active, .app-step-text.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        /* Getting started slideshow */
+        .slide, .step-text {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .slide.active, .step-text.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        /* Fullscreen modal */
+        #fullscreen-modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        #fullscreen-modal.show {
+            opacity: 1;
+        }
+        
+        #fullscreen-modal.hide {
+            opacity: 0;
+        }
+        
+        /* Fullscreen image container */
+        .fullscreen-image-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Fullscreen trigger button */
+        .fullscreen-trigger {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+            opacity: 0;
+        }
+        
+        .fullscreen-image-container:hover .fullscreen-trigger {
+            opacity: 1;
+        }
+        
+        .fullscreen-trigger:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+        
+        /* Ensure images are clickable area */
+        .fullscreen-clickable {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .fullscreen-clickable:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Image container and zoom functionality */
+        #image-container.dragging {
+            cursor: grabbing !important;
+        }
+        
+        #fullscreen-image {
+            transition: transform 0.2s ease-out;
+            max-width: none !important;
+            max-height: none !important;
+        }
+        
+        /* Custom CSS Grid positioning classes - replacement for Tailwind grid positioning */
+        /* Removed media query to fix Vercel production issues */
+        .grid-col-1 { grid-column-start: 1 !important; }
+        .grid-col-4 { grid-column-start: 4 !important; }
+        .grid-col-7 { grid-column-start: 7 !important; }
+        .grid-row-1 { grid-row-start: 1 !important; }
+        .grid-row-2 { grid-row-start: 2 !important; }
+        .grid-row-span-2 { grid-row: span 2 !important; }
+
+        /* App Screenshot Optimizations */
+        .app-screenshot {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+
+        .app-screenshot:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive App Images */
+        @media (max-width: 768px) {
+            .hero-phone-mockup {
+                transform: rotate(3deg) scale(0.9);
+            }
+
+            .feature-phone-mockup img {
+                width: 160px !important;
+            }
+        }
+
+        /* Loading optimization */
+        .app-image {
+            background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
+            background-size: 400% 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 100% 50%; }
+            100% { background-position: -100% 50%; }
+        }
+        
+        
+    </style>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    // Enhanced error handling and loading protection
+    function initializePixel() {
+        try {
+            fbq('init', '529532096376105');
+            fbq('track', 'PageView');
+            console.log('✅ Meta Pixel: Successfully initialized and PageView tracked');
+            console.log('✅ Meta Pixel: fbq function available:', typeof fbq !== 'undefined');
+        } catch (error) {
+            console.error('❌ Meta Pixel: Error during initialization:', error);
+            // Fallback: Try to load the noscript image
+            var img = new Image(1, 1);
+            img.src = 'https://www.facebook.com/tr?id=529532096376105&ev=PageView&noscript=1';
+            console.log('📧 Meta Pixel: Fallback image pixel sent');
+        }
+    }
+    
+    // Initialize immediately
+    initializePixel();
+    
+    // Retry mechanism - try again after 1 second if script might not be loaded
+    setTimeout(function() {
+        if (typeof fbq === 'undefined' || !window.fbq.loaded) {
+            console.log('🔄 Meta Pixel: Retrying initialization...');
+            initializePixel();
+        } else {
+            console.log('✅ Meta Pixel: Script fully loaded, no retry needed');
+        }
+    }, 1000);
+    
+    // Additional debugging: Monitor network requests to Facebook
+    if (window.performance && window.performance.getEntriesByType) {
+        setTimeout(function() {
+            var entries = performance.getEntriesByType('resource');
+            var fbRequests = entries.filter(function(entry) {
+                return entry.name.includes('facebook.com') || entry.name.includes('connect.facebook.net');
+            });
+            
+            if (fbRequests.length > 0) {
+                console.log('📡 Meta Pixel: Facebook script requests detected:', fbRequests.length);
+                fbRequests.forEach(function(req) {
+                    console.log('📡 Meta Pixel: Request status for ' + req.name + ':', req.responseEnd ? 'SUCCESS' : 'FAILED');
+                });
+            } else {
+                console.log('⚠️ Meta Pixel: No Facebook script requests detected - likely blocked by ad blocker');
+            }
+        }, 2000);
+    }
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=529532096376105&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+</head>
+<body class="font-open-sans">
+    <!-- NAVIGATION BAR -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <img src="images/safetalk-logo.png" alt="SafeTalk Logo" class="h-8 w-auto">
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#how-it-works" class="text-neutral-medium hover:text-sage-green px-3 py-2 text-sm font-medium transition-colors">How It Works</a>
+                        <a href="#features" class="text-neutral-medium hover:text-sage-green px-3 py-2 text-sm font-medium transition-colors">Features</a>
+                        <a href="#benefits" class="text-neutral-medium hover:text-sage-green px-3 py-2 text-sm font-medium transition-colors">Benefits</a>
+                        <a href="#faq" class="text-neutral-medium hover:text-sage-green px-3 py-2 text-sm font-medium transition-colors">FAQ</a>
+                        <a href="https://calendly.com/safetalkapp/safetalk-app-discussion?utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_adset={{adset.name}}&utm_content={{ad.name}}" target="_blank" class="bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-emerald-600 transition-colors">Schedule SafeTalk Call</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button type="button" id="mobile-menu-button" class="text-neutral-medium hover:text-sage-green focus:outline-none focus:text-sage-green">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-neutral-soft">
+                <a href="#how-it-works" class="text-neutral-medium hover:text-sage-green block px-3 py-2 text-base font-medium">How It Works</a>
+                <a href="#features" class="text-neutral-medium hover:text-sage-green block px-3 py-2 text-base font-medium">Features</a>
+                <a href="#benefits" class="text-neutral-medium hover:text-sage-green block px-3 py-2 text-base font-medium">Benefits</a>
+                <a href="#faq" class="text-neutral-medium hover:text-sage-green block px-3 py-2 text-base font-medium">FAQ</a>
+                <a href="https://calendly.com/safetalkapp/safetalk-app-discussion?utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_adset={{adset.name}}&utm_content={{ad.name}}" target="_blank" class="bg-emerald-500 text-white block px-3 py-2 rounded-lg text-base font-medium mx-3 my-2 text-center hover:bg-emerald-600 transition-colors">Schedule SafeTalk Call</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="bg-gradient-to-br from-sage-green-dark to-sage-green text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left">
+                    <h1 class="font-inter text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                        SafeTalk — Restoring Fairness Between Co-Parents
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-6 opacity-90 leading-relaxed font-semibold">
+                        When Co-Parenting Hurts More Than It Should
+                    </p>
+                    <p class="text-lg md:text-xl mb-4 opacity-90 leading-relaxed">
+                        Divorce may end a marriage, but not the emotional conflict. Parents are expected to cooperate while carrying years of pain, mistrust, and resentment. These emotions leak into every conversation.
+                    </p>
+                    <p class="text-lg md:text-xl mb-8 opacity-90 leading-relaxed">
+                        SafeTalk was designed for when the legal case is over, but the emotional weight remains.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="https://calendly.com/safetalkapp/safetalk-app-discussion?utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_adset={{adset.name}}&utm_content={{ad.name}}" target="_blank" class="border-2 border-slate-700 bg-slate-700 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-slate-800 hover:border-slate-800 transition-colors shadow-lg">
+                            Book SafeTalk Call
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image Content -->
+                <div class="flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <img src="images/hero-coparents.jpg" alt="Two co-parents working together peacefully for their child's wellbeing" class="w-full max-w-md lg:max-w-lg h-auto object-cover rounded-lg shadow-2xl" loading="eager">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUE PROPOSITION SECTION -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <h2 class="font-inter text-2xl md:text-3xl font-bold text-sage-green-dark mb-6 text-center">
+                    Our Philosophy: No One Is the Enemy
+                </h2>
+                <p class="text-lg text-neutral-dark leading-relaxed mb-6 max-w-4xl mx-auto text-center">
+                    SafeTalk is grounded in a simple belief — <strong>hurt people hurt people.</strong> When communication breaks down, it's usually pain, not bad intent, that drives the reaction. Instead of blame, SafeTalk encourages balance—both parents share privately, AI translates emotions into needs, and both find fair solutions.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <h4 class="font-inter text-xl font-semibold text-sage-green-dark mb-3">From Hurt to Healing</h4>
+                    <p class="text-neutral-medium">Process the pain driving conflict, so you can communicate without old wounds taking over.</p>
+                </div>
+                <div class="text-center">
+                    <h4 class="font-inter text-xl font-semibold text-sage-green-dark mb-3">See Each Other's Needs</h4>
+                    <p class="text-neutral-medium">AI mediation reveals what both parents actually need—building empathy and understanding.</p>
+                </div>
+                <div class="text-center">
+                    <h4 class="font-inter text-xl font-semibold text-sage-green-dark mb-3">Win-Win Solutions</h4>
+                    <p class="text-neutral-medium">Find agreements where both parents feel heard, respected, and invested in co-parenting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- HOW IT WORKS SECTION -->
+    <section id="how-it-works" class="py-20 bg-neutral-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-inter text-3xl md:text-4xl font-bold text-sage-green-dark mb-6">
+                    How It Works
+                </h2>
+                <p class="text-xl text-neutral-medium max-w-4xl mx-auto">
+                    SafeTalk automatically mediates between both parents, uncovering real needs beneath the conflict and guiding you to solutions where everyone wins.
+                </p>
+            </div>
+
+            <!-- Value-Focused Grid -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Automatic Mediation -->
+                <div class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-emerald-600">
+                    <h3 class="font-inter text-2xl font-semibold text-sage-green-dark mb-4">Automatic AI Mediation</h3>
+                    <p class="text-neutral-medium mb-3">Our AI mediates every conversation in real-time, identifying underlying needs, reframing hostile language, and preventing escalation before it starts.</p>
+                    <p class="text-neutral-medium font-medium">The result: You communicate naturally while SafeTalk handles the emotional landmines.</p>
+                </div>
+
+                <!-- Uncover True Needs -->
+                <div class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-blue-600">
+                    <h3 class="font-inter text-2xl font-semibold text-sage-green-dark mb-4">Uncover What You Both Really Need</h3>
+                    <p class="text-neutral-medium mb-3">Behind every demand is an unmet need. SafeTalk helps both parents articulate what they truly need—not what they're fighting about.</p>
+                    <p class="text-neutral-medium font-medium">The result: Real understanding replaces endless arguments.</p>
+                </div>
+
+                <!-- Mutual Acknowledgment -->
+                <div class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-purple-600">
+                    <h3 class="font-inter text-2xl font-semibold text-sage-green-dark mb-4">Help Each Other See What Matters</h3>
+                    <p class="text-neutral-medium mb-3">SafeTalk guides you to acknowledge each other's needs without judgment. When both parents feel heard, cooperation becomes possible.</p>
+                    <p class="text-neutral-medium font-medium">The result: Empathy replaces defensiveness.</p>
+                </div>
+
+                <!-- Win-Win Agreements -->
+                <div class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-amber-600">
+                    <h3 class="font-inter text-2xl font-semibold text-sage-green-dark mb-4">Find the Win-Win Middle Ground</h3>
+                    <p class="text-neutral-medium mb-3">With needs acknowledged and grudges released, SafeTalk helps you create agreements that honor both parents and prioritize your child's wellbeing.</p>
+                    <p class="text-neutral-medium font-medium">The result: Sustainable co-parenting that actually works.</p>
+                </div>
+            </div>
+
+            <!-- Court Value Proposition -->
+            <div class="mt-16">
+                <h3 class="font-inter text-2xl md:text-3xl font-bold text-sage-green-dark mb-8 text-center">
+                    For Courts & Family Services
+                </h3>
+                <p class="text-lg text-neutral-dark leading-relaxed mb-12 max-w-4xl mx-auto text-center">
+                    Family courts continue to see cases where emotional conflict drives repeated filings. SafeTalk gives courts a structured way to reduce that cycle while empowering parents to manage conflict independently.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-600">
+                        <h4 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">AI-Mediated Communication</h4>
+                        <p class="text-neutral-medium">Each parent engages privately with an AI guide that gathers perspectives and generates balanced solutions.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-600">
+                        <h4 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">Verifiable Records</h4>
+                        <p class="text-neutral-medium">Timestamped, tamper-proof communications compliant with evidentiary standards.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-600">
+                        <h4 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">Safety Oversight</h4>
+                        <p class="text-neutral-medium">Built-in crisis detection identifies risk and connects users to immediate resources.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-600">
+                        <h4 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">Court Dashboard</h4>
+                        <p class="text-neutral-medium">Track engagement, communication quality, and safety metrics without manual review.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPREHENSIVE FEATURES SECTION -->
+    <section id="benefits" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-inter text-3xl md:text-4xl font-bold text-sage-green-dark mb-6">
+                    Benefits for Families
+                </h2>
+                <p class="text-xl text-neutral-medium max-w-4xl mx-auto">
+                    Calmer conversations, flexible agreements, and a supported child—with therapist-level parenting plans at an accessible price.
+                </p>
+            </div>
+
+            <!-- Benefits Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Adaptive Plans -->
+                <div class="bg-neutral-soft p-8 rounded-lg border-l-4 border-sage-green">
+                    <div class="text-4xl mb-4">📅</div>
+                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">Adaptive Plans That Change With Life</h3>
+                    <p class="text-neutral-medium">Your parenting plan evolves as your family grows, schedules shift, and children's needs change. No more rigid court orders that break when life happens.</p>
+                </div>
+
+                <!-- Both Feel Respected -->
+                <div class="bg-neutral-soft p-8 rounded-lg border-l-4 border-ocean-blue">
+                    <div class="text-4xl mb-4">🤝</div>
+                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">Both Parents Feel Respected & Heard</h3>
+                    <p class="text-neutral-medium">Instead of battling it out in court where someone wins and someone loses, you both contribute to solutions that work for your unique family situation.</p>
+                </div>
+
+                <!-- Break Conflict Cycles -->
+                <div class="bg-neutral-soft p-8 rounded-lg border-l-4 border-accent-gold">
+                    <div class="text-4xl mb-4">🌿</div>
+                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">Break the Cycle of Conflict</h3>
+                    <p class="text-neutral-medium">Move toward calmer conversations and collaborative problem-solving. Transform the dynamic from adversaries to co-parents working toward the same goal.</p>
+                </div>
+
+                <!-- Child Stability -->
+                <div class="bg-neutral-soft p-8 rounded-lg border-l-4 border-sage-green">
+                    <div class="text-4xl mb-4">🏡</div>
+                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">Give Your Child Steady Routines & Stability</h3>
+                    <p class="text-neutral-medium">Children thrive when they can count on consistent, calm interactions between their parents — even through major life transitions and changes.</p>
+                </div>
+
+                <!-- Focus on What Matters -->
+                <div class="bg-neutral-soft p-8 rounded-lg border-l-4 border-ocean-blue">
+                    <div class="text-4xl mb-4">💛</div>
+                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">Focus on What Truly Matters</h3>
+                    <p class="text-neutral-medium">Stop spending energy on endless battles and court dates. Instead, invest your time and emotional resources in raising your child and building a peaceful future.</p>
+                </div>
+
+                <!-- Therapist-Level Quality -->
+                <div class="bg-neutral-soft p-8 rounded-lg border-l-4 border-accent-gold">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">Therapist-Mediator Level Support</h3>
+                    <p class="text-neutral-medium">Get the same quality of guidance you'd receive from expensive specialists, but at a price point that works for real families going through real challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON TABLE SECTION -->
+    <section class="py-20 bg-gradient-to-br from-emerald-50 to-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-inter text-3xl md:text-4xl font-bold text-sage-green-dark mb-6">
+                    SafeTalk vs. Typical Co-Parenting Apps
+                </h2>
+                <p class="text-lg text-neutral-medium max-w-3xl mx-auto">
+                    SafeTalk includes everything co-parents already use — but goes further by restoring fairness and reducing conflict.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-lg overflow-hidden shadow-xl border border-gray-200">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-emerald-600 text-white border-b border-emerald-700">
+                            <th class="text-left p-6 font-inter text-lg font-semibold">Feature</th>
+                            <th class="text-center p-6 font-inter text-lg font-semibold">Typical Tools</th>
+                            <th class="text-center p-6 font-inter text-lg font-semibold">SafeTalk</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-emerald-50 transition-colors">
+                            <td class="p-6 text-neutral-dark">Basic chat and shared calendar</td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-emerald-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-emerald-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-emerald-50 transition-colors">
+                            <td class="p-6 text-neutral-dark">Expense tracking and file sharing</td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-emerald-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-emerald-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-emerald-50 transition-colors">
+                            <td class="p-6 text-neutral-dark">Tamper-proof message records for court</td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-emerald-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-emerald-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-emerald-50 transition-colors">
+                            <td class="p-6 text-neutral-dark">Emotion-aware AI mediation (no direct conflict)</td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-red-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-emerald-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-emerald-50 transition-colors">
+                            <td class="p-6 text-neutral-dark">Calms tone before messages reach the other parent</td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-red-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-emerald-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-emerald-50 transition-colors">
+                            <td class="p-6 text-neutral-dark">Finds and balances both parents' needs</td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-red-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-emerald-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-emerald-50 transition-colors">
+                            <td class="p-6 text-neutral-dark">Real-time cooperation metrics for courts</td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-red-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-emerald-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-emerald-50 transition-colors">
+                            <td class="p-6 text-neutral-dark">Focus on emotional healing and fairness</td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-red-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                            <td class="text-center p-6">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-emerald-500 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH SECTION -->
+    <section id="research" class="py-20 bg-neutral-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-inter text-3xl md:text-4xl font-bold text-sage-green-dark mb-6">
+                    Building Better Outcomes Through Research
+                </h2>
+                <p class="text-xl text-neutral-medium max-w-3xl mx-auto">
+                    We're actively collecting data and measuring outcomes to demonstrate how SafeTalk's adaptive parenting plans help families. Early indicators show promising results in key areas that matter most to parents and children.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Research Image -->
+                <div class="flex justify-center">
+                    <img src="images/coparents1.png" alt="Diverse co-parents building a supportive community together" class="w-full max-w-md rounded-lg shadow-lg">
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h4 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">Areas We're Measuring</h4>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-neutral-medium">Court Return Frequency</span>
+                            <span class="flex items-center text-sage-green font-medium">
+                                <span class="mr-2">●●●○○</span>Data Collection in Progress
+                            </span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-neutral-medium">Child Stress & Well-being</span>
+                            <span class="flex items-center text-sage-green font-medium">
+                                <span class="mr-2">●●●○○</span>Monitoring & Measuring
+                            </span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-neutral-medium">Resolution Time & Efficiency</span>
+                            <span class="flex items-center text-sage-green font-medium">
+                                <span class="mr-2">●●●○○</span>Tracking Response Times
+                            </span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-neutral-medium">Cost Effectiveness</span>
+                            <span class="flex items-center text-sage-green font-medium">
+                                <span class="mr-2">●●●○○</span>Analyzing Cost Benefits
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APP SHOWCASE SECTION -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <!-- Geometric Background Elements -->
+        <div class="absolute top-10 left-10 w-32 h-32 bg-sage-green opacity-10 rounded-lg transform rotate-12"></div>
+        <div class="absolute bottom-20 right-10 w-24 h-24 bg-ocean-blue opacity-15 rounded-full"></div>
+        <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-sage-green-dark opacity-10 transform rotate-45"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-inter text-3xl md:text-4xl font-bold text-sage-green-dark mb-6">
+                    What Healthy Co-Parenting Actually Looks Like
+                </h2>
+                <p class="text-xl text-neutral-medium max-w-3xl mx-auto leading-relaxed">
+                    When co-parents feel heard and understood, even the most challenging conversations can shift from conflict to collaboration. Here's how SafeTalk helps you create the emotional safety your family needs to thrive.
+                </p>
+            </div>
+
+            <!-- App Images Grid -->
+            <div class="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto items-start">
+                <!-- App Main Image -->
+                <div class="flex justify-center">
+                    <img src="images/app.png" alt="SafeTalk interface showing thoughtful communication patterns" class="w-full max-w-md h-auto">
+                </div>
+
+                <!-- App Snippet Image -->
+                <div class="flex justify-center">
+                    <img src="images/app snippet.png" alt="SafeTalk conversation showing conflict prevention in real-time" class="w-full max-w-md h-auto">
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center mt-16">
+                <p class="text-lg text-neutral-medium mb-6 max-w-2xl mx-auto">
+                    Your child doesn't need perfect parents — they need parents who can work together when it matters most.
+                </p>
+                <a href="https://calendly.com/safetalkapp/safetalk-app-discussion?utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_adset={{adset.name}}&utm_content={{ad.name}}" target="_blank" class="bg-sage-green text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-sage-green-dark transition-colors inline-block">
+                    Book Your SafeTalk Call
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFESSIONAL BENEFITS SECTION -->
+    <section id="benefits" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-inter text-3xl md:text-4xl font-bold text-sage-green-dark mb-6">
+                    How SafeTalk Transforms Co-Parenting Relationships
+                </h2>
+                <p class="text-xl text-neutral-medium max-w-3xl mx-auto">
+                    You're doing one of the hardest jobs in the world — co-parenting after separation. SafeTalk's adaptive co-parenting plans grow and change with your family's needs, combining expert guidance with practical tools that give you the support you deserve exactly when and where you need it.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-sage-green">
+                    <h3 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">Child Advocacy & Protection</h3>
+                    <ul class="text-neutral-medium space-y-2">
+                        <li>• Ensures decisions prioritize children's best interests</li>
+                        <li>• Shields children from exposure to parental conflict</li>
+                        <li>• Monitors child well-being throughout transitions</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-accent-gold">
+                    <h3 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">Expert Mediation Services</h3>
+                    <ul class="text-neutral-medium space-y-2">
+                        <li>• Instant neutral mediation through in-app messaging</li>
+                        <li>• Real-time de-escalation support through app communication</li>
+                        <li>• App-guided structured communication tools</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-ocean-blue">
+                    <h3 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">Documentation & Family Support</h3>
+                    <ul class="text-neutral-medium space-y-2">
+                        <li>• Organized record keeping for your family</li>
+                        <li>• Professional guidance for decision-making</li>
+                        <li>• Clear documentation of agreements and solutions</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-red-500">
+                    <h3 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">Cost-Effective Professional Care</h3>
+                    <ul class="text-neutral-medium space-y-2">
+                        <li>• Affordable support that fits your family's budget</li>
+                        <li>• Simple pricing, no complicated scheduling</li>
+                        <li>• Professional support when you need it most</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCENARIOS SECTION -->
+    <section id="scenarios" class="py-20 bg-neutral-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Scenarios Image -->
+            <div class="text-center mb-12">
+                <img src="images/coparent2.png" alt="Real family scenarios and co-parenting situations" class="mx-auto max-w-2xl w-full rounded-lg shadow-lg">
+            </div>
+            
+            <div class="text-center mb-16">
+                <h2 class="font-inter text-3xl md:text-4xl font-bold text-sage-green-dark mb-6">
+                    Real-World Scenarios
+                </h2>
+                <p class="text-xl text-neutral-medium max-w-3xl mx-auto">
+                    See how real families like yours use SafeTalk to handle everyday co-parenting challenges with less stress and better outcomes.
+                </p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">Scheduling Conflicts Made Simple</h3>
+                    <p class="text-neutral-medium mb-4">
+                        <strong>Challenge:</strong> You and your co-parent frequently argue over schedule changes and decisions about your children.
+                    </p>
+                    <p class="text-neutral-medium mb-4">
+                        <strong>Solution:</strong> SafeTalk provides easy templates for schedule requests, expense sharing, and decision-making that reduce arguments.
+                    </p>
+                    <p class="text-sage-green font-semibold">
+                        Result: Families will experience fewer arguments, less stress, and smoother coordination of their children's activities.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">Protecting Your Child's Relationships</h3>
+                    <p class="text-neutral-medium mb-4">
+                        <strong>Challenge:</strong> Negative communication patterns risk damaging your child's relationship with both parents.
+                    </p>
+                    <p class="text-neutral-medium mb-4">
+                        <strong>Solution:</strong> SafeTalk helps you communicate in child-focused ways that protect your child's emotional well-being.
+                    </p>
+                    <p class="text-sage-green font-semibold">
+                        Result: Families will build stronger parent-child relationships and children who feel more secure and loved.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="font-inter text-xl font-semibold text-sage-green-dark mb-4">When Life Changes Your Plans</h3>
+                    <p class="text-neutral-medium mb-4">
+                        <strong>Challenge:</strong> Your child's needs have evolved, your work schedule changed, or family circumstances shifted, but your current parenting plan doesn't accommodate these new realities.
+                    </p>
+                    <p class="text-neutral-medium mb-4">
+                        <strong>Solution:</strong> SafeTalk's adaptive plans evolve naturally with your family's changing needs, without requiring court modifications or lengthy negotiations.
+                    </p>
+                    <p class="text-sage-green font-semibold">
+                        Result: Families experience less stress during transitions and children feel supported through changes in their lives.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-20 bg-neutral-soft">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-inter text-3xl md:text-4xl font-bold text-sage-green-dark mb-6">
+                    Frequently Asked Questions
+                </h2>
+            </div>
+            <div class="space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">Is my personal information and conversations safe?</h3>
+                    <p class="text-neutral-medium">Yes, SafeTalk uses bank-level security to protect your conversations. All your communications are encrypted and private. We never share your personal information without your permission, and all data is handled with the highest security standards.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">What if my co-parent doesn't want to use SafeTalk?</h3>
+                    <p class="text-neutral-medium">SafeTalk is designed to work even when one parent is hesitant. Our mobile app helps create neutral, respectful communications that are less likely to cause conflict. Many co-parents find that the reduced stress and improved outcomes encourage both parties to continue using the platform.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">How much does SafeTalk cost?</h3>
+                    <p class="text-neutral-medium">As a beta tester, you'll get early access to SafeTalk at a special rate. We believe co-parenting support should be accessible to all families, so we offer affordable pricing plans. Beta testers will receive information about pricing as we finalize our plans.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">Can SafeTalk be used for court documentation?</h3>
+                    <p class="text-neutral-medium">Yes, SafeTalk creates clear records of all communications with timestamps and summaries. These records can be helpful if you need documentation for court proceedings, showing your efforts to communicate respectfully and prioritize your children's well-being.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-inter text-lg font-semibold text-sage-green-dark mb-3">Do I need any special training to use SafeTalk?</h3>
+                    <p class="text-neutral-medium">No training required! SafeTalk is designed to be intuitive and easy to use. You simply communicate through our mobile app like you would message a trusted friend. We provide simple setup guides and ongoing support to help you get the most out of the platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CONTACT FORM SECTION -->
+    <section id="contact" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-inter text-3xl md:text-4xl font-bold text-sage-green-dark mb-6">
+                    Ready to Build a Parenting Plan That Actually Works?
+                </h2>
+                <p class="text-xl text-neutral-medium max-w-2xl mx-auto">
+                    Schedule your free orientation call to discover how SafeTalk helps families create adaptive parenting plans that reduce conflict and prioritize your child's well-being. Move from court battles to collaborative solutions.
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                <div class="mb-8">
+                    <h3 class="font-inter text-2xl font-semibold text-sage-green-dark mb-4">Schedule Your Free 30-Minute SafeTalk Orientation Call</h3>
+                    <p class="text-neutral-medium mb-6">Get personalized guidance on creating adaptive parenting plans that work for your unique family. We'll discuss your specific challenges and show you exactly how SafeTalk can help you move from rigid court orders to flexible, child-centered solutions.</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-4 mb-8 text-sm text-neutral-medium">
+                        <div class="flex items-center justify-center">
+                            <span class="text-sage-green mr-2">✓</span>
+                            Completely free, no strings attached
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <span class="text-sage-green mr-2">✓</span>
+                            Custom parenting plan for your family
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <span class="text-sage-green mr-2">✓</span>
+                            See how adaptive planning works
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="https://calendly.com/safetalkapp/safetalk-app-discussion?utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_adset={{adset.name}}&utm_content={{ad.name}}" target="_blank" class="bg-emerald-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-emerald-600 transition-colors inline-block mb-4">
+                    Book Your Free 30-Minute Orientation Call
+                </a>
+                
+                <p class="text-sm text-neutral-medium">Takes 30 seconds to schedule • Choose a time that works perfectly for your schedule</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPREHENSIVE FEATURES SECTION -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-inter text-3xl md:text-4xl font-bold text-sage-green-dark mb-6">
+                    Complete Platform Capabilities
+                </h2>
+                <p class="text-xl text-neutral-medium max-w-4xl mx-auto">
+                    Everything you need for effective co-parenting and comprehensive court oversight—built on a foundation of healing, understanding, and fairness.
+                </p>
+            </div>
+
+            <!-- CO-PARENT FEATURES -->
+            <div class="mb-16">
+                <div class="bg-emerald-50 border-l-4 border-emerald-600 p-8 rounded-lg">
+                    <h3 class="font-inter text-2xl font-bold text-emerald-900 mb-4">
+                        For Co-Parents
+                    </h3>
+                    <ul class="space-y-2 text-emerald-900">
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>AI-mediated communication and requests</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Direct messaging with tone filtering</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Shared custody calendar</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Expense tracking and reimbursements</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>File sharing for documents and photos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Private child information storage</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Notifications and alerts</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- COURT FEATURES -->
+            <div>
+                <div class="bg-blue-50 border-l-4 border-blue-600 p-8 rounded-lg">
+                    <h3 class="font-inter text-2xl font-bold text-blue-900 mb-4">
+                        For Courts & Family Services
+                    </h3>
+                    <ul class="space-y-2 text-blue-900">
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Case dashboard with compliance tracking</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Individual case detail views</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Access to all case communications and records</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Customizable reports and analytics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Alert configuration and notifications</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Role-based access control</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Final CTA -->
+            <div class="text-center mt-16 pt-12 border-t border-gray-200">
+                <h3 class="font-inter text-2xl md:text-3xl font-bold text-sage-green-dark mb-6">
+                    A Path Toward Healthier Families
+                </h3>
+                <p class="text-lg text-neutral-medium mb-6 max-w-3xl mx-auto leading-relaxed">
+                    When parents are supported with tools that recognize emotional pain, they begin to cooperate for their child's sake. When courts measure progress through empathy and communication, families heal instead of returning to litigation.
+                </p>
+                <p class="text-lg text-neutral-medium mb-8 max-w-3xl mx-auto leading-relaxed font-semibold">
+                    SafeTalk makes that transition possible — from conflict to calm, from orders to understanding, from courtroom tension to cooperative parenting.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="https://calendly.com/safetalkapp/safetalk-app-discussion?utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_adset={{adset.name}}&utm_content={{ad.name}}" target="_blank" class="bg-emerald-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-colors inline-block">
+                        Request Information About Court Partnership
+                    </a>
+                    <a href="https://calendly.com/safetalkapp/safetalk-app-discussion?utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_adset={{adset.name}}&utm_content={{ad.name}}" target="_blank" class="bg-slate-700 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-slate-800 transition-colors inline-block">
+                        Learn How to Join the Pilot Program
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-emerald-700 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <img src="images/safetalk-logo.png" alt="SafeTalk Logo" class="h-10 w-auto mb-4">
+                    <p class="text-gray-300">Transforming co-parenting communication to create healthier families and happier children.</p>
+                </div>
+                <div>
+                    <h4 class="font-inter font-semibold mb-4">For Families (Coming Soon)</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Co-Parenting Support</li>
+                        <li>Child Well-being Resources</li>
+                        <li>Conflict Resolution Tools</li>
+                        <li>Communication Features</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-inter font-semibold mb-4">Resources (Coming Soon)</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Beta Testing Program</li>
+                        <li>Setup & Support Guides</li>
+                        <li>Getting Started Resources</li>
+                        <li>Community Support</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-600 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 SafeTalk. All rights reserved. | <a href="/privacy-policy" class="text-gray-300 hover:text-white underline">Privacy Policy</a> | <a href="/terms-of-service" class="text-gray-300 hover:text-white underline">Terms of Service</a> | <a href="/support" class="text-gray-300 hover:text-white underline">Support</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FULLSCREEN IMAGE MODAL -->
+    <div id="fullscreen-modal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+        <!-- Close Button -->
+        <button id="fullscreen-close" class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 transition-colors z-20">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        
+        <!-- Navigation Arrows -->
+        <button id="fullscreen-prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-2xl hover:text-gray-300 transition-colors z-20 bg-black bg-opacity-50 rounded-full p-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        
+        <button id="fullscreen-next" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-2xl hover:text-gray-300 transition-colors z-20 bg-black bg-opacity-50 rounded-full p-3">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+        
+        
+        <!-- Image Container -->
+        <div id="image-container" class="relative w-full h-full overflow-hidden">
+            <!-- Single image mode (Getting Started) -->
+            <img id="fullscreen-image" src="" alt="" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-200">
+            
+            <!-- Dual image mode (How to Use) -->
+            <div id="dual-image-container" class="hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-200 flex gap-4 items-center">
+                <div class="text-center">
+                    <h3 class="text-white text-lg font-semibold mb-2">Co-Parent 1</h3>
+                    <img id="fullscreen-image-left" src="" alt="" class="max-h-[70vh] max-w-[45vw] object-contain">
+                </div>
+                <div class="text-center">
+                    <h3 class="text-white text-lg font-semibold mb-2">Co-Parent 2</h3>
+                    <img id="fullscreen-image-right" src="" alt="" class="max-h-[70vh] max-w-[45vw] object-contain">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step Info -->
+        <div id="fullscreen-info" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-center bg-black bg-opacity-50 px-4 py-2 rounded z-20">
+            <span id="fullscreen-step-text">Step 1 of 5</span>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Slideshow functionality
+        class Slideshow {
+            constructor(container) {
+                this.container = container;
+                
+                // Use more specific selectors for the new DOM structure
+                this.slides = document.querySelectorAll('.slideshow-container .slide');
+                this.stepTexts = document.querySelectorAll('.text-content .step-text');
+                this.dots = document.querySelectorAll('.dot');
+                this.prevBtn = document.querySelector('.slideshow-prev');
+                this.nextBtn = document.querySelector('.slideshow-next');
+                this.playPauseBtn = document.getElementById('play-pause-btn');
+                this.playIcon = document.getElementById('play-icon');
+                this.pauseIcon = document.getElementById('pause-icon');
+                this.playPauseText = document.getElementById('play-pause-text');
+                
+                // Debug logging
+                console.log('Slideshow Debug:');
+                console.log('Slides found:', this.slides.length);
+                console.log('Step texts found:', this.stepTexts.length);
+                console.log('Dots found:', this.dots.length);
+                console.log('Prev btn:', this.prevBtn);
+                console.log('Next btn:', this.nextBtn);
+                console.log('Play/pause btn:', this.playPauseBtn);
+                
+                this.currentSlide = 0;
+                this.isPlaying = true;
+                this.autoPlayInterval = null;
+                this.isNavigating = false; // Prevent double navigation
+                
+                this.init();
+            }
+            
+            init() {
+                // Check if required elements exist
+                if (this.slides.length === 0 || this.stepTexts.length === 0) {
+                    console.error('Slideshow initialization failed: Missing slides or step texts');
+                    return;
+                }
+                
+                // Set up event listeners with error checking
+                if (this.prevBtn) {
+                    this.prevBtn.addEventListener('click', () => this.manualNavigation('prev'));
+                    console.log('Prev button listener added');
+                }
+                
+                if (this.nextBtn) {
+                    this.nextBtn.addEventListener('click', () => this.manualNavigation('next'));
+                    console.log('Next button listener added');
+                }
+                
+                if (this.playPauseBtn) {
+                    this.playPauseBtn.addEventListener('click', () => this.toggleAutoPlay());
+                    console.log('Play/pause button listener added');
+                }
+                
+                // Dot navigation
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => this.manualNavigation(index));
+                });
+                console.log('Dot listeners added:', this.dots.length);
+                
+                // Start autoplay
+                this.startAutoPlay();
+                console.log('Autoplay started');
+                
+                // Pause on hover
+                if (this.container) {
+                    this.container.addEventListener('mouseenter', () => {
+                        if (this.isPlaying) {
+                            this.stopAutoPlay();
+                        }
+                    });
+                    
+                    this.container.addEventListener('mouseleave', () => {
+                        if (this.isPlaying) {
+                            this.startAutoPlay();
+                        }
+                    });
+                }
+            }
+            
+            manualNavigation(target) {
+                // Prevent double-navigation
+                if (this.isNavigating) return;
+                this.isNavigating = true;
+                
+                // Stop auto-play to prevent conflicts
+                this.stopAutoPlay();
+                
+                let targetIndex;
+                if (target === 'next') {
+                    targetIndex = (this.currentSlide + 1) % this.slides.length;
+                } else if (target === 'prev') {
+                    targetIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+                } else {
+                    targetIndex = target; // Direct index for dots
+                }
+                
+                this.goToSlide(targetIndex);
+                
+                // Restart auto-play after a brief delay if it was playing
+                if (this.isPlaying) {
+                    setTimeout(() => {
+                        this.startAutoPlay();
+                        this.isNavigating = false;
+                    }, 1500); // 1.5 second delay before resuming auto-play
+                } else {
+                    this.isNavigating = false;
+                }
+            }
+
+            goToSlide(index) {
+                // Remove active class from current slide and text
+                this.slides[this.currentSlide].classList.remove('active');
+                this.stepTexts[this.currentSlide].classList.remove('active');
+                this.dots[this.currentSlide].classList.remove('active');
+                
+                // Update current slide
+                this.currentSlide = index;
+                
+                // Add active class to new slide and text
+                this.slides[this.currentSlide].classList.add('active');
+                this.stepTexts[this.currentSlide].classList.add('active');
+                this.dots[this.currentSlide].classList.add('active');
+            }
+            
+            nextSlide() {
+                const nextIndex = (this.currentSlide + 1) % this.slides.length;
+                this.goToSlide(nextIndex);
+            }
+            
+            prevSlide() {
+                const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+                this.goToSlide(prevIndex);
+            }
+            
+            startAutoPlay() {
+                this.autoPlayInterval = setInterval(() => {
+                    // Only auto-advance if not currently navigating manually
+                    if (!this.isNavigating) {
+                        this.nextSlide();
+                    }
+                }, 6000); // 6 seconds per slide (increased from 5)
+            }
+            
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                    this.autoPlayInterval = null;
+                }
+            }
+            
+            toggleAutoPlay() {
+                if (this.isPlaying) {
+                    this.stopAutoPlay();
+                    this.playIcon.classList.remove('hidden');
+                    this.pauseIcon.classList.add('hidden');
+                    this.playPauseText.textContent = 'Play';
+                } else {
+                    this.startAutoPlay();
+                    this.playIcon.classList.add('hidden');
+                    this.pauseIcon.classList.remove('hidden');
+                    this.playPauseText.textContent = 'Pause';
+                }
+                this.isPlaying = !this.isPlaying;
+            }
+        }
+        
+        // Initialize slideshow when DOM is loaded
+        function initializeSlideshow() {
+            console.log('Attempting to initialize slideshow...');
+            const slideshowWrapper = document.querySelector('.max-w-7xl .bg-white');
+            console.log('Slideshow wrapper found:', slideshowWrapper);
+            
+            if (slideshowWrapper) {
+                new Slideshow(slideshowWrapper);
+            } else {
+                console.error('Slideshow wrapper not found');
+            }
+        }
+        
+        // Try to initialize when DOM is loaded
+        // DISABLED: Old slideshow conflicts with AppSlideshow
+        // if (document.readyState === 'loading') {
+        //     document.addEventListener('DOMContentLoaded', initializeSlideshow);
+        // } else {
+        //     // DOM is already loaded
+        //     initializeSlideshow();
+        // }
+
+
+        // App Slideshow functionality
+        class AppSlideshow {
+            constructor() {
+                this.currentStep = 0;
+                this.totalSteps = 10;
+                this.isPlaying = true;
+                this.autoPlayInterval = null;
+                this.isNavigating = false;
+                
+                this.leftSteps = document.querySelectorAll('.app-slideshow-content-left .app-step-content');
+                this.rightSteps = document.querySelectorAll('.app-slideshow-content-right .app-step-content');
+                this.textSteps = document.querySelectorAll('.app-slideshow-text-content .app-step-text');
+                this.dots = document.querySelectorAll('.app-dot');
+                this.prevBtn = document.querySelector('.app-slideshow-prev');
+                this.nextBtn = document.querySelector('.app-slideshow-next');
+                this.stepCounter = document.getElementById('current-service-step');
+                this.playPauseBtn = document.getElementById('app-play-pause-btn');
+                this.playIcon = document.getElementById('app-play-icon');
+                this.pauseIcon = document.getElementById('app-pause-icon');
+                this.playPauseText = document.getElementById('app-play-pause-text');
+                
+                this.init();
+            }
+            
+            init() {
+                // Debug logging for slideshow elements
+                console.log('AppSlideshow Debug:');
+                console.log('Left steps found:', this.leftSteps.length);
+                console.log('Right steps found:', this.rightSteps.length);
+                console.log('Text steps found:', this.textSteps.length);
+                console.log('Dots found:', this.dots.length);
+                console.log('Play/pause btn:', this.playPauseBtn);
+                console.log('Play icon:', this.playIcon);
+                console.log('Pause icon:', this.pauseIcon);
+                console.log('Play/pause text:', this.playPauseText);
+                
+                // Set up event listeners
+                if (this.prevBtn) {
+                    this.prevBtn.addEventListener('click', () => this.manualNavigation('prev'));
+                }
+                
+                if (this.nextBtn) {
+                    this.nextBtn.addEventListener('click', () => this.manualNavigation('next'));
+                }
+                
+                if (this.playPauseBtn) {
+                    this.playPauseBtn.addEventListener('click', () => this.toggleAutoPlay());
+                    console.log('Play/pause button listener added');
+                } else {
+                    console.error('Play/pause button not found!');
+                }
+                
+                // Dot navigation
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => this.manualNavigation(index));
+                });
+                
+                // Start autoplay
+                this.startAutoPlay();
+                console.log('AppSlideshow initialized successfully');
+            }
+            
+            manualNavigation(target) {
+                if (this.isNavigating) return;
+                this.isNavigating = true;
+                
+                this.stopAutoPlay();
+                
+                let targetStep;
+                if (target === 'next') {
+                    targetStep = (this.currentStep + 1) % this.totalSteps;
+                } else if (target === 'prev') {
+                    targetStep = (this.currentStep - 1 + this.totalSteps) % this.totalSteps;
+                } else {
+                    targetStep = target;
+                }
+                
+                this.goToStep(targetStep);
+                
+                if (this.isPlaying) {
+                    setTimeout(() => {
+                        this.startAutoPlay();
+                        this.isNavigating = false;
+                    }, 2000);
+                } else {
+                    this.isNavigating = false;
+                }
+            }
+            
+            goToStep(stepIndex) {
+                console.log('AppSlideshow: Going to step', stepIndex + 1);
+                
+                // Hide current steps
+                this.leftSteps[this.currentStep].classList.remove('active');
+                this.rightSteps[this.currentStep].classList.remove('active');
+                this.textSteps[this.currentStep].classList.remove('active');
+                this.dots[this.currentStep].classList.remove('active');
+                
+                // Update current step
+                this.currentStep = stepIndex;
+                
+                // Show new steps
+                this.leftSteps[this.currentStep].classList.add('active');
+                this.rightSteps[this.currentStep].classList.add('active');
+                this.textSteps[this.currentStep].classList.add('active');
+                this.dots[this.currentStep].classList.add('active');
+                
+                // Update step counter
+                if (this.stepCounter) {
+                    this.stepCounter.textContent = this.currentStep + 1;
+                }
+                
+                console.log('AppSlideshow: Text updated to:', this.textSteps[this.currentStep].querySelector('h3').textContent);
+            }
+            
+            nextStep() {
+                const nextIndex = (this.currentStep + 1) % this.totalSteps;
+                this.goToStep(nextIndex);
+            }
+            
+            startAutoPlay() {
+                // Clear any existing interval first
+                this.stopAutoPlay();
+                
+                this.autoPlayInterval = setInterval(() => {
+                    if (!this.isNavigating) {
+                        this.nextStep();
+                    }
+                }, 10000); // 10 seconds per step
+                
+                console.log('Autoplay interval started:', this.autoPlayInterval);
+            }
+            
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                    console.log('Autoplay interval cleared:', this.autoPlayInterval);
+                    this.autoPlayInterval = null;
+                }
+            }
+            
+            toggleAutoPlay() {
+                console.log('toggleAutoPlay called, current isPlaying:', this.isPlaying);
+                
+                // Check if required elements exist
+                if (!this.playIcon || !this.pauseIcon || !this.playPauseText) {
+                    console.error('Required elements missing for pause/play functionality:');
+                    console.error('Play icon:', this.playIcon);
+                    console.error('Pause icon:', this.pauseIcon);
+                    console.error('Play/pause text:', this.playPauseText);
+                    return;
+                }
+                
+                if (this.isPlaying) {
+                    // Currently playing, so pause it
+                    this.stopAutoPlay();
+                    
+                    // Show play icon, hide pause icon
+                    this.playIcon.classList.remove('hidden');
+                    this.pauseIcon.classList.add('hidden');
+                    this.playPauseText.textContent = 'Play';
+                    
+                    console.log('Autoplay stopped');
+                } else {
+                    // Currently paused, so play it
+                    this.startAutoPlay();
+                    
+                    // Show pause icon, hide play icon
+                    this.playIcon.classList.add('hidden');
+                    this.pauseIcon.classList.remove('hidden');
+                    this.playPauseText.textContent = 'Pause';
+                    
+                    console.log('Autoplay started');
+                }
+                
+                // Toggle the state
+                this.isPlaying = !this.isPlaying;
+                console.log('New isPlaying state:', this.isPlaying);
+            }
+        }
+        
+        // Initialize app slideshow when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            new AppSlideshow();
+        });
+
+        // Fullscreen Image Viewer
+        class FullscreenViewer {
+            constructor() {
+                this.modal = document.getElementById('fullscreen-modal');
+                this.image = document.getElementById('fullscreen-image');
+                this.imageContainer = document.getElementById('image-container');
+                this.dualImageContainer = document.getElementById('dual-image-container');
+                this.imageLeft = document.getElementById('fullscreen-image-left');
+                this.imageRight = document.getElementById('fullscreen-image-right');
+                this.stepText = document.getElementById('fullscreen-step-text');
+                this.closeBtn = document.getElementById('fullscreen-close');
+                this.prevBtn = document.getElementById('fullscreen-prev');
+                this.nextBtn = document.getElementById('fullscreen-next');
+                
+                this.currentSlideshow = null;
+                this.currentStep = 0;
+                this.currentSide = 'initiator';
+                this.slideshowData = {};
+                
+                // Zoom and pan state
+                this.scale = 1;
+                this.minScale = 1; // Will be set to fit-to-screen scale
+                this.maxScale = 5;
+                this.translateX = 0;
+                this.translateY = 0;
+                this.isDragging = false;
+                this.dragStartX = 0;
+                this.dragStartY = 0;
+                
+                this.init();
+            }
+            
+            init() {
+                // Collect slideshow data
+                this.collectSlideshowData();
+                
+                // Event listeners for modal controls
+                this.closeBtn.addEventListener('click', () => this.closeModal());
+                this.prevBtn.addEventListener('click', () => this.navigatePrev());
+                this.nextBtn.addEventListener('click', () => this.navigateNext());
+                
+                // Close on backdrop click (but not on image container)
+                this.modal.addEventListener('click', (e) => {
+                    if (e.target === this.modal) {
+                        this.closeModal();
+                    }
+                });
+                
+                // Zoom with mouse wheel
+                this.imageContainer.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    
+                    
+                    const zoomFactor = e.deltaY < 0 ? 1.2 : 0.8;
+                    this.zoomAt(0, 0, zoomFactor);
+                });
+                
+                // Pan with mouse drag
+                this.imageContainer.addEventListener('mousedown', (e) => {
+                    this.startDrag(e);
+                });
+                document.addEventListener('mousemove', (e) => this.drag(e));
+                document.addEventListener('mouseup', () => this.endDrag());
+                
+                // Double click to toggle between fit-to-screen and 100%
+                this.imageContainer.addEventListener('dblclick', () => {
+                    
+                    if (Math.abs(this.scale - this.minScale) < 0.1) {
+                        // Currently at fit-to-screen, zoom to 100%
+                        this.scale = 1;
+                        this.translateX = 0;
+                        this.translateY = 0;
+                        this.updateImageTransform();
+                    } else {
+                        // Zoom back to fit-to-screen
+                        this.fitToScreen();
+                    }
+                });
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (this.modal.classList.contains('hidden')) return;
+                    
+                    switch(e.key) {
+                        case 'Escape':
+                            this.closeModal();
+                            break;
+                        case 'ArrowLeft':
+                            this.navigatePrev();
+                            break;
+                        case 'ArrowRight':
+                            this.navigateNext();
+                            break;
+                    }
+                });
+                
+                // Event listeners for fullscreen triggers
+                document.addEventListener('click', (e) => {
+                    if (e.target.closest('.fullscreen-trigger') || e.target.classList.contains('fullscreen-clickable')) {
+                        e.preventDefault();
+                        const trigger = e.target.closest('.fullscreen-trigger') || e.target;
+                        const slideshow = trigger.dataset.slideshow;
+                        const step = parseInt(trigger.dataset.step);
+                        const side = trigger.dataset.side || 'main';
+                        
+                        console.log('Fullscreen trigger clicked:', {
+                            slideshow: slideshow,
+                            step: step,
+                            side: side,
+                            trigger: trigger
+                        });
+                        
+                        this.openModal(slideshow, step, side);
+                    }
+                });
+                
+                console.log('FullscreenViewer initialized');
+            }
+            
+            collectSlideshowData() {
+                
+                // App slideshow
+                this.slideshowData['app'] = {
+                    name: 'How to Use the Service',
+                    totalSteps: 10,
+                    initiatorImages: [
+                        'images/slide1-c1.png',      // step 1 (index 0)
+                        'images/slide2-c1.png',      // step 2 (index 1)
+                        'images/slide3-c1.png',      // step 3 (index 2)
+                        'images/slide4-c1.png',      // step 4 (index 3)
+                        'images/slide4-c1.png',      // step 5 (index 4) - reuse slide4
+                        'images/slide4-c1.png',      // step 6 (index 5) - reuse slide4
+                        'images/slide4-c1.png',      // step 7 (index 6) - reuse slide4
+                        'images/slide4-c1.png',      // step 8 (index 7) - keep as is
+                        'images/slide8-c1.png',      // step 9 (index 8) - updated
+                        'images/slide10-c1.png'      // step 10 (index 9) - moved from step 11
+                    ],
+                    responderImages: [
+                        'images/slide1-4-c2.png',        // step 1 (index 0)
+                        'images/slide1-4-c2.png',        // step 2 (index 1)
+                        'images/slide1-4-c2.png',        // step 3 (index 2)
+                        'images/slide1-4-c2.png',        // step 4 (index 3)
+                        'images/slide5-c2.png',          // step 5 (index 4)
+                        'images/slide6-c2.png',          // step 6 (index 5)
+                        'images/slide7-c2.png',          // step 7 (index 6)
+                        'images/slide8-c1.png',          // step 8 (index 7) - updated
+                        'images/slide9-c1.png',          // step 9 (index 8) - updated  
+                        'images/slide11-c2.png'          // step 10 (index 9) - moved from step 11
+                    ]
+                };
+            }
+            
+            openModal(slideshow, step, side = 'main') {
+                this.currentSlideshow = slideshow;
+                this.currentStep = step;
+                this.currentSide = side;
+                
+                this.updateModal();
+                this.modal.classList.remove('hidden');
+                this.modal.classList.add('show');
+                
+                // Prevent body scroll
+                document.body.style.overflow = 'hidden';
+                
+                // Always fit to screen when opening modal - call immediately
+                this.fitToScreen();
+            }
+            
+            closeModal() {
+                this.modal.classList.add('hide');
+                setTimeout(() => {
+                    this.modal.classList.add('hidden');
+                    this.modal.classList.remove('show', 'hide');
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+            
+            navigatePrev() {
+                const data = this.slideshowData[this.currentSlideshow];
+                if (this.currentStep > 0) {
+                    this.currentStep--;
+                } else {
+                    this.currentStep = data.totalSteps - 1; // Wrap to last
+                }
+                this.updateModal();
+            }
+            
+            navigateNext() {
+                const data = this.slideshowData[this.currentSlideshow];
+                if (this.currentStep < data.totalSteps - 1) {
+                    this.currentStep++;
+                } else {
+                    this.currentStep = 0; // Wrap to first
+                }
+                this.updateModal();
+            }
+            
+            updateModal() {
+                const data = this.slideshowData[this.currentSlideshow];
+                
+                console.log('updateModal called:', {
+                    slideshow: this.currentSlideshow,
+                    step: this.currentStep,
+                    side: this.currentSide,
+                    data: data
+                });
+                
+                if (this.currentSlideshow === 'app') {
+                    // Dual image mode for How to Use
+                    this.image.classList.add('hidden');
+                    this.dualImageContainer.classList.remove('hidden');
+                    
+                    const leftImageSrc = data.initiatorImages[this.currentStep];
+                    const rightImageSrc = data.responderImages[this.currentStep];
+                    
+                    // Set left image (Co-Parent 1 - Initiator)
+                    if (leftImageSrc) {
+                        this.imageLeft.src = leftImageSrc;
+                        this.imageLeft.alt = `Co-Parent 1 - Step ${this.currentStep + 1}`;
+                        this.imageLeft.style.display = 'block';
+                    } else {
+                        this.imageLeft.style.display = 'none';
+                    }
+                    
+                    // Set right image (Co-Parent 2 - Responder)
+                    if (rightImageSrc) {
+                        this.imageRight.src = rightImageSrc;
+                        this.imageRight.alt = `Co-Parent 2 - Step ${this.currentStep + 1}`;
+                        this.imageRight.style.display = 'block';
+                    } else {
+                        this.imageRight.style.display = 'none';
+                    }
+                    
+                    this.stepText.textContent = `Step ${this.currentStep + 1} of ${data.totalSteps}`;
+                }
+                
+                console.log('Images updated for slideshow:', this.currentSlideshow);
+            }
+            
+            // Zoom and pan methods
+            fitToScreen() {
+                
+                if (this.currentSlideshow === 'app') {
+                    // For dual image mode, calculate proper fit-to-screen scale
+                    const containerRect = this.imageContainer.getBoundingClientRect();
+                    const dualContainer = this.dualImageContainer;
+                    
+                    if (dualContainer && containerRect.width && containerRect.height) {
+                        // Get the natural size of the dual image container
+                        // Reset scale temporarily to get natural dimensions
+                        dualContainer.style.transform = 'translate(-50%, -50%) scale(1)';
+                        
+                        // Wait a frame for the transform to apply
+                        setTimeout(() => {
+                            const dualRect = dualContainer.getBoundingClientRect();
+                            
+                            // Calculate scale to fit the dual container in the viewport
+                            const scaleX = (containerRect.width - 80) / dualRect.width; // 80px padding
+                            const scaleY = (containerRect.height - 80) / dualRect.height; // 80px padding
+                            
+                            // Use the smaller scale to ensure both images fit completely
+                            this.scale = Math.min(scaleX, scaleY, 1.2); // Allow up to 1.2x for better visibility
+                            this.minScale = this.scale;
+                            
+                            console.log('Dual image fit calculation:', {
+                                containerSize: { width: containerRect.width, height: containerRect.height },
+                                dualContainerSize: { width: dualRect.width, height: dualRect.height },
+                                scaleX, scaleY, finalScale: this.scale
+                            });
+                            
+                            this.translateX = 0;
+                            this.translateY = 0;
+                            this.updateImageTransform();
+                        }, 10);
+                        
+                        return; // Early return to avoid setting transform twice
+                    } else {
+                        // Fallback if dimensions not available
+                        this.scale = 0.9;
+                        this.minScale = 0.9;
+                    }
+                } else {
+                    // For single image mode (Getting Started)
+                    const containerRect = this.imageContainer.getBoundingClientRect();
+                    
+                    // Function to calculate and apply fit-to-screen scale
+                    const calculateFitScale = () => {
+                        const imageWidth = this.image.naturalWidth || this.image.width || this.image.offsetWidth;
+                        const imageHeight = this.image.naturalHeight || this.image.height || this.image.offsetHeight;
+                        
+                        console.log('Single image fit calculation:', {
+                            slideshow: this.currentSlideshow,
+                            step: this.currentStep,
+                            stepIndex: this.currentStep + 1,
+                            imageSrc: this.image.src,
+                            imageWidth, imageHeight,
+                            containerSize: { width: containerRect.width, height: containerRect.height },
+                            naturalDimensions: { width: this.image.naturalWidth, height: this.image.naturalHeight },
+                            offsetDimensions: { width: this.image.offsetWidth, height: this.image.offsetHeight }
+                        });
+                        
+                        
+                        if (imageWidth && imageHeight && imageWidth > 0 && imageHeight > 0) {
+                            const scaleX = (containerRect.width - 80) / imageWidth; // 80px padding
+                            const scaleY = (containerRect.height - 80) / imageHeight; // 80px padding
+                            
+                            // Calculate the fit scale
+                            let calculatedScale = Math.min(scaleX, scaleY);
+                            
+                            this.scale = calculatedScale;
+                            this.minScale = this.scale; // Set this as minimum scale
+                            
+                            console.log('Scale calculated:', {
+                                scaleX, scaleY, finalScale: this.scale, minScale: this.minScale
+                            });
+                        } else {
+                            console.log('Could not get image dimensions, using fallback scale');
+                            this.scale = 0.8;
+                            this.minScale = 0.8;
+                        }
+                        
+                        this.translateX = 0;
+                        this.translateY = 0;
+                        this.updateImageTransform();
+                    };
+                    
+                    // Try to get dimensions immediately
+                    if (this.image.complete && this.image.naturalWidth > 0) {
+                        calculateFitScale();
+                        return; // Early return if image is already loaded
+                    } else {
+                        // Set up onload handler for when image loads
+                        this.image.onload = calculateFitScale;
+                        
+                        // Also try again after a short delay as fallback
+                        setTimeout(() => {
+                            if (this.image.naturalWidth > 0) {
+                                calculateFitScale();
+                            }
+                        }, 100);
+                        
+                        // Immediate fallback with current dimensions
+                        calculateFitScale();
+                        return; // Early return to avoid setting transform twice
+                    }
+                }
+                
+                this.translateX = 0;
+                this.translateY = 0;
+                this.updateImageTransform();
+            }
+            
+            zoomAt(mouseX, mouseY, zoomFactor) {
+                const newScale = Math.max(this.minScale, Math.min(this.maxScale, this.scale * zoomFactor));
+                
+                if (newScale !== this.scale) {
+                    this.scale = newScale;
+                    
+                    // Reset translations to keep image centered during zoom
+                    // Only allow non-zero translations when user manually drags
+                    if (!this.isDragging) {
+                        this.translateX = 0;
+                        this.translateY = 0;
+                    }
+                    
+                    this.updateImageTransform();
+                }
+            }
+            
+            startDrag(e) {
+                // Only allow drag when zoomed in beyond fit-to-screen
+                if (this.scale <= this.minScale + 0.1) {
+                    return;
+                }
+                
+                this.isDragging = true;
+                this.imageContainer.style.cursor = 'grabbing';
+                this.dragStartX = e.clientX - this.translateX;
+                this.dragStartY = e.clientY - this.translateY;
+                e.preventDefault();
+            }
+            
+            drag(e) {
+                if (!this.isDragging) return;
+                
+                this.translateX = e.clientX - this.dragStartX;
+                this.translateY = e.clientY - this.dragStartY;
+                
+                this.updateImageTransform();
+            }
+            
+            endDrag() {
+                if (this.isDragging) {
+                    this.isDragging = false;
+                    this.imageContainer.style.cursor = this.scale > this.minScale + 0.1 ? 'grab' : 'default';
+                }
+            }
+            
+            updateImageTransform() {
+                const transform = `translate(${this.translateX}px, ${this.translateY}px) scale(${this.scale})`;
+                
+                if (this.currentSlideshow === 'app') {
+                    // Apply transform to dual image container
+                    this.dualImageContainer.style.transform = `translate(-50%, -50%) ${transform}`;
+                } else {
+                    // Apply transform to single image
+                    this.image.style.transform = `translate(-50%, -50%) ${transform}`;
+                }
+                
+                // Update cursor based on zoom level
+                if (!this.isDragging) {
+                    this.imageContainer.style.cursor = this.scale > this.minScale + 0.1 ? 'grab' : 'default';
+                }
+            }
+            
+        }
+        
+        // Initialize fullscreen viewer when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            new FullscreenViewer();
+        });
+
+        // SafeTalk Subscription Handling
+        const API_BASE_URL = 'https://safetalk-singleuser-sms-1.onrender.com';
+        
+        // Initialize Subscription Form
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSubscriptionForm();
+        });
+        
+        function initializeSubscriptionForm() {
+            const subscriptionForm = document.getElementById('subscription-form');
+            if (!subscriptionForm) return;
+            
+            // Handle form submission
+            subscriptionForm.addEventListener('submit', handleSubscriptionSubmit);
+        }
+        
+        async function handleSubscriptionSubmit(event) {
+            event.preventDefault();
+            
+            const submitButton = document.getElementById('submit-button');
+            const originalButtonText = submitButton.textContent;
+            
+            // Disable submit button and show loading state
+            submitButton.disabled = true;
+            submitButton.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing Payment...
+            `;
+            
+            try {
+                // Validate form fields
+                const formData = validateSubscriptionForm();
+                if (!formData) {
+                    throw new Error('Please fill in all required fields');
+                }
+                
+                // Call backend API - backend handles Stripe payment processing
+                const response = await fetch(`${API_BASE_URL}/api/subscribe`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        clientName: formData.clientName,
+                        clientPhone: formData.clientPhone,
+                        coparentName: formData.coparentName,
+                        coparentPhone: formData.coparentPhone,
+                        clientEmail: formData.clientEmail,
+                        appConsent: formData.smsConsent,
+                        optInMethod: "web_form",
+                        consentTimestamp: new Date().toISOString(),
+                        consentTextVersion: "app-consent-v1-2025-09-14",
+                        userAgent: navigator.userAgent
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(result.error || 'Subscription failed');
+                }
+                
+                // Handle successful subscription - show activation instructions
+                showSuccessPage(formData);
+                
+            } catch (error) {
+                console.error('Subscription error:', error);
+                showSubscriptionMessage(error.message || 'Something went wrong. Please try again.', 'error');
+            } finally {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        }
+        
+        function showSuccessPage(formData) {
+            // Hide the form
+            const subscriptionForm = document.getElementById('subscription-form');
+            subscriptionForm.style.display = 'none';
+            
+            // Create success message
+            const successHTML = `
+                <div class="text-center py-8">
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+                        <strong>Thanks! You've joined SafeTalk. You'll receive a welcome message in the app shortly.</strong>
+                    </div>
+                    <div class="text-6xl mb-6">🎉</div>
+                    <h3 class="text-2xl font-bold text-sage-green-dark mb-4">Payment Complete!</h3>
+                    <p class="text-lg text-neutral-medium mb-8">$50.00 charged successfully</p>
+                    
+                    <div class="bg-sage-green-soft border-l-4 border-sage-green p-6 rounded-lg mb-8">
+                        <h4 class="text-xl font-semibold text-sage-green-dark mb-4">🚀 Next Steps to Activate SafeTalk:</h4>
+                        <div class="text-left space-y-3">
+                            <div class="flex items-center">
+                                <span class="bg-sage-green text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">1</span>
+                                <span>Save this number: <strong class="text-sage-green-dark">+1 (855) 973-0497</strong></span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="bg-sage-green text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">2</span>
+                                <span>You text "START" to activate your SafeTalk service (you've already consented)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="bg-sage-green text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">3</span>
+                                <span>Have <strong>${formData.coparentName}</strong> also text "START" to the same number</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="bg-sage-green text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3">4</span>
+                                <span>Begin your filtered communication!</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-200 p-4 rounded-lg mb-6">
+                        <p class="text-sm text-neutral-medium">
+                            <strong>Important:</strong> Both parties must text "START" before the service activates.<br>
+                            Questions? Text "HELP" to +1 (855) 973-0497
+                        </p>
+                    </div>
+                    
+                    <button onclick="location.reload()" class="bg-emerald-500 text-white px-6 py-3 rounded-lg hover:bg-emerald-600 transition-colors">
+                        Subscribe Another Account
+                    </button>
+                </div>
+            `;
+            
+            // Replace form with success message
+            const formContainer = subscriptionForm.parentElement;
+            formContainer.innerHTML = successHTML;
+        }
+        
+        function validateSubscriptionForm() {
+            const form = document.getElementById('subscription-form');
+            const formData = new FormData(form);
+            
+            const data = {
+                clientName: formData.get('clientName')?.trim(),
+                clientPhone: formData.get('clientPhone')?.trim(),
+                coparentName: formData.get('coparentName')?.trim(),
+                coparentPhone: formData.get('coparentPhone')?.trim(),
+                clientEmail: formData.get('clientEmail')?.trim(),
+                appConsent: formData.get('smsConsent'),
+                agreeLegal: formData.get('agreeLegal')
+            };
+            
+            // Validate required fields
+            const errors = [];
+            if (!data.clientName) errors.push('Your name is required');
+            if (!data.clientPhone) errors.push('Your phone number is required');
+            if (!data.coparentName) errors.push('Ex-partner name is required');
+            if (!data.coparentPhone) errors.push('Ex-partner phone number is required');
+            if (!data.clientEmail) errors.push('Email address is required');
+            if (!data.smsConsent) errors.push('You must consent to receive app notifications');
+            if (!data.agreeLegal) errors.push('You must agree to the Terms of Service and Privacy Policy');
+            
+            // Validate email format
+            if (data.clientEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.clientEmail)) {
+                errors.push('Please enter a valid email address');
+            }
+            
+            // Validate phone formats - accept various formats
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            const cleanPhone = (phone) => phone.replace(/\D/g, '');
+            
+            if (data.clientPhone && cleanPhone(data.clientPhone).length < 10) {
+                errors.push('Please enter a valid phone number for yourself (at least 10 digits)');
+            }
+            if (data.coparentPhone && cleanPhone(data.coparentPhone).length < 10) {
+                errors.push('Please enter a valid phone number for your ex-partner (at least 10 digits)');
+            }
+            
+            if (errors.length > 0) {
+                showSubscriptionMessage(errors.join('<br>'), 'error');
+                return null;
+            }
+            
+            return data;
+        }
+        
+        function showSubscriptionMessage(message, type) {
+            const messageDiv = document.getElementById('form-messages');
+            messageDiv.innerHTML = `
+                <div class="p-4 rounded-lg ${type === 'success' ? 'bg-green-100 border border-green-400 text-green-700' : 'bg-red-100 border border-red-400 text-red-700'}">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            ${type === 'success' 
+                                ? '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>'
+                                : '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>'
+                            }
+                        </svg>
+                        <div>${message}</div>
+                    </div>
+                </div>
+            `;
+            messageDiv.classList.remove('hidden');
+            
+            // Auto-remove error messages after 8 seconds
+            if (type === 'error') {
+                setTimeout(() => {
+                    messageDiv.innerHTML = '';
+                    messageDiv.classList.add('hidden');
+                }, 8000);
+            }
+        }
+        
+        // Status Check Functionality
+        function addStatusCheckSection() {
+            const subscribeSection = document.getElementById('subscribe');
+            if (!subscribeSection) return;
+            
+            const statusHTML = `
+                <div class="max-w-2xl mx-auto mt-12 p-6 bg-white rounded-lg shadow-md border-t-4 border-emerald-500">
+                    <h3 class="text-xl font-semibold text-neutral-dark mb-4">Check Your Subscription Status</h3>
+                    <div class="flex gap-3">
+                        <input type="tel" id="status-phone" placeholder="Enter your phone number" 
+                            class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+                        <button onclick="checkStatus()" 
+                            class="bg-emerald-500 text-white px-6 py-2 rounded-lg hover:bg-emerald-600 transition-colors">
+                            Check Status
+                        </button>
+                    </div>
+                    <div id="status-result" class="mt-4 hidden"></div>
+                </div>
+            `;
+            
+            subscribeSection.insertAdjacentHTML('beforeend', statusHTML);
+        }
+        
+        async function checkStatus() {
+            const phoneInput = document.getElementById('status-phone');
+            const resultDiv = document.getElementById('status-result');
+            const phone = phoneInput.value.trim();
+            
+            if (!phone) {
+                showStatusMessage('Please enter a phone number', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/status/${encodeURIComponent(phone)}`);
+                const result = await response.json();
+                
+                if (response.ok) {
+                    if (result.subscribed) {
+                        showStatusMessage(`✅ Active subscription found! Service is ${result.active ? 'active' : 'inactive'}.`, 'success');
+                    } else {
+                        showStatusMessage('❌ No active subscription found for this number.', 'error');
+                    }
+                } else {
+                    showStatusMessage(result.error || 'Unable to check status', 'error');
+                }
+            } catch (error) {
+                showStatusMessage('Error checking status. Please try again.', 'error');
+            }
+        }
+        
+        function showStatusMessage(message, type) {
+            const resultDiv = document.getElementById('status-result');
+            resultDiv.className = `mt-4 p-3 rounded-lg ${type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+            resultDiv.textContent = message;
+            resultDiv.classList.remove('hidden');
+        }
+        
+        // Add status check when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(addStatusCheckSection, 1000); // Add after other elements load
+        });
+
+        // Form Enhancement and Handling for Formspree forms
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form[action*="formspree"]');
+            if (!form) return; // Exit if no Formspree form found
+            
+            const submitButton = form.querySelector('button[type="submit"]');
+            if (!submitButton) return; // Exit if no submit button found
+            
+            const originalButtonText = submitButton.textContent;
+            
+            // Add required field validation
+            const requiredFields = ['firstName', 'lastName', 'email', 'profession'];
+            
+            form.addEventListener('submit', function(e) {
+                // Basic validation
+                let isValid = true;
+                const errorMessages = [];
+                
+                requiredFields.forEach(fieldName => {
+                    const field = form.querySelector(`[name="${fieldName}"]`);
+                    if (field && !field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#ef4444';
+                        errorMessages.push(`${field.previousElementSibling.textContent} is required`);
+                    } else if (field) {
+                        field.style.borderColor = '#d1d5db';
+                    }
+                });
+                
+                // Email validation
+                const emailField = form.querySelector('[name="email"]');
+                if (emailField && emailField.value) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(emailField.value)) {
+                        isValid = false;
+                        emailField.style.borderColor = '#ef4444';
+                        errorMessages.push('Please enter a valid email address');
+                    }
+                }
+                
+                if (!isValid) {
+                    e.preventDefault();
+                    showFormMessage(errorMessages.join('<br>'), 'error');
+                    return;
+                }
+                
+                // Show loading state
+                submitButton.disabled = true;
+                submitButton.innerHTML = `
+                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Submitting...
+                `;
+            });
+            
+            // Handle form response
+            form.addEventListener('submit', function(e) {
+                setTimeout(() => {
+                    // Reset button state after submission
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                    
+                    // Show success message (Formspree will redirect, but this handles edge cases)
+                    if (!document.querySelector('.form-message')) {
+                        showFormMessage('Thank you! Your inquiry has been submitted successfully. We\'ll be in touch soon.', 'success');
+                        form.reset();
+                    }
+                }, 1000);
+            });
+            
+            function showFormMessage(message, type) {
+                // Remove any existing message
+                const existingMessage = document.querySelector('.form-message');
+                if (existingMessage) {
+                    existingMessage.remove();
+                }
+                
+                // Create message element
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `form-message p-4 rounded-lg mb-4 ${type === 'success' ? 'bg-green-100 border border-green-400 text-green-700' : 'bg-red-100 border border-red-400 text-red-700'}`;
+                messageDiv.innerHTML = `
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            ${type === 'success' 
+                                ? '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>'
+                                : '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>'
+                            }
+                        </svg>
+                        <div>${message}</div>
+                    </div>
+                `;
+                
+                // Insert message at the top of the form
+                form.insertBefore(messageDiv, form.firstChild);
+                
+                // Auto-remove success messages after 5 seconds
+                if (type === 'success') {
+                    setTimeout(() => {
+                        if (messageDiv.parentNode) {
+                            messageDiv.remove();
+                        }
+                    }, 5000);
+                }
+            }
+        });
+    </script>
+
+
+</body>
+</html>
