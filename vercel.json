@@ -21,6 +21,10 @@
       "dest": "/support.html"
     },
     {
+      "src": "/account-deletion",
+      "dest": "/account-deletion.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
