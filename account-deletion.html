@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SafeTalk Account Deactivation - Learn about deactivating your SafeTalk account and data preservation policies">
-    <title>SafeTalk - Account Deactivation</title>
+    <meta name="description" content="SafeTalk Account Deletion - Learn how to delete your SafeTalk account">
+    <title>SafeTalk - Account Deletion</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@
                     <div class="flex items-center space-x-4">
                         <img src="/images/safetalk-logo.png" alt="SafeTalk Logo" class="h-12 w-12">
                         <div>
-                            <h1 class="text-3xl font-bold text-gray-800">SafeTalk Account Deactivation</h1>
+                            <h1 class="text-3xl font-bold text-gray-800">SafeTalk Account Deletion</h1>
                         </div>
                     </div>
                     <a href="/" class="text-emerald-600 hover:text-emerald-700 text-sm font-medium">
@@ -61,115 +61,52 @@
 
                 <!-- Important Warning -->
                 <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                    <h3 class="text-lg font-medium text-amber-800 mb-2">⚠️ Important: Deactivation is Permanent</h3>
-                    <p class="text-amber-700">Account deactivation is <strong>permanent and irreversible</strong>. Once deactivated, you cannot reactivate your account. If you wish to use SafeTalk again in the future, you must create a new account with a new email address.</p>
+                    <h3 class="text-lg font-medium text-amber-800 mb-2">⚠️ Important</h3>
+                    <p class="text-amber-700">Account deletion is <strong>permanent and cannot be undone</strong>.</p>
                 </div>
 
-                <!-- How to Deactivate -->
+                <!-- How to Delete -->
                 <section>
-                    <h2 class="text-xl font-semibold text-gray-800 mb-3">How to Deactivate Your Account</h2>
-                    <p class="text-gray-700 leading-relaxed mb-4">To deactivate your SafeTalk account, follow these steps:</p>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">How to Delete Your SafeTalk Account</h2>
+                    <p class="text-gray-700 leading-relaxed mb-4">If you signed in with Google and wish to delete your SafeTalk account, please follow these steps:</p>
                     <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
                         <li>Open the SafeTalk app on your device</li>
                         <li>Navigate to <strong>Profile</strong> (bottom right tab)</li>
-                        <li>Scroll down and tap <strong>"Deactivate Account"</strong></li>
-                        <li>Confirm deactivation when prompted</li>
+                        <li>Scroll down and tap <strong>"Delete Account"</strong></li>
+                        <li>Confirm deletion when prompted</li>
                     </ol>
                 </section>
 
-                <!-- What Gets Deactivated -->
+                <!-- What Gets Deleted -->
                 <section>
-                    <h2 class="text-xl font-semibold text-gray-800 mb-3">What Happens When You Deactivate</h2>
-
-                    <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
-                        <h3 class="text-lg font-medium text-red-800 mb-2">What Gets Deactivated:</h3>
-                        <ul class="text-red-700 space-y-1 ml-4">
-                            <li>Your Firebase Authentication account is permanently deleted - you cannot sign in anymore</li>
-                            <li>Your user document is marked as deactivated in our system</li>
-                            <li>A complete archive is created in our deleted users collection</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-                        <h3 class="text-lg font-medium text-green-800 mb-2">What Gets PRESERVED (Not Deleted):</h3>
-                        <ul class="text-green-700 space-y-1 ml-4">
-                            <li><strong>All messages and conversations</strong> - Every message remains in the database</li>
-                            <li><strong>All mediation history</strong> - AI recommendations and session records</li>
-                            <li><strong>All request records</strong> - With timestamps</li>
-                            <li><strong>All calendar events</strong> - Shared schedule remains intact</li>
-                            <li><strong>All expense tracking data</strong></li>
-                            <li><strong>All file attachments</strong></li>
-                            <li><strong>Co-parent connection</strong> - The relationship data is preserved</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- What Happens to Co-Parent -->
-                <section>
-                    <h2 class="text-xl font-semibold text-gray-800 mb-3">What Happens to Your Co-Parent</h2>
-                    <p class="text-gray-700 leading-relaxed mb-4">When you deactivate your account, your co-parent:</p>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">What Gets Deleted</h2>
+                    <p class="text-gray-700 leading-relaxed mb-4">When you delete your account, the following data is permanently removed:</p>
                     <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                        <li>Receives a <strong>push notification</strong> - "Your co-parent has deactivated their account"</li>
-                        <li>Receives an <strong>email notification</strong> explaining what happened</li>
-                        <li><strong>Retains full access</strong> to all shared communication history, messages, mediations, and records</li>
-                        <li>Can still <strong>access all past conversations</strong> and download records</li>
-                        <li>Will see you appear as <strong>"Deactivated User"</strong> in message history</li>
-                        <li><strong>Cannot send new messages</strong> to your deactivated account</li>
+                        <li>Profile information (name, email, photo)</li>
+                        <li>All messages and chat history</li>
+                        <li>Mediation request history</li>
+                        <li>Co-parent connection</li>
+                        <li>Calendar events</li>
+                        <li>Expense tracking data</li>
+                        <li>Uploaded files and documents</li>
+                        <li>All other associated data</li>
                     </ul>
                 </section>
 
-                <!-- Can You Reactivate -->
+                <!-- Data Retention -->
                 <section>
-                    <h2 class="text-xl font-semibold text-gray-800 mb-3">Can You Reactivate Your Account?</h2>
-                    <div class="bg-gray-100 border border-gray-300 rounded-lg p-4">
-                        <p class="text-gray-800 font-medium">
-                            <strong>No</strong> - Deactivation is permanent and irreversible. If you want to use SafeTalk again, you must create a new account with a new email address.
-                        </p>
-                    </div>
-                </section>
-
-                <!-- Why This Design -->
-                <section>
-                    <h2 class="text-xl font-semibold text-gray-800 mb-3">Why We Preserve Your Data</h2>
-                    <p class="text-gray-700 leading-relaxed mb-4">SafeTalk preserves communication records for important legal and practical reasons:</p>
-
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                        <h3 class="text-lg font-medium text-blue-800 mb-2">Legal & Court Compliance:</h3>
-                        <ul class="text-blue-700 space-y-1 ml-4">
-                            <li><strong>Court Admissibility</strong> - Communication records must be retained for potential court proceedings</li>
-                            <li><strong>Co-Parent Access</strong> - Both co-parents need access to preserved records for legal purposes</li>
-                            <li><strong>Evidence Protection</strong> - Prevents tampering with communication evidence</li>
-                            <li><strong>Court Order Compliance</strong> - Some courts require use of SafeTalk and record retention</li>
-                            <li><strong>Both Parties Protected</strong> - Ensures accessible communication records for both co-parents</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- Summary Box -->
-                <section>
-                    <h2 class="text-xl font-semibold text-gray-800 mb-3">Summary</h2>
-                    <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
-                        <p class="text-emerald-800 leading-relaxed">
-                            <strong>Deactivating your account:</strong>
-                        </p>
-                        <ul class="text-emerald-700 space-y-1 ml-4 mt-2">
-                            <li>Permanently prevents you from signing in</li>
-                            <li>Is irreversible - you cannot reactivate</li>
-                            <li>Preserves all your communication history for legal purposes</li>
-                            <li>Allows your co-parent to retain full access to all shared messages, mediations, and records</li>
-                            <li>Protects both parties' need for accessible communication records</li>
-                        </ul>
-                    </div>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">Data Retention</h2>
+                    <p class="text-gray-700 leading-relaxed">Most data is deleted immediately. Some anonymized data may be retained for up to 90 days for legal compliance and security purposes.</p>
                 </section>
 
                 <!-- Need Help -->
                 <section>
                     <h2 class="text-xl font-semibold text-gray-800 mb-3">Need Help?</h2>
-                    <p class="text-gray-700 leading-relaxed">If you're unable to deactivate your account through the app or have questions, please contact us:</p>
+                    <p class="text-gray-700 leading-relaxed">If you're unable to delete your account through the app, please contact us:</p>
                     <div class="mt-4 space-y-2">
                         <p class="text-gray-700"><strong>Email:</strong> <a href="mailto:info@safetalk-coparent.com" class="text-emerald-600 hover:text-emerald-700 underline">info@safetalk-coparent.com</a></p>
-                        <p class="text-gray-700"><strong>Subject:</strong> "Account Deactivation Request"</p>
-                        <p class="text-gray-700"><strong>Important:</strong> The request must be sent from the email address associated with your SafeTalk account</p>
+                        <p class="text-gray-700"><strong>Subject:</strong> "Account Deletion Request - Google Sign-In"</p>
+                        <p class="text-gray-700"><strong>Include:</strong> The email address associated with your Google account</p>
                     </div>
                 </section>
 
@@ -217,7 +154,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-600 mt-8 pt-8 text-center text-gray-300">
-                <p>&copy; 2024 SafeTalk. All rights reserved. | <a href="privacy-policy.html" class="text-gray-300 hover:text-white underline">Privacy Policy</a> | <a href="terms-of-service.html" class="text-gray-300 hover:text-white underline">Terms of Service</a> | <a href="account-deletion.html" class="text-gray-300 hover:text-white underline">Account Deactivation</a> | <a href="support.html" class="text-gray-300 hover:text-white underline">Support</a></p>
+                <p>&copy; 2024 SafeTalk. All rights reserved. | <a href="privacy-policy.html" class="text-gray-300 hover:text-white underline">Privacy Policy</a> | <a href="terms-of-service.html" class="text-gray-300 hover:text-white underline">Terms of Service</a> | <a href="account-deletion.html" class="text-gray-300 hover:text-white underline">Account Deletion</a> | <a href="support.html" class="text-gray-300 hover:text-white underline">Support</a></p>
             </div>
         </div>
     </footer>
