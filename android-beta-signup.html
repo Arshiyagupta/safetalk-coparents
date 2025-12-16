@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VW9VGY3EN7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VW9VGY3EN7');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Join SafeTalk Android Beta - Get early access to SafeTalk on Google Play">
@@ -161,6 +170,8 @@
                 });
 
                 if (response.ok) {
+                    // Track successful form submission
+                    gtag('event', 'form_submit', {'event_category': 'android_beta_signup', 'event_label': 'success'});
                     // Hide form and show success message
                     form.classList.add('hidden');
                     successMessage.classList.remove('hidden');
