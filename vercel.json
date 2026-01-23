@@ -9,10 +9,6 @@
       "dest": "/signup.html"
     },
     {
-      "src": "/android-beta-signup",
-      "dest": "/android-beta-signup.html"
-    },
-    {
       "src": "/privacy-policy",
       "dest": "/privacy-policy.html"
     },
