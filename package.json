@@ -1,0 +1,28 @@
+{
+  "name": "safetalk-coparents",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arshiyagupta/safetalk-coparents.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arshiyagupta/safetalk-coparents/issues"
+  },
+  "homepage": "https://github.com/Arshiyagupta/safetalk-coparents#readme",
+  "description": "",
+  "dependencies": {
+    "firebase-admin": "^13.0.0",
+    "stripe": "^17.0.0"
+  },
+  "devDependencies": {
+    "@anthropic-ai/claude-code": "^2.0.52",
+    "@vercel/node": "^5.0.0"
+  }
+}

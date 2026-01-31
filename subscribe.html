@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subscribe to SafeTalk Coach - AI-powered co-parenting guidance with flexible plans">
+    <title>SafeTalk Coach - Subscribe</title>
+    <link rel="canonical" href="https://safetalk-coparent.com/subscribe">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/safetalk-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/safetalk-logo.png">
+    <link rel="shortcut icon" href="images/safetalk-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/safetalk-logo.png">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sage-green': '#7dd3fc',
+                        'sage-green-light': '#a7f3d0',
+                        'sage-green-dark': '#059669',
+                        'sage-green-soft': '#f0fdf4',
+                        'ocean-blue': '#60a5fa',
+                        'ocean-blue-light': '#93c5fd',
+                        'ocean-blue-dark': '#2563eb',
+                        'ocean-blue-soft': '#eff6ff',
+                        'neutral-soft': '#fafbfc',
+                        'neutral-medium': '#64748b',
+                        'neutral-dark': '#334155',
+                        'accent-gold': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'open-sans': ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tier-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tier-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+        .tier-card.selected {
+            ring: 2px;
+        }
+    </style>
+</head>
+<body class="font-open-sans bg-gray-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3">
+                <img src="images/safetalk-logo.png" alt="SafeTalk" class="w-10 h-10 rounded-lg">
+                <div>
+                    <span class="text-xl font-bold text-neutral-dark font-inter">SafeTalk</span>
+                    <span class="text-sm text-neutral-medium block -mt-1">Coach</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-4 py-8" role="main">
+
+        <!-- Page Title -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-neutral-dark font-inter mb-2">Choose Your Plan</h1>
+            <p class="text-neutral-medium text-lg">AI-powered co-parenting guidance when you need it most</p>
+        </div>
+
+        <!-- Tier Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+
+            <!-- Lite -->
+            <div class="tier-card bg-white rounded-2xl border-2 border-gray-200 p-6 cursor-pointer relative"
+                 data-tier="lite" data-price="9" onclick="selectTier('lite')">
+                <span class="absolute -top-3 left-4 bg-sage-green-dark text-white text-xs font-semibold px-3 py-1 rounded-full">1 Month Free Trial</span>
+                <h2 class="text-xl font-bold text-neutral-dark font-inter mt-2">Lite</h2>
+                <div class="mt-3 mb-4">
+                    <span class="text-4xl font-bold text-neutral-dark">$9</span>
+                    <span class="text-neutral-medium">/month</span>
+                </div>
+                <ul class="space-y-2 text-sm text-neutral-medium mb-4">
+                    <li class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-sage-green-dark flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        10 coach messages per month
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-sage-green-dark flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Personalized co-parenting advice
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-sage-green-dark flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Chat-based guidance
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Plus -->
+            <div class="tier-card bg-white rounded-2xl border-2 border-ocean-blue-dark p-6 cursor-pointer relative shadow-lg"
+                 data-tier="plus" data-price="19" onclick="selectTier('plus')">
+                <span class="absolute -top-3 left-4 bg-ocean-blue-dark text-white text-xs font-semibold px-3 py-1 rounded-full">Most Popular</span>
+                <span class="absolute -top-3 right-4 bg-sage-green-dark text-white text-xs font-semibold px-3 py-1 rounded-full">1 Month Free Trial</span>
+                <h2 class="text-xl font-bold text-neutral-dark font-inter mt-2">Plus</h2>
+                <div class="mt-3 mb-4">
+                    <span class="text-4xl font-bold text-neutral-dark">$19</span>
+                    <span class="text-neutral-medium">/month</span>
+                </div>
+                <ul class="space-y-2 text-sm text-neutral-medium mb-4">
+                    <li class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-ocean-blue-dark flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Unlimited coach messages
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-ocean-blue-dark flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Personalized co-parenting advice
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-ocean-blue-dark flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Priority response times
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Pro -->
+            <div class="tier-card bg-white rounded-2xl border-2 border-gray-200 p-6 cursor-pointer relative"
+                 data-tier="pro" data-price="29" onclick="selectTier('pro')">
+                <h2 class="text-xl font-bold text-neutral-dark font-inter">Pro</h2>
+                <div class="mt-3 mb-4">
+                    <span class="text-4xl font-bold text-neutral-dark">$29</span>
+                    <span class="text-neutral-medium">/month</span>
+                </div>
+                <ul class="space-y-2 text-sm text-neutral-medium mb-4">
+                    <li class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Unlimited coach messages
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Advanced co-parenting tools
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <svg class="w-5 h-5 text-accent-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Priority support + all features
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Subscription Form -->
+        <div class="max-w-lg mx-auto">
+            <form id="subscribe-form" class="bg-white rounded-2xl shadow-md p-6 space-y-5" onsubmit="handleSubmit(event)">
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-sm font-semibold text-neutral-dark mb-1">Email address</label>
+                    <input type="email" id="email" name="email" required
+                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-ocean-blue-dark focus:outline-none text-base"
+                        placeholder="you@example.com">
+                </div>
+
+                <!-- California Auto-Renewal Consent -->
+                <label class="flex items-start gap-3 cursor-pointer">
+                    <input type="checkbox" id="consent" name="consent" required
+                        class="mt-1 w-5 h-5 rounded border-gray-300 text-ocean-blue-dark focus:ring-ocean-blue-dark">
+                    <span class="text-xs text-neutral-medium leading-relaxed">
+                        I agree that my subscription will automatically renew each month at the selected price until I cancel.
+                        I understand I can cancel anytime from my account settings.
+                        <a href="/terms-of-service" target="_blank" class="text-ocean-blue-dark underline">Terms of Service</a> &amp;
+                        <a href="/privacy-policy" target="_blank" class="text-ocean-blue-dark underline">Privacy Policy</a>.
+                    </span>
+                </label>
+
+                <!-- Error display -->
+                <div id="form-error" class="hidden bg-red-50 border border-red-200 text-red-700 rounded-lg p-3 text-sm"></div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submit-btn"
+                    class="w-full py-3 rounded-lg text-white font-semibold text-base transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    style="min-height: 48px;">
+                    Subscribe Now
+                </button>
+
+                <p class="text-center text-xs text-neutral-medium">
+                    Secure checkout powered by Stripe. Cancel anytime.
+                </p>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-10 text-xs text-neutral-medium space-y-1">
+            <p>Need help? <a href="mailto:info@safetalk-coparent.com" class="text-ocean-blue-dark underline">info@safetalk-coparent.com</a></p>
+            <p>
+                <a href="/terms-of-service" class="text-ocean-blue-dark underline">Terms</a> &middot;
+                <a href="/privacy-policy" class="text-ocean-blue-dark underline">Privacy</a>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // ---- State ----
+        let selectedTier = null;
+        const params = new URLSearchParams(window.location.search);
+        const userIdParam = params.get('userId') || '';
+        const checkoutIdParam = params.get('checkoutId') || '';
+
+        const TIER_META = {
+            lite:  { price: 9,  trial: true,  label: 'Start Free Trial' },
+            plus:  { price: 19, trial: true,  label: 'Start Free Trial' },
+            pro:   { price: 29, trial: false, label: 'Subscribe Now' }
+        };
+
+        // ---- Tier Selection ----
+        function selectTier(tier) {
+            selectedTier = tier;
+            document.querySelectorAll('.tier-card').forEach(function(card) {
+                var isSel = card.dataset.tier === tier;
+                card.classList.toggle('border-ocean-blue-dark', isSel);
+                card.classList.toggle('shadow-lg', isSel);
+                card.classList.toggle('border-gray-200', !isSel && card.dataset.tier !== 'plus');
+            });
+
+            // Update button text
+            var meta = TIER_META[tier];
+            var btn = document.getElementById('submit-btn');
+            btn.textContent = meta.label;
+            btn.classList.remove('bg-sage-green-dark', 'bg-ocean-blue-dark', 'bg-yellow-600',
+                                  'hover:bg-green-700', 'hover:bg-blue-800', 'hover:bg-yellow-700',
+                                  'focus:ring-sage-green-dark', 'focus:ring-ocean-blue-dark', 'focus:ring-yellow-600');
+
+            if (tier === 'lite') {
+                btn.classList.add('bg-sage-green-dark', 'hover:bg-green-700', 'focus:ring-sage-green-dark');
+            } else if (tier === 'plus') {
+                btn.classList.add('bg-ocean-blue-dark', 'hover:bg-blue-800', 'focus:ring-ocean-blue-dark');
+            } else {
+                btn.classList.add('bg-yellow-600', 'hover:bg-yellow-700', 'focus:ring-yellow-600');
+            }
+        }
+
+        // Pre-select tier from query param
+        var tierParam = params.get('tier');
+        if (tierParam && TIER_META[tierParam]) {
+            selectTier(tierParam);
+        } else {
+            selectTier('plus'); // default
+        }
+
+        // ---- Form Submission ----
+        function showError(msg) {
+            var el = document.getElementById('form-error');
+            el.textContent = msg;
+            el.classList.remove('hidden');
+        }
+
+        function hideError() {
+            document.getElementById('form-error').classList.add('hidden');
+        }
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            hideError();
+
+            if (!selectedTier) { showError('Please select a plan.'); return; }
+
+            var email = document.getElementById('email').value.trim();
+            if (!email) { showError('Please enter your email address.'); return; }
+
+            var consent = document.getElementById('consent').checked;
+            if (!consent) { showError('Please agree to the auto-renewal terms to continue.'); return; }
+
+            var btn = document.getElementById('submit-btn');
+            btn.disabled = true;
+            btn.textContent = 'Redirecting to checkout...';
+
+            try {
+                var res = await fetch('/api/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        tier: selectedTier,
+                        email: email,
+                        userId: userIdParam,
+                        checkoutId: checkoutIdParam,
+                        consent: consent
+                    })
+                });
+
+                var data = await res.json();
+                if (!res.ok) { throw new Error(data.error || 'Something went wrong'); }
+
+                // Redirect to Stripe Checkout
+                window.location.href = data.url;
+            } catch (err) {
+                showError(err.message);
+                btn.disabled = false;
+                btn.textContent = TIER_META[selectedTier].label;
+            }
+        }
+    </script>
+</body>
+</html>

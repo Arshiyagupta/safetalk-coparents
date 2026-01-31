@@ -1,7 +1,6 @@
 {
   "buildCommand": null,
   "outputDirectory": ".",
-  "installCommand": null,
   "framework": null,
   "routes": [
     {
@@ -31,6 +30,14 @@
     {
       "src": "/sms-optin",
       "dest": "/sms-optin.html"
+    },
+    {
+      "src": "/subscribe/success",
+      "dest": "/subscribe-success.html"
+    },
+    {
+      "src": "/subscribe",
+      "dest": "/subscribe.html"
     },
     {
       "src": "/(.*)",

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SafeTalk Coach - Subscription Confirmed">
+    <title>SafeTalk Coach - Subscription Confirmed</title>
+    <link rel="canonical" href="https://safetalk-coparent.com/subscribe/success">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/safetalk-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/safetalk-logo.png">
+    <link rel="shortcut icon" href="/images/safetalk-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/safetalk-logo.png">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sage-green': '#7dd3fc',
+                        'sage-green-light': '#a7f3d0',
+                        'sage-green-dark': '#059669',
+                        'sage-green-soft': '#f0fdf4',
+                        'ocean-blue': '#60a5fa',
+                        'ocean-blue-light': '#93c5fd',
+                        'ocean-blue-dark': '#2563eb',
+                        'ocean-blue-soft': '#eff6ff',
+                        'neutral-soft': '#fafbfc',
+                        'neutral-medium': '#64748b',
+                        'neutral-dark': '#334155',
+                        'accent-gold': '#f59e0b'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'open-sans': ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-open-sans bg-gray-50 min-h-screen flex items-center justify-center">
+
+    <div class="max-w-lg w-full mx-4">
+        <!-- Loading State -->
+        <div id="loading-state" class="bg-white rounded-2xl shadow-lg p-8 text-center space-y-4">
+            <div class="w-12 h-12 border-4 border-gray-200 border-t-ocean-blue-dark rounded-full animate-spin mx-auto"></div>
+            <p class="text-neutral-medium">Confirming your subscription...</p>
+        </div>
+
+        <!-- Success State -->
+        <div id="success-state" class="hidden bg-white rounded-2xl shadow-lg p-8 text-center space-y-6" role="main" aria-labelledby="success-heading">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                <svg class="w-8 h-8 text-sage-green-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+            </div>
+
+            <h1 id="success-heading" class="text-2xl font-bold text-neutral-dark font-inter">You're All Set!</h1>
+
+            <div class="space-y-3 text-neutral-medium text-sm">
+                <p id="plan-summary"></p>
+                <div id="trial-notice" class="hidden bg-sage-green-soft border border-green-200 rounded-lg p-3 text-sage-green-dark text-sm">
+                    Your 30-day free trial starts now. You won't be charged until the trial ends.
+                </div>
+            </div>
+
+            <a id="open-app-btn"
+               href="#"
+               class="block w-full bg-ocean-blue-dark hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition-colors text-center"
+               style="min-height: 48px; line-height: 48px;">
+                Open SafeTalk App
+            </a>
+
+            <p class="text-xs text-neutral-medium">
+                A confirmation email has been sent to <span id="confirm-email" class="font-medium"></span>.
+            </p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="hidden bg-white rounded-2xl shadow-lg p-8 text-center space-y-6" role="alert">
+            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto">
+                <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </div>
+            <h1 class="text-2xl font-bold text-neutral-dark font-inter">Something Went Wrong</h1>
+            <p id="error-message" class="text-neutral-medium text-sm">We couldn't verify your subscription. Please try again or contact support.</p>
+            <div class="space-y-3">
+                <a href="/subscribe" class="block w-full bg-ocean-blue-dark hover:bg-blue-800 text-white font-semibold py-3 rounded-lg transition-colors text-center" style="min-height: 48px; line-height: 48px;">
+                    Try Again
+                </a>
+                <a href="mailto:info@safetalk-coparent.com" class="block text-ocean-blue-dark underline text-sm">
+                    Contact Support
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-6 text-xs text-neutral-medium space-y-1">
+            <p>Need help? <a href="mailto:info@safetalk-coparent.com" class="text-ocean-blue-dark underline">info@safetalk-coparent.com</a></p>
+            <p>
+                <a href="/terms-of-service" class="text-ocean-blue-dark underline">Terms</a> &middot;
+                <a href="/privacy-policy" class="text-ocean-blue-dark underline">Privacy</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        var TIER_LABELS = { lite: 'Lite', plus: 'Plus', pro: 'Pro' };
+        var TIER_PRICES = { lite: 9, plus: 19, pro: 29 };
+        var TRIAL_TIERS = { lite: true, plus: true, pro: false };
+
+        var params = new URLSearchParams(window.location.search);
+        var sessionId = params.get('session_id');
+        var tier = params.get('tier');
+        var userId = params.get('userId');
+
+        function showState(id) {
+            document.getElementById('loading-state').classList.add('hidden');
+            document.getElementById('success-state').classList.add('hidden');
+            document.getElementById('error-state').classList.add('hidden');
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        async function confirmSubscription() {
+            if (!sessionId || !tier || !userId) {
+                document.getElementById('error-message').textContent = 'Missing subscription information. Please return to the subscribe page.';
+                showState('error-state');
+                return;
+            }
+
+            try {
+                var res = await fetch('/api/confirm-subscription', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        sessionId: sessionId,
+                        tier: tier,
+                        userId: userId
+                    })
+                });
+
+                var data = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(data.error || 'Verification failed');
+                }
+
+                // Populate success UI
+                var label = TIER_LABELS[tier] || tier;
+                var price = TIER_PRICES[tier] || '';
+                document.getElementById('plan-summary').textContent =
+                    'Your ' + label + ' plan ($' + price + '/mo) is now active.';
+
+                if (TRIAL_TIERS[tier]) {
+                    document.getElementById('trial-notice').classList.remove('hidden');
+                }
+
+                if (data.email) {
+                    document.getElementById('confirm-email').textContent = data.email;
+                } else {
+                    document.getElementById('confirm-email').parentElement.classList.add('hidden');
+                }
+
+                // Deep link
+                document.getElementById('open-app-btn').href =
+                    'safetalk://coach?subscribed=true&tier=' + encodeURIComponent(tier);
+
+                showState('success-state');
+            } catch (err) {
+                document.getElementById('error-message').textContent = err.message;
+                showState('error-state');
+            }
+        }
+
+        confirmSubscription();
+    </script>
+</body>
+</html>
