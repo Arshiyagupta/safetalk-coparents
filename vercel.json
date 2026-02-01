@@ -4,6 +4,56 @@
   "framework": null,
   "routes": [
     {
+      "src": "/privacy-policy\\.html",
+      "status": 301,
+      "headers": { "Location": "/privacy-policy" }
+    },
+    {
+      "src": "/terms-of-service\\.html",
+      "status": 301,
+      "headers": { "Location": "/terms-of-service" }
+    },
+    {
+      "src": "/support\\.html",
+      "status": 301,
+      "headers": { "Location": "/support" }
+    },
+    {
+      "src": "/account-deletion\\.html",
+      "status": 301,
+      "headers": { "Location": "/account-deletion" }
+    },
+    {
+      "src": "/calling-faq\\.html",
+      "status": 301,
+      "headers": { "Location": "/calling-faq" }
+    },
+    {
+      "src": "/signup-success\\.html",
+      "status": 301,
+      "headers": { "Location": "/signup-success" }
+    },
+    {
+      "src": "/sms-optin\\.html",
+      "status": 301,
+      "headers": { "Location": "/sms-optin" }
+    },
+    {
+      "src": "/subscribe-success\\.html",
+      "status": 301,
+      "headers": { "Location": "/subscribe/success" }
+    },
+    {
+      "src": "/subscribe\\.html",
+      "status": 301,
+      "headers": { "Location": "/subscribe" }
+    },
+    {
+      "src": "/index\\.html",
+      "status": 301,
+      "headers": { "Location": "/" }
+    },
+    {
       "src": "/privacy-policy",
       "dest": "/privacy-policy.html"
     },

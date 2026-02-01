@@ -1,4 +1,30 @@
 User-agent: *
 Allow: /
 
+# Block backup files
+Disallow: /index_backup.html
+Disallow: /index.html.backup
+
+# Block admin pages
+Disallow: /admin-content.html
+Disallow: /admin-content
+
+# Block success/confirmation pages (not useful for search)
+Disallow: /signup-success
+Disallow: /subscribe/success
+
+# Block API routes
+Disallow: /api/
+
+# Block .html extension URLs (clean URLs are canonical)
+Disallow: /privacy-policy.html
+Disallow: /terms-of-service.html
+Disallow: /support.html
+Disallow: /account-deletion.html
+Disallow: /calling-faq.html
+Disallow: /sms-optin.html
+Disallow: /subscribe.html
+Disallow: /subscribe-success.html
+Disallow: /signup-success.html
+
 Sitemap: https://safetalk-coparent.com/sitemap.xml
