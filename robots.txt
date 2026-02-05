@@ -16,15 +16,4 @@ Disallow: /subscribe/success
 # Block API routes
 Disallow: /api/
 
-# Block .html extension URLs (clean URLs are canonical)
-Disallow: /privacy-policy.html
-Disallow: /terms-of-service.html
-Disallow: /support.html
-Disallow: /account-deletion.html
-Disallow: /calling-faq.html
-Disallow: /sms-optin.html
-Disallow: /subscribe.html
-Disallow: /subscribe-success.html
-Disallow: /signup-success.html
-
 Sitemap: https://www.safetalk-coparent.com/sitemap.xml
