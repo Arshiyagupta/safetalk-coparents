@@ -6,52 +6,52 @@
     {
       "src": "/privacy-policy\\.html",
       "status": 301,
-      "headers": { "Location": "/privacy-policy" }
+      "headers": { "Location": "https://www.safetalk-coparent.com/privacy-policy" }
     },
     {
       "src": "/terms-of-service\\.html",
       "status": 301,
-      "headers": { "Location": "/terms-of-service" }
+      "headers": { "Location": "https://www.safetalk-coparent.com/terms-of-service" }
     },
     {
       "src": "/support\\.html",
       "status": 301,
-      "headers": { "Location": "/support" }
+      "headers": { "Location": "https://www.safetalk-coparent.com/support" }
     },
     {
       "src": "/account-deletion\\.html",
       "status": 301,
-      "headers": { "Location": "/account-deletion" }
+      "headers": { "Location": "https://www.safetalk-coparent.com/account-deletion" }
     },
     {
       "src": "/calling-faq\\.html",
       "status": 301,
-      "headers": { "Location": "/calling-faq" }
+      "headers": { "Location": "https://www.safetalk-coparent.com/calling-faq" }
     },
     {
       "src": "/signup-success\\.html",
       "status": 301,
-      "headers": { "Location": "/signup-success" }
+      "headers": { "Location": "https://www.safetalk-coparent.com/signup-success" }
     },
     {
       "src": "/sms-optin\\.html",
       "status": 301,
-      "headers": { "Location": "/sms-optin" }
+      "headers": { "Location": "https://www.safetalk-coparent.com/sms-optin" }
     },
     {
       "src": "/subscribe-success\\.html",
       "status": 301,
-      "headers": { "Location": "/subscribe/success" }
+      "headers": { "Location": "https://www.safetalk-coparent.com/subscribe/success" }
     },
     {
       "src": "/subscribe\\.html",
       "status": 301,
-      "headers": { "Location": "/subscribe" }
+      "headers": { "Location": "https://www.safetalk-coparent.com/subscribe" }
     },
     {
       "src": "/index\\.html",
       "status": 301,
-      "headers": { "Location": "/" }
+      "headers": { "Location": "https://www.safetalk-coparent.com/" }
     },
     {
       "src": "/privacy-policy",
