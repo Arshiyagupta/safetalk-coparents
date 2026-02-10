@@ -90,6 +90,10 @@
       "dest": "/subscribe.html"
     },
     {
+      "src": "/.well-known/assetlinks.json",
+      "headers": { "Content-Type": "application/json" }
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }

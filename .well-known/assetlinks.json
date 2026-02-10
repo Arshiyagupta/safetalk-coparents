@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.harishiya.safetalk",
+      "sha256_cert_fingerprints": [
+        "84:65:C3:0C:D2:7A:D9:02:71:91:17:9B:EF:42:5F:8A:43:A3:19:25:3F:92:B3:F4:D5:4D:87:EB:52:99:02:5B"
+      ]
+    }
+  }
+]
