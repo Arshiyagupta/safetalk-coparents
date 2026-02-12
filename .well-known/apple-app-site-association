@@ -1,0 +1,18 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["35LZA6W2AL.com.harishiya.safetalk"],
+        "components": [
+          {
+            "/": "/*",
+            "comment": "Match all URLs for Universal Links"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["35LZA6W2AL.com.harishiya.safetalk"]
+  }
+}

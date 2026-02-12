@@ -94,6 +94,10 @@
       "headers": { "Content-Type": "application/json" }
     },
     {
+      "src": "/.well-known/apple-app-site-association",
+      "headers": { "Content-Type": "application/json" }
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
