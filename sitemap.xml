@@ -16,24 +16,9 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.safetalk-coparent.com/support</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.safetalk-coparent.com/account-deletion</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://www.safetalk-coparent.com/calling-faq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.safetalk-coparent.com/sms-optin</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://www.safetalk-coparent.com/subscribe</loc>

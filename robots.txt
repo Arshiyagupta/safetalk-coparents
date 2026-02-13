@@ -9,9 +9,17 @@ Disallow: /index.html.backup
 Disallow: /admin-content.html
 Disallow: /admin-content
 
+# Block utility pages (thin content, no search intent)
+Disallow: /account-deletion
+Disallow: /sms-optin
+Disallow: /support
+
 # Block success/confirmation pages (not useful for search)
 Disallow: /signup-success
 Disallow: /subscribe/success
+
+# Block old .html URLs to prevent redirect crawling
+Disallow: /*.html$
 
 # Block API routes
 Disallow: /api/
