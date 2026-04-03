@@ -12,7 +12,6 @@ Disallow: /admin-content
 # Block utility pages (thin content, no search intent)
 Disallow: /account-deletion
 Disallow: /sms-optin
-Disallow: /support
 
 # Block success/confirmation pages (not useful for search)
 Disallow: /signup-success
