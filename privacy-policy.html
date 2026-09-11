@@ -42,275 +42,899 @@
             border-radius: 5px;
             border-left: 4px solid #2E7D32;
         }
+        table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+        blockquote { border-left: 4px solid #2E7D32; margin: 12px 0; padding: 4px 16px; background: #f0f7f0; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>SafeTalk Privacy Policy</h1>
-        <p class="last-updated">Last updated: January 2026</p>
+<h1 id="safetalk-privacy-policy">SafeTalk Privacy Policy</h1>
+<p><strong>Effective Date:</strong> September 11, 2026 <strong>Last
+Updated:</strong> September 11, 2026</p>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>This Privacy Policy explains how SafeTalk ("we," "us," or "our")
+collects, uses, shares, and retains your personal data when you use our
+co-parenting communication platform, including our AI-powered Message
+Coach service.</p>
+<p><strong>IMPORTANT:</strong> SafeTalk is designed specifically for
+court-ready communications. Our data retention practices differ
+significantly from standard consumer applications due to legal and
+court-readiness requirements.</p>
+<h2 id="2-information-we-collect">2. Information We Collect</h2>
+<h3 id="21-account-information">2.1 Account Information</h3>
+<ul>
+<li>Name</li>
+<li>Email address</li>
+<li>Phone number (if provided)</li>
+<li>Profile photo (optional)</li>
+<li>User type (co-parent or court employee)</li>
+<li>Account creation date and activity timestamps</li>
+</ul>
+<h3 id="22-communication-data">2.2 Communication Data</h3>
+<ul>
+<li>All messages sent between co-parents</li>
+<li>Mediation request content and AI-generated recommendations</li>
+<li>Solution proposals and responses</li>
+<li>Request history and coordination details</li>
+<li>File attachments and documents shared</li>
+<li>Timestamps for all communications</li>
+</ul>
+<h3 id="23-usage-data">2.3 Usage Data</h3>
+<ul>
+<li>Device information (type, OS version, device ID)</li>
+<li>App usage analytics (features used, session duration)</li>
+<li>IP addresses and connection metadata</li>
+<li>Push notification tokens</li>
+<li>Location data (if GPS-based features are used)</li>
+</ul>
+<h3 id="24-ai-generated-content">2.4 AI-Generated Content</h3>
+<ul>
+<li>Mediator AI conversation summaries</li>
+<li>Solution scoring and recommendations</li>
+<li>Communication tone analysis</li>
+<li>Session summaries and insights</li>
+</ul>
+<h3 id="25-message-coach-data-paid-subscription">2.5 Message Coach Data
+(Paid Subscription)</h3>
+<p>If you subscribe to the Message Coach service, we additionally
+collect:</p>
+<ul>
+<li><strong>Onboarding information:</strong> Your children's first
+names, custody arrangement type, communication level with your
+co-parent, whether a parenting plan exists, your biggest communication
+challenge, emotional state, personal triggers, separation timeline, and
+what makes communication harder</li>
+<li><strong>Coaching conversations:</strong> All messages between you
+and the AI coach, including your raw input, the coach's responses, and
+any message drafts the coach generates on your behalf</li>
+<li><strong>Behavioral context:</strong> A relationship summary that
+tracks communication tone, patterns, recurring topics, and trajectory
+over time — automatically updated as you use the service</li>
+<li><strong>Message drafts and final messages:</strong> Both the
+AI-generated draft and the final version you approve and send to your
+co-parent</li>
+<li><strong>Crisis-detection event records:</strong> If the system's
+automated pattern detection identifies language indicating crisis
+(self-harm, child safety, intimate-partner violence, or threats of
+violence against an identifiable person), an event-only record is logged
+containing the trigger category, the resources displayed to you, your
+continuation choice, and a timestamp. These records do
+<strong>not</strong> include any human-reviewer identity, decision, or
+response-time metadata, because <strong>no SafeTalk employee,
+contractor, or agent reviews crisis-detection events</strong> (see
+§11.2)</li>
+<li><strong>Coaching session analytics:</strong> Guardrail flags,
+session metadata, and interaction traces used for quality monitoring and
+safety auditing</li>
+</ul>
 
-        <h2>1. Introduction</h2>
-        <p>SafeTalk ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and related services.</p>
 
-        <p><strong>SafeTalk is not a replacement for professional medical, legal, or therapeutic services.</strong> If you need immediate professional help, please contact a licensed healthcare provider or counselor in your area.</p>
+<h3 id="26-resolution-maker-data-paid">2.6 Resolution Maker Data
+(Paid)</h3>
+<p>Resolution Maker is a separate paid feature from the Message Coach
+described in §2.5. It works one arrangement at a time. You tell it what
+you and your co-parent are stuck on, it writes an arrangement, and you
+say yes or no. If you say no, you tell it what does not work, and the
+next arrangement is built from that. If you accept one and give us
+permission, we send that arrangement to your co-parent, who answers the
+same way.</p>
+<p>If you use Resolution Maker, we collect and create:</p>
+<ul>
+<li><strong>What you are stuck on.</strong> Either a message you pointed
+at in your co-parent thread, or a sentence you typed to describe the
+disagreement.</li>
+<li><strong>Your reasons.</strong> Every reason you or your co-parent
+gives for turning an arrangement down, kept as it was typed.</li>
+<li><strong>Arrangements.</strong> Each arrangement the AI writes, and
+the one you both agree to if you get there.</li>
+<li><strong>Session state.</strong> Which arrangement is on the table,
+whose turn it is, how many arrangements have been written, and the AI's
+own working notes about each one.</li>
+<li><strong>Safety reads.</strong> Before each new arrangement, an
+automated check looks for indications of danger — a threat to hurt
+someone, a child being harmed, one parent controlling or frightening the
+other, someone talking about self-harm, or someone working around a
+protection ordered for a child. The check reads what you and your
+co-parent type inside Resolution Maker. It also reads recent messages
+between the two of you from your SafeTalk thread, which are included so
+the check can see the situation you are describing. When the check
+fires, the session ends, and we record what the check saw, in its own
+words, together with the exact words it was quoting. Those words may be
+yours or your co-parent's, and what the check writes down may describe
+either of you. This check is automated, and it is separate from the
+crisis detection described in §11.2. If you live in Washington State,
+§6.4 covers these records and what you can ask us to do about them.</li>
+<li><strong>Payment records.</strong> Identifiers that let us charge a
+card you saved — see §5.3.</li>
+</ul>
+<p><strong>What your co-parent sees, and what they do not.</strong> Your
+co-parent never sees the sentence you started with, the reasons you gave
+for turning an arrangement down, or the AI's working notes. The only
+thing that reaches them is the text of the arrangement itself, and only
+after you say yes to sending it. Their reasons are kept from you in the
+same way.</p>
+<p><strong>Where this lives.</strong> The session itself — your opening
+sentence, both of your reasons, the AI's working notes, and the safety
+reads — is stored on SafeTalk's servers in a place no app can read,
+yours or your co-parent's. What each of you sees on screen is written to
+a separate record that only that person can read.</p>
+<p><strong>Who at SafeTalk can see it.</strong> SafeTalk personnel can
+access Resolution Maker records for support, safety review, and
+engineering quality review, and to respond to legal process. As with
+everything else on SafeTalk, these records can be subpoenaed in a legal
+proceeding (§4.1, §5.2).</p>
+<h3 id="27-session-replay-and-product-analytics">2.7 Session Replay and
+Product Analytics</h3>
+<p>To understand how the app is used and to find and fix problems,
+SafeTalk collects product-analytics data through two service providers,
+PostHog and Google Firebase Analytics. This includes which screens you
+open, which features you use, how long you spend, where you tap, device
+type, and app version. Through PostHog it also includes "session
+replay," a video-like playback of how the app's screens looked and how
+you moved through them. We use it to see what went wrong when something
+in the app breaks.</p>
+<p>Session replay hides every piece of text and every picture on the
+screen before any replay data leaves your device. The words of your
+messages, your conversations with the coach, your children's names, and
+any photo or video shown in the app appear in a replay only as blank
+shapes. Documents you open from a message open in your phone's own
+viewer, outside SafeTalk, and are never part of a replay. SafeTalk does
+not run session replay or PostHog analytics on the screen that shows
+crisis resources.</p>
+<p>PostHog stores this data in the United States. PostHog processes it
+only as SafeTalk's service provider, under a written agreement and on
+SafeTalk's instructions, and may not sell it, share it for advertising,
+or use it for its own purposes. SafeTalk does not sell this data or use
+it for advertising. Session replays are kept for 30 days and then
+deleted. Like other SafeTalk records, replay data could be requested in
+a legal proceeding while it exists.</p>
+<p>Product analytics, including masked session replay, is a built-in
+part of how SafeTalk works and improves, and it is not optional. By
+creating an account and accepting the Terms of Service, you agree to it.
+If you do not want it, please do not use SafeTalk. Washington State
+residents and users in the European Economic Area, the United Kingdom,
+and Switzerland are treated differently, as described in Sections 6.4(h)
+and 6.5.</p>
+<h2 id="3-how-we-use-your-information">3. How We Use Your
+Information</h2>
+<h3 id="31-primary-purposes">3.1 Primary Purposes</h3>
+<ul>
+<li><strong>Facilitating co-parent communication</strong> with complete,
+unalterable records</li>
+<li><strong>Providing AI-powered mediation</strong> assistance and
+conflict resolution</li>
+<li><strong>Providing AI-powered communication coaching</strong> through
+the Message Coach service, including drafting messages on your
+behalf</li>
+<li><strong>Maintaining court-ready evidence</strong> of all
+communications, including AI-coached messages sent to your
+co-parent</li>
+<li><strong>Supporting legal proceedings</strong> by preserving complete
+communication history</li>
+<li><strong>Sending service notification emails</strong> (for example,
+an alert that a new message is waiting), which you can turn off at any
+time</li>
+<li><strong>Ensuring service security</strong> and preventing abuse</li>
+<li><strong>Automated crisis detection:</strong> Surfacing crisis
+resources when the system's automated pattern detection identifies
+certain language patterns in coaching conversations. SafeTalk does not
+human-review these events and does not contact authorities or third
+parties on your behalf (see §11.2)</li>
+</ul>
+<h3 id="32-legal-bases-for-processing-gdpr">3.2 Legal Bases for
+Processing (GDPR)</h3>
+<p>We process your data based on:</p>
+<ol type="1">
+<li><strong>Contract Performance:</strong> Providing the SafeTalk
+service as agreed</li>
+<li><strong>Legal Obligations:</strong> Complying with court orders,
+subpoenas, and legal requirements to preserve evidence</li>
+<li><strong>Legitimate Interests:</strong>
+<ul>
+<li>Both co-parents' interest in preserving communication records for
+legal purposes</li>
+<li>Platform security and fraud prevention</li>
+<li>Service improvement and development</li>
+</ul></li>
+<li><strong>Consent:</strong> Where explicitly obtained for specific
+purposes (e.g., push notifications)</li>
+</ol>
+<h2 id="4-data-retention-and-legal-requirements">4. Data Retention and
+Legal Requirements</h2>
+<h3 id="41-permanent-record-retention">4.1 Permanent Record
+Retention</h3>
+<p><strong>Unlike standard consumer applications, SafeTalk retains
+communication data indefinitely for legal and court-readiness
+purposes.</strong></p>
+<h4 id="what-we-retain-permanently">What We Retain Permanently:</h4>
+<ul>
+<li>✓ All messages and conversations between co-parents</li>
+<li>✓ Mediation session history and AI-generated recommendations</li>
+<li>✓ Request records and response timestamps</li>
+<li>✓ Calendar events and modifications</li>
+<li>✓ Expense tracking records</li>
+<li>✓ File attachments and metadata</li>
+<li>✓ Complete audit trail with timestamps</li>
+<li>✓ Account creation and activity history</li>
+<li>✓ <strong>Message Coach data:</strong> All coaching conversations,
+onboarding information, message drafts (both AI-generated and final
+approved versions), relationship summaries, crisis detection logs, and
+coaching session analytics</li>
+<li>✓ <strong>AI-coached messages sent to your co-parent:</strong> These
+become part of the permanent co-parent communication record</li>
+</ul>
+<h4 id="retention-period-indefinite">Retention Period:
+<strong>Indefinite</strong></h4>
+<p><strong>Rationale:</strong></p>
+<ul>
+<li>Court-ready communications must be preserved for potential legal
+proceedings</li>
+<li>Both co-parents have legitimate interest in maintaining complete
+records</li>
+<li>Court orders may require indefinite record preservation</li>
+<li>Legal statutes of limitations (often 7+ years) necessitate long-term
+retention</li>
+<li>Records may be needed years after creation for custody, support, or
+other legal matters</li>
+<li><strong>Message Coach coaching conversations</strong> are retained
+because they form part of the communication record and may be
+discoverable in legal proceedings — including your messages to the
+coach, the coach's responses, and all draft iterations</li>
+</ul>
+<p><strong>Important:</strong> Your coaching conversations (your private
+messages to the AI coach) are retained alongside your co-parent
+communications. While coaching conversations are between you and the AI,
+they may be subject to subpoena or discovery in legal proceedings,
+including custody disputes. Please keep this in mind as you use the
+service.</p>
+<p><strong>Different SafeTalk products have different deletion
+postures.</strong> Path to Resolution readings (§5.3) are deletable on
+request because they are personal analytical outputs, not shared
+communications. The indefinite-retention, deletion-resistant posture in
+this §4 applies to co-parent chat messages, mediation records, and other
+shared-communication artifacts; it does not extend to per-user
+analytical outputs.</p>
+<h3 id="42-account-deactivation-and-data-preservation">4.2 Account
+Deactivation and Data Preservation</h3>
+<p>When you deactivate your account:</p>
+<h4 id="what-is-removed">What is Removed:</h4>
+<ul>
+<li>Your ability to sign in and access the platform</li>
+<li>Your authentication credentials from Firebase Auth</li>
+<li>Active profile visibility to other users</li>
+<li>Push notification delivery</li>
+</ul>
+<h4 id="what-is-preserved">What is Preserved:</h4>
+<ul>
+<li><strong>ALL communication records</strong> with your co-parent</li>
+<li><strong>ALL mediation session data</strong> and AI
+recommendations</li>
+<li><strong>ALL shared calendar events</strong> and expense records</li>
+<li><strong>ALL file attachments</strong> and metadata</li>
+<li><strong>Complete audit trail</strong> and timestamps</li>
+<li><strong>Archive in <code>deleted_users</code> collection</strong>
+with full account history</li>
+<li><strong>ALL Message Coach data:</strong> coaching conversations,
+onboarding information, message drafts, relationship summaries, crisis
+detection logs, and session analytics</li>
+</ul>
+<p><strong>Legal Basis for Retention After Deactivation:</strong></p>
+<ul>
+<li>Compliance with legal obligations</li>
+<li>Establishment, exercise, or defense of legal claims</li>
+<li>Legitimate interests of your co-parent in accessing shared
+records</li>
+<li>Potential court orders requiring record production</li>
+<li>Prevention of evidence destruction</li>
+</ul>
+<h3 id="43-exceptions-to-deletion-rights">4.3 Exceptions to Deletion
+Rights</h3>
+<p>Under GDPR Article 17 and CCPA, you generally have a right to request
+data deletion. <strong>However, these rights are LIMITED
+when:</strong></p>
+<ol type="1">
+<li><strong>Court Order Exists:</strong> A court has ordered use of
+SafeTalk or preservation of records</li>
+<li><strong>Legal Proceedings:</strong> Data is needed for establishing,
+exercising, or defending legal claims</li>
+<li><strong>Legal Obligations:</strong> We must retain data to comply
+with legal or regulatory requirements</li>
+<li><strong>Shared Data:</strong> Communications involve another user
+(your co-parent) who has equal rights to the data</li>
+<li><strong>Legitimate Interests Override:</strong> The legitimate
+interest in preserving court-ready records outweighs your deletion
+request</li>
+</ol>
+<p><strong>Precedent:</strong> This approach is consistent with
+platforms like OurFamilyWizard and TalkingParents, which have
+established that court-focused communication platforms may refuse
+deletion requests due to the nature of the service.</p>
+<p><strong>Resolution Maker follows the indefinite-retention posture in
+this §4, not the Path to Resolution posture.</strong> A Resolution Maker
+session is not a personal analytical output. It is a negotiation between
+two people that ends in an arrangement one of them sends to the other,
+and it is tied to a payment record. There is no way to delete a session
+from inside the product. Requests to delete Resolution Maker data are
+handled under §4.3 and §6.3.</p>
+<h2 id="5-data-sharing-and-disclosure">5. Data Sharing and
+Disclosure</h2>
+<h3 id="51-sharing-with-co-parents">5.1 Sharing with Co-Parents</h3>
+<p>All communications, mediation data, and shared content are accessible
+to <strong>both connected co-parents</strong>. This includes:</p>
+<ul>
+<li>Message history</li>
+<li>Mediation sessions and AI recommendations</li>
+<li>Request history</li>
+<li>Calendar events</li>
+<li>Expense records</li>
+<li>File attachments</li>
+</ul>
+<p><strong>Your co-parent retains access even after you deactivate your
+account.</strong></p>
+<h3 id="52-legal-disclosures">5.2 Legal Disclosures</h3>
+<p>We may disclose your data to:</p>
+<ul>
+<li><strong>Courts:</strong> In response to subpoenas, court orders, or
+discovery requests</li>
+<li><strong>Attorneys:</strong> When authorized by court order or legal
+process</li>
+<li><strong>Law Enforcement:</strong> When required by law or in
+response to valid legal requests</li>
+<li><strong>Government Agencies:</strong> As required by applicable laws
+and regulations</li>
+</ul>
+<p><strong>We may provide you notice when legally permitted, but are not
+required to do so.</strong></p>
+<h3 id="53-third-party-service-providers">5.3 Third-Party Service
+Providers</h3>
+<p>We share data with categories of third-party service providers:</p>
+<ul>
+<li><strong>Cloud infrastructure providers:</strong> hosting,
+authentication, database storage</li>
+<li><strong>AI service providers:</strong> generating coaching
+responses, communication analysis, and Path to Resolution readings</li>
+<li><strong>Email service providers:</strong> transactional email
+delivery</li>
+<li><strong>Payment processors:</strong> taking payment for paid
+features, and storing a card you have saved so it can be charged
+later</li>
+<li><strong>Analytics providers (PostHog and Google Firebase
+Analytics):</strong> product analytics and masked session replay, as
+described in Section 2.7</li>
+</ul>
+<p>If you are a Washington resident, you have the right to request a
+list of the specific third parties with whom we have shared your
+consumer health data — see Section 6.</p>
+<h4 id="what-data-is-sent-to-ai-service-providers">What data is sent to
+AI service providers</h4>
+<p>The following data is sent to our AI service providers to generate
+coaching responses and message drafts:</p>
+<ul>
+<li>Your children's first names and custody arrangement type</li>
+<li>Your co-parent's first name</li>
+<li>Your communication level, emotional state, and triggers (from
+onboarding)</li>
+<li>Your messages to the coach</li>
+<li>Recent messages from your co-parent thread (to provide context for
+drafting responses)</li>
+<li>Your coaching conversation history within the current session</li>
+<li>Your relationship summary (communication patterns and
+trajectory)</li>
+</ul>
+<p><strong>Our AI providers process this data solely to generate
+responses and do not use it to train their models.</strong> Data sent to
+AI providers is subject to their respective data processing agreements
+and API terms.</p>
+<h4 id="what-data-is-sent-to-ai-providers-path-to-resolution">What data
+is sent to AI providers (Path to Resolution)</h4>
+<p>When you request a Path to Resolution reading, SafeTalk reads the
+chat messages you have exchanged with your co-parent within SafeTalk and
+sends the following to an AI service provider to generate the
+reading:</p>
+<ul>
+<li>The full text of your chat-message history with your co-parent
+within SafeTalk</li>
+<li>Your first name and your co-parent's first name (for
+natural-language reference in the reading)</li>
+<li>Prompt-context metadata describing the reading's structure (the
+four-part analytical frame, not personal data)</li>
+</ul>
+<p>Our AI service provider processes this data solely to generate the
+reading and is contractually prohibited from using it to train its
+models, in accordance with our service-provider agreements described
+below. The reading itself — the four-part text output written about your
+communication pattern — is stored on SafeTalk's servers under your user
+account and is visible only to you. Your co-parent generates and views
+their own reading separately; the two readings are not cross-referenced,
+and your co-parent does not see your reading.</p>
+<p>Path to Resolution readings are treated differently from co-parent
+chat messages for retention and deletion purposes. Co-parent chat
+messages are retained indefinitely for court-readiness purposes (see
+§4.1), and deletion requests for chat messages are generally denied
+because the messages are shared with another user and may be subject to
+legal preservation obligations (see §4.3). Path to Resolution readings,
+by contrast, are personal-to-you analytical outputs — they are not
+shared communications and they are not part of the court-ready
+communication record. You may delete your Path to Resolution reading at
+any time from within the Path to Resolution product surface, and
+SafeTalk will honor that deletion request on a same-session basis
+without invoking the §4.3 exceptions that govern chat-message
+deletion.</p>
+<p>Path to Resolution readings sometimes describe patterns in your
+co-parent's messages as hedged hypotheses (for example, "the late-night
+messages may be coming from somewhere we can't see"). These are
+inferences drawn from the chat history you both authored together; they
+are presented to you for your own reflection and are not shared with
+your co-parent.</p>
+<h4 id="what-data-is-sent-to-ai-providers-resolution-maker">What data is
+sent to AI providers (Resolution Maker)</h4>
+<p>When you use Resolution Maker, the following is sent to an AI service
+provider:</p>
+<ul>
+<li>The sentence you typed about what you are stuck on, or the message
+you pointed at</li>
+<li>Up to the 40 most recent messages between you and your co-parent in
+your SafeTalk thread, as the two of you wrote them</li>
+<li>Every reason you or your co-parent types when turning an arrangement
+down, as typed</li>
+<li>Each arrangement already written and turned down</li>
+<li>Both of your first names</li>
+</ul>
+<p>The provider uses this to write the next arrangement, to check that
+arrangement against what the two of you have already ruled out, and to
+run the automated safety read described in §2.6. Our AI service provider
+processes this data solely to provide the feature and is contractually
+prohibited from using it to train its models, under the service-provider
+agreements described below.</p>
+<p>The thread messages we send are messages the two of you already wrote
+to each other, so nothing in them is new to either of you. What you tell
+Resolution Maker directly is different — your opening sentence and your
+reasons go to the AI provider, but not to your co-parent (§2.6).</p>
+<h4 id="what-data-is-sent-to-our-payment-processor">What data is sent to
+our payment processor</h4>
+<p>Resolution Maker is paid. We use Stripe as our payment processor.
+Stripe is a separate company from our AI service providers and receives
+none of the data described above.</p>
+<p>When you save a card for Resolution Maker, you enter it on a page
+hosted by Stripe. <strong>SafeTalk never sees or stores your card
+number.</strong> Stripe holds the card and gives us two identifiers —
+one for you as a customer, one for the saved card — which we keep on
+your SafeTalk account so the card can be charged later without you
+entering it again.</p>
+<p>Nothing is taken when you save the card. A charge is made only if you
+and your co-parent agree on an arrangement. When we make it, we send
+Stripe:</p>
+<ul>
+<li>The two identifiers above</li>
+<li>The amount and the currency</li>
+<li>The email address on your SafeTalk account, so that Stripe can send
+you a receipt</li>
+<li>An internal reference for the conversation the charge relates to and
+which side of it you are on</li>
+</ul>
+<p>We give Stripe your email address for that receipt and for nothing
+else. We do not store it on Stripe as a contact or marketing field, and
+we do not use it there for any of our own messages to you.</p>
+<p><strong>All third-party providers are contractually obligated to
+protect your data and use it only for specified purposes.</strong></p>
+<h4 id="service-provider-agreements-with-ai-providers">Service-Provider
+Agreements with AI Providers</h4>
+<p>SafeTalk's AI service providers operate under signed agreements that
+establish them as "service providers" under the California Consumer
+Privacy Act and as "processors" under the EU General Data Protection
+Regulation and equivalent U.S. state and international data-protection
+laws. Under these agreements, our AI service providers are contractually
+prohibited from: (a) selling or sharing your data, including for
+cross-context behavioral advertising; (b) using your data to train,
+fine-tune, or otherwise improve their AI models; (c) combining your data
+with personal data they receive from other sources; and (d) processing
+your data for any purpose other than delivering the service to SafeTalk
+on SafeTalk's documented instructions.</p>
+<p>Our AI service providers are required to: notify SafeTalk of any
+security incident affecting your data without undue delay; cooperate
+with SafeTalk's response to your privacy-rights requests; maintain
+appropriate technical and organizational security measures; flow the
+same obligations to their sub-processors and remain responsible for
+sub-processor compliance; and delete or return your data on termination
+of the relationship. SafeTalk retains audit rights under these
+agreements. For data subjects in the European Economic Area, the United
+Kingdom, or Switzerland, cross-border transfers are governed by the
+Standard Contractual Clauses and applicable UK and Swiss Addenda.</p>
+<p>If you are a Washington resident, you have the right to request a
+list of the specific third parties with whom we have shared your
+consumer health data — see Section 6 for how to make this request.</p>
+<p>These contractual protections do not make SafeTalk a HIPAA-covered
+entity. SafeTalk is a communications platform with strong
+service-provider protections; it is not a regulated healthcare
+service.</p>
+<h3 id="54-we-do-not-sell-your-data">5.4 We Do NOT Sell Your Data</h3>
+<p>We do not sell, rent, or trade your personal information to third
+parties for marketing purposes.</p>
+<h2 id="6-your-privacy-rights">6. Your Privacy Rights</h2>
+<h3 id="61-rights-under-gdpr-eu-users">6.1 Rights Under GDPR (EU
+Users)</h3>
+<p>You have the right to:</p>
+<ul>
+<li><strong>Access:</strong> Request copies of your personal data</li>
+<li><strong>Rectification:</strong> Correct inaccurate personal
+data</li>
+<li><strong>Erasure:</strong> Request deletion (subject to exceptions
+listed above)</li>
+<li><strong>Restriction:</strong> Limit how we process your data</li>
+<li><strong>Portability:</strong> Receive your data in a structured,
+machine-readable format</li>
+<li><strong>Object:</strong> Object to processing based on legitimate
+interests</li>
+<li><strong>Withdraw Consent:</strong> Where processing is based on
+consent</li>
+</ul>
+<p><strong>Important Limitations:</strong> Due to the nature of SafeTalk
+as a court-ready communication platform, deletion requests will
+generally be <strong>denied</strong> when:</p>
+<ul>
+<li>Communications are shared with your co-parent</li>
+<li>Court orders or legal proceedings require data retention</li>
+<li>Legal obligations mandate preservation of records</li>
+</ul>
+<h3 id="62-rights-under-ccpa-california-users">6.2 Rights Under CCPA
+(California Users)</h3>
+<p>You have the right to:</p>
+<ul>
+<li><strong>Know:</strong> What personal information we collect, use,
+and share</li>
+<li><strong>Delete:</strong> Request deletion of your personal data
+(subject to exceptions)</li>
+<li><strong>Opt-Out:</strong> Opt out of data sales (we do not sell
+data)</li>
+<li><strong>Non-Discrimination:</strong> Equal service regardless of
+privacy choices</li>
+</ul>
+<p><strong>CCPA Exceptions:</strong> We may deny deletion requests when
+necessary for:</p>
+<ul>
+<li>Completing transactions</li>
+<li>Detecting security incidents</li>
+<li>Complying with legal obligations</li>
+<li>Internal uses reasonably aligned with consumer expectations
+(court-ready records)</li>
+</ul>
+<h3 id="63-how-to-exercise-your-rights">6.3 How to Exercise Your
+Rights</h3>
+<p><strong>Email:</strong> <a
+href="mailto:info@safetalk-coparent.com">info@safetalk-coparent.com</a>
+<strong>Subject:</strong> Privacy Rights Request</p>
+<p>Include:</p>
+<ul>
+<li>Your full name</li>
+<li>Email address associated with your account</li>
+<li>Description of your request</li>
+<li>Verification of identity (we may require additional
+information)</li>
+</ul>
+<p><strong>Response Time:</strong> We will respond within 30 days (GDPR)
+or 45 days (CCPA).</p>
+<h3
+id="64-washington-my-health-my-data-act--crisis-detection-event-log">6.4
+Washington My Health My Data Act — Crisis-Detection Event Log</h3>
+<p>If you are a resident of Washington State, the Washington My Health
+My Data Act (RCW 19.373) applies to certain SafeTalk data practices.
+<strong>SafeTalk treats the crisis-detection event log described in
+§11.2 as "consumer health data" within the meaning of RCW
+19.373.010(8)</strong>, because the trigger categories (self-harm, child
+safety, intimate-partner violence, threats of violence against an
+identifiable person) reflect mental-health-adjacent inferences. Other
+state consumer-health-privacy laws that treat "mental health" data
+broadly may apply equivalently; SafeTalk operates the practices in this
+section as the floor for all such laws.</p>
+<p><strong>(a) When a record is created.</strong> SafeTalk creates a
+crisis-detection event record only when the automated check shows you
+crisis resources. The record contains only the items listed in (b).</p>
+<p><strong>(b) Purpose, categories, retention.</strong> The
+crisis-detection event log records only: trigger category, the tier of
+the detection, the resources displayed to you, your continuation choice,
+and a timestamp. The log does not include a human-reviewer identity,
+decision, or response-time metadata, because no human review occurs
+(§11.2). The log is retained on the same indefinite-by-default basis as
+other SafeTalk records (§4.1), subject to Section 4.3 and applicable
+statutory exceptions.</p>
+<p><strong>(c) No sale; no sharing for cross-context advertising; no
+sharing for targeted advertising.</strong> SafeTalk does not sell
+crisis-detection event records, does not share them for cross-context
+behavioral advertising, and does not share them for targeted
+advertising. The records are processed only to operate the automated
+detection feature, to maintain SafeTalk's internal calibration
+(aggregated patterns, not individual user records), and to respond to
+valid legal process.</p>
+<p><strong>(d) AI-provider processing.</strong> The pattern-detection
+step that produces a crisis-detection event runs on SafeTalk's AI
+providers (see §5.3). Inputs sent to AI providers for this step are the
+in-session text being evaluated; outputs received are the trigger
+classification. AI providers are contractually prohibited from training
+models on this data and are bound by SafeTalk's data-processing
+agreements.</p>
+<p><strong>(e) Your rights.</strong> As a Washington resident with
+respect to crisis-detection event records, you have the rights
+enumerated in RCW 19.373.040, exercisable through the channel described
+in §6.3:</p>
+<ul>
+<li><strong>Right to know</strong> what consumer health data SafeTalk
+has collected, where it came from, and the categories of third parties
+(if any) with whom it has been shared;</li>
+<li><strong>Right to withdraw consent</strong> to collection or sharing.
+Records already created are handled as described in Section 4.3;</li>
+<li><strong>Right to deletion</strong>, subject to the exemptions in RCW
+19.373.100 and the shared-records limit (each user's deletion right
+extends only to records held about them);</li>
+<li><strong>Non-discrimination</strong> for exercising any of the rights
+above.</li>
+</ul>
+<p><strong>(f) Private right of action.</strong> RCW 19.373.090 provides
+a private right of action under the Washington Consumer Protection Act
+(RCW 19.86) for violations of MHMDA. SafeTalk discloses this exposure
+here so that Washington residents are on notice of the cause of action
+available under Washington law. SafeTalk's posture under §11.2 (no human
+review, no reporting service, event-only logging, the same description
+of the practice in this Privacy Policy and the Terms of Service) is
+structured to operate within MHMDA; this disclosure is not a waiver of
+any defense available to SafeTalk or an admission of any violation.</p>
+<p><strong>(g) MHMDA timing.</strong> Requests under this §6.4 are
+responded to within 45 calendar days, the MHMDA statutory window.</p>
+<p><strong>(h) Session replay and product analytics — Washington
+residents.</strong> SafeTalk turns session replay off for users it
+identifies as Washington residents, and does not collect PostHog
+analytics on the message-thread, coaching, children's-details, or
+crisis-resource screens for those users. On some iPhones, session replay
+could restart after the app came back from the background. We are fixing
+this, and we delete any replays from these users that we find.
+Washington users still generate the basic data needed to run the app,
+such as crash and error logs and sign-in events, and basic feature-usage
+events through Google Firebase Analytics.</p>
+<h3
+id="65-session-replay-and-product-analytics--eea-uk-and-switzerland">6.5
+Session Replay and Product Analytics — EEA, UK, and Switzerland</h3>
+<p>SafeTalk turns session replay off for users located in the European
+Economic Area, the United Kingdom, or Switzerland, and does not treat
+your acceptance of the Terms as consent to session replay. On some
+iPhones, session replay could restart after the app came back from the
+background. We are fixing this, and we delete any replays from these
+users that we find. Any product analytics for these users is limited to
+basic usage and stability data, and you may object as described in
+Section 6.1.</p>
+<h2 id="7-data-security">7. Data Security</h2>
+<p>We implement industry-standard security measures:</p>
+<ul>
+<li><strong>Encryption:</strong> Data encrypted in transit (TLS/SSL) and
+at rest</li>
+<li><strong>Access Controls:</strong> Role-based access
+restrictions</li>
+<li><strong>Authentication:</strong> Secure login via Firebase Auth</li>
+<li><strong>Audit Logs:</strong> All data access logged for security
+monitoring</li>
+<li><strong>Firestore Security Rules:</strong> Database-level access
+controls</li>
+<li><strong>Regular Security Audits:</strong> Ongoing vulnerability
+assessments</li>
+</ul>
+<p><strong>However, no system is 100% secure. We cannot guarantee
+absolute security of your data.</strong></p>
+<h2 id="8-international-data-transfers">8. International Data
+Transfers</h2>
+<p>Your data may be transferred to and processed in:</p>
+<ul>
+<li><strong>United States:</strong> cloud infrastructure, AI service,
+email service, and analytics providers</li>
+<li><strong>European Union:</strong> Where applicable under GDPR</li>
+</ul>
+<p>We ensure adequate safeguards for international transfers, such as
+the EU-U.S. Data Privacy Framework (with its UK Extension and the
+Swiss-U.S. Data Privacy Framework) or Standard Contractual Clauses.</p>
+<h2 id="9-childrens-privacy">9. Children's Privacy</h2>
+<p>SafeTalk is intended for adults (18+ years). We do not knowingly
+collect data directly from children under 13 (or 16 in EU). If you
+believe we have inadvertently collected such data, contact us
+immediately.</p>
+<p><strong>Information about children collected from parents:</strong>
+The Message Coach onboarding process collects your children's first
+names and ages from you (the parent) to personalize coaching. This
+information is used solely for the coaching service — to help the AI
+coach reference your children by name when helping you draft
+communications. Children's names are never used for advertising,
+marketing, or any purpose beyond the direct coaching service. Children's
+names are sent to our AI providers as part of coaching interactions (see
+Section 5.3).</p>
+<h2 id="10-changes-to-this-privacy-policy">10. Changes to This Privacy
+Policy</h2>
+<p>We may update this Privacy Policy periodically. Changes will be
+posted on:</p>
+<ul>
+<li><strong>Website:</strong> <a
+href="https://www.safetalk-coparent.com/privacy-policy">https://www.safetalk-coparent.com/privacy-policy</a></li>
+<li><strong>In-App Notification:</strong> For material changes affecting
+data retention</li>
+</ul>
+<p><strong>Your continued use after changes constitutes
+acceptance.</strong></p>
+<h2 id="11-automated-decision-making-and-profiling">11. Automated
+Decision-Making and Profiling</h2>
+<p>SafeTalk uses AI for:</p>
+<ul>
+<li><strong>Mediation Assistance:</strong> Generating solution
+recommendations</li>
+<li><strong>Tone Analysis:</strong> Assessing communication tone for
+escalation prevention</li>
+<li><strong>Content Filtering:</strong> Detecting potentially
+inappropriate messages</li>
+<li><strong>Message Coach Communication Coaching:</strong> Analyzing
+your co-parent communications, providing coaching guidance, and drafting
+messages on your behalf</li>
+<li><strong>Automated Crisis Detection:</strong> Automatically screening
+coaching conversations for language patterns that may indicate
+self-harm, child safety, intimate-partner violence, or threats of
+violence against an identifiable person, and surfacing direct contact
+information for crisis resources when such patterns appear (see §11.2
+for the no-human-review and no-reporting-service posture)</li>
+<li><strong>Relationship Profiling:</strong> Building and maintaining a
+summary of your co-parenting communication patterns, tone, and
+trajectory to improve coaching quality over time</li>
+<li><strong>Path to Resolution Reading:</strong> Analyzing the
+chat-message history between you and your co-parent within SafeTalk
+using a large-language-model (LLM) AI service to generate a four-part
+inference about your communication pattern (your role in the
+conversation, recurring frictions, what each parent appears to be
+reaching for, and one next step you could try). The reading is generated
+for your own reflection and is shown only to you; your co-parent
+generates and sees their own reading separately. The reading is advisory
+only. SafeTalk takes no automated action based on the reading — it does
+not adjust your account, restrict features, notify your co-parent, or
+share the reading with anyone. You may view, download, email a copy to
+yourself, or delete your reading at any time from within the Path to
+Resolution product surface. The reading is not a clinical assessment, a
+legal evaluation, or a custody-determination input.</li>
+</ul>
+<p><strong>These systems do not make legally binding decisions.</strong>
+All AI recommendations are advisory only. Message drafts require your
+explicit review and approval before being sent. Final decisions rest
+with you and your co-parent (or the court).</p>
+<p><strong>Message Coach AI Disclosure:</strong> When you use the
+Message Coach, messages sent to your co-parent on your behalf are marked
+as AI-assisted. Your co-parent will see an indicator that the message
+was drafted with AI assistance.</p>
+<h3
+id="112-automated-crisis-detection-no-human-review-no-reporting-service">11.2
+Automated Crisis Detection; No Human Review; No Reporting Service</h3>
+<p>This section discloses how SafeTalk's automated crisis-detection
+feature handles your data. The Terms of Service describe the same
+practice in Section 2.2.</p>
+<p><strong>SafeTalk uses automated detection to surface crisis resources
+when certain language patterns appear. No SafeTalk staff or contractor
+reviews these events. Crisis disclosures are not reported by SafeTalk to
+authorities — users are directed to contact 988, Childhelp, CPS, or 911
+directly.</strong></p>
+<p><strong>(a) What the system does.</strong> SafeTalk's automated
+pattern detection identifies language in coaching conversations that may
+indicate (i) imminent risk of self-harm or suicide, (ii) imminent risk
+of harm to a child, (iii) intimate-partner violence, or (iv) threats of
+violence against an identifiable person. When such patterns are
+detected, the system displays direct contact information for
+category-appropriate crisis resources, may pause or end the coaching
+thread, and logs the event as an event-only record (§2.5).</p>
+<p><strong>(b) What the system does not do.</strong> SafeTalk is
+<strong>not</strong> a crisis service, mental-health service,
+mandatory-reporting service, or emergency response service. <strong>No
+SafeTalk employee, contractor, or agent reviews crisis-detection
+events.</strong> SafeTalk does not contact emergency services, child
+protective services, law enforcement, or any third party on your behalf,
+and does not notify any other person that a crisis-detection event has
+occurred. Detection is automated; response is yours.</p>
+<p><strong>(c) Resources, not referrals.</strong> When a
+crisis-detection event fires, the system displays direct contact
+information for services equipped to help. Resource selection is
+<strong>category-specific</strong>, not collapsed into a single
+hotline:</p>
+<ul>
+<li>For self-harm or suicide indicators: <strong>988</strong> (Suicide
+&amp; Crisis Lifeline);</li>
+<li>For child-safety indicators: <strong>1-800-4-A-CHILD</strong>
+(Childhelp National Child Abuse Hotline) and a <strong>local Child
+Protective Services lookup</strong> specific to your state or
+country;</li>
+<li>For intimate-partner violence indicators:
+<strong>1-800-799-7233</strong> (National Domestic Violence
+Hotline);</li>
+<li>For imminent danger in any category: <strong>911</strong>.</li>
+</ul>
+<p>SafeTalk does not contact these services for you. If you or someone
+else is in danger, <strong>you must contact these services
+directly.</strong></p>
+<p><strong>(d) Logging and retention.</strong> Crisis-detection events
+are logged as event records containing only: trigger category, tier of
+detection, resources displayed, your continuation choice, and timestamp.
+These records do not include any human-reviewer identity, decision, or
+response-time metadata, because no human review occurs. The records are
+retained on the same indefinite-by-default basis as other SafeTalk
+records (§4.1), are handled on a deletion request as described in
+Section 4.3, and may be subject to legal process (§5.2). For Washington
+residents, the records are also subject to §6.4 of this Privacy
+Policy.</p>
+<p><strong>(e) Access scope.</strong> Crisis-detection event records sit
+in SafeTalk's backend-only data layer; they are scoped to your user
+account at the database-rules layer and are not visible to your
+co-parent. SafeTalk engineering personnel may access aggregated patterns
+(not individual user records) for post-launch calibration of the
+automated detection; individual records are accessed only in response to
+valid legal process.</p>
+<p><strong>(f) No duty assumed.</strong> Nothing in this §11.2, in
+SafeTalk's automated detection, or in the display of crisis resources
+creates any duty on SafeTalk's part to monitor, warn, report, intervene,
+rescue, or otherwise act on your behalf or on behalf of any third party.
+SafeTalk is a communication-coaching tool; automated detection is
+provided as a safety surface only — it is not a substitute for
+professional clinical, medical, legal, or emergency services.</p>
+<h2 id="12-contact-us">12. Contact Us</h2>
+<p><strong>Data Protection Inquiries:</strong> Email: <a
+href="mailto:info@safetalk-coparent.com">info@safetalk-coparent.com</a>
+Website: <a
+href="https://www.safetalk-coparent.com">https://www.safetalk-coparent.com</a></p>
+<hr />
+<h2 id="summary-key-takeaways">Summary: Key Takeaways</h2>
+<ol type="1">
+<li><strong>SafeTalk retains all data indefinitely for
+court-readiness</strong> — including Message Coach coaching
+conversations, onboarding data, message drafts, and crisis detection
+logs</li>
+<li><strong>Account deactivation does NOT delete your data</strong> —
+all records are preserved</li>
+<li><strong>Both co-parents have equal access to shared communication
+records</strong></li>
+<li><strong>Deletion requests are generally denied due to legal and
+legitimate interest exceptions</strong></li>
+<li><strong>Data may be disclosed pursuant to court orders, subpoenas,
+or legal process</strong> — this includes your private coaching
+conversations with the AI</li>
+<li><strong>You have privacy rights, but they are limited by the nature
+of the service</strong></li>
+<li><strong>Your messages are processed by AI service providers</strong>
+to generate coaching responses, message drafts, and Path to Resolution
+readings</li>
+<li><strong>Children's first names are collected from parents</strong>
+for coaching personalization and are sent to AI service providers</li>
+<li><strong>Automated crisis detection is not a crisis service</strong>
+— no SafeTalk staff or contractor reviews crisis-detection events;
+SafeTalk does not contact 988, Childhelp, CPS, 911, or any authority on
+your behalf; you must contact these services directly if you or someone
+else is in danger (see §11.2)</li>
+<li><strong>Washington residents:</strong> crisis-detection event
+records are treated as consumer health data under MHMDA; private right
+of action available under RCW 19.373.090 (see §6.4)</li>
+</ol>
+<hr />
+<p><strong>By using SafeTalk, you acknowledge that you have read and
+understood this Privacy Policy, including all provisions related to
+indefinite data retention for legal and court-readiness
+purposes.</strong></p>
+<p><strong>Last Updated:</strong> September 11, 2026</p>
 
-        <h2>2. Information We Collect</h2>
-
-        <h3>2.1 Personal Information</h3>
-        <ul>
-            <li>Email address (for account creation and authentication)</li>
-            <li>Name and profile information</li>
-            <li>Connection information with your co-parent</li>
-            <li>Messages and communications sent through the app</li>
-        </ul>
-
-        <h3>2.2 Message Content</h3>
-        <ul>
-            <li>Original messages you send and receive</li>
-            <li>AI-processed and filtered versions of messages</li>
-            <li>Mediation requests and solutions</li>
-            <li>Message metadata (timestamps, read status, etc.)</li>
-        </ul>
-
-        <h3>2.3 Audio and Video Calling Data</h3>
-        <ul>
-            <li>Call metadata (date, time, duration, participants, call type)</li>
-            <li>Call status information (initiated, missed, declined, completed)</li>
-            <li>Calling consent preferences (whether you have enabled audio/video calling)</li>
-            <li>Call quality metrics for service improvement</li>
-            <li><strong>Call recordings and transcriptions</strong> (only if both parties consent to recording)</li>
-        </ul>
-        <p><strong>Important:</strong> Audio and video calls require mutual consent—both you and your co-parent must enable calling before calls can be placed. Your phone number is never shared; calls are made through the app using internet (VoIP) technology.</p>
-
-        <h3>2.4 Usage Information</h3>
-        <ul>
-            <li>App usage patterns and feature interactions (only with your conse)</li>
-            <li>Device information and identifiers</li>
-            <li>Technical logs for app performance and security</li>
-        </ul>
-
-        <h2>3. How We Use Your Information</h2>
-
-        <h3>3.1 Core Services</h3>
-        <ul>
-            <li>Facilitate communication between co-parents</li>
-            <li>Provide AI-powered message filtering and content moderation</li>
-            <li>Generate constructive response suggestions</li>
-            <li>Enable mediation and conflict resolution features</li>
-            <li>Detect crisis situations and provide safety resources</li>
-        </ul>
-
-        <h3>3.2 AI Processing</h3>
-        <p>We use artificial intelligence services, including OpenAI's API, to:</p>
-        <ul>
-            <li>Filter inappropriate content from messages</li>
-            <li>Generate alternative message suggestions</li>
-            <li>Detect potential crisis or safety concerns</li>
-            <li>Provide mediation and solution recommendations</li>
-        </ul>
-
-        <h3>3.3 Analytics and App Improvement</h3>
-        <p>With your explicit consent, we use Firebase Analytics to:</p>
-        <ul>
-            <li>Understand how SafeTalk features are used</li>
-            <li>Improve app performance and user experience</li>
-            <li>Identify and fix technical issues</li>
-            <li>Develop new features based on usage patterns</li>
-        </ul>
-        <p><strong>Important:</strong> On iOS devices, we will ask for your permission before collecting analytics data through Apple's App Tracking Transparency framework. You can grant or deny this permission, and your choice will not affect SafeTalk's core functionality.</p>
-
-        <h2>4. Data Sharing and Third Parties</h2>
-
-        <h3>4.1 Third-Party Services</h3>
-        <p>We use the following third-party services:</p>
-        <ul>
-            <li><strong>Firebase (Google)</strong>: Database, authentication, and cloud functions</li>
-            <li><strong>OpenAI</strong>: AI-powered content processing and moderation</li>
-            <li><strong>Agora</strong>: Audio and video calling infrastructure</li>
-            <li><strong>PostHog</strong>: Product analytics, session recording, and user behavior analysis</li>
-            <li><strong>Apple Sign-In</strong>: Authentication service (if used)</li>
-            <li><strong>Google Sign-In</strong>: Authentication service (if used)</li>
-        </ul>
-
-        <h3>4.2 Detailed Third-Party Data Sharing (GDPR/CCPA Required Disclosure)</h3>
-        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-            <thead style="background-color: #2E7D32; color: white;">
-                <tr>
-                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Service Provider</th>
-                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Data Shared</th>
-                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Purpose</th>
-                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Retention Period</th>
-                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Privacy Policy</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="border: 1px solid #ddd; padding: 8px;"><strong>Firebase (Google)</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Email, name, user ID, device info, IP address, app usage data</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Authentication, database storage, cloud functions, crash reporting</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Until account deletion or up to 26 months for analytics (if consented)</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;"><a href="https://firebase.google.com/support/privacy" target="_blank">Firebase Privacy</a></td>
-                </tr>
-                <tr style="background-color: #f9f9f9;">
-                    <td style="border: 1px solid #ddd; padding: 8px;"><strong>OpenAI</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Message content, request metadata, conversation context</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">AI content moderation, message filtering, crisis detection, constructive response generation</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">30 days (per OpenAI data retention policy)</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;"><a href="https://openai.com/privacy" target="_blank">OpenAI Privacy</a></td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ddd; padding: 8px;"><strong>Agora</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Audio/video streams during calls, call metadata (time, duration, participants), device info, IP address</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Audio and video calling infrastructure, call quality optimization</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Retained indefinitely; call recordings and metadata may be retained for legal documentation and court proceedings as required</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;"><a href="https://www.agora.io/en/privacy-policy/" target="_blank">Agora Privacy</a></td>
-                </tr>
-                <tr style="background-color: #f9f9f9;">
-                    <td style="border: 1px solid #ddd; padding: 8px;"><strong>PostHog</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Session recordings (screen activity), user interactions, tap coordinates, screen views, feature usage, device info</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Product analytics, user experience improvement, feature development, session replay for debugging</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Retained indefinitely for product improvement, user support, and legal compliance purposes</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;"><a href="https://posthog.com/privacy" target="_blank">PostHog Privacy</a></td>
-                </tr>
-                <tr style="background-color: #f9f9f9;">
-                    <td style="border: 1px solid #ddd; padding: 8px;"><strong>Apple Sign-In</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Email (optional, user can hide), name (optional), Apple ID token</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">User authentication only</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Until account deletion</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;"><a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy</a></td>
-                </tr>
-                <tr style="background-color: #f9f9f9;">
-                    <td style="border: 1px solid #ddd; padding: 8px;"><strong>Google Sign-In</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Email, name, profile photo (if provided), Google account ID</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">User authentication only</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Until account deletion</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;"><a href="https://policies.google.com/privacy" target="_blank">Google Privacy</a></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <p><strong>Important Notes:</strong></p>
-        <ul>
-            <li><strong>We do NOT sell your data:</strong> SafeTalk never sells, rents, or trades your personal information to third parties for marketing purposes.</li>
-            <li><strong>Data Minimization:</strong> We only share the minimum data necessary with each service to provide core functionality.</li>
-            <li><strong>Your Control:</strong> You can request deletion of all data at any time through the "Delete Account" feature in your profile.</li>
-            <li><strong>Session Recording:</strong> PostHog may record your screen activity within the app to help us understand how features are used and to improve the user experience. These recordings capture app screens and interactions but do not record audio or activity outside the SafeTalk app.</li>
-        </ul>
-
-        <h3>4.4 Internal Product Development</h3>
-        <p>To improve SafeTalk and develop new features, we may internally analyze usage patterns, message content, and user feedback. This analysis may involve the use of AI tools (such as OpenAI, Anthropic Claude, or Google Gemini) to identify patterns and generate insights for product improvement. When conducting such analysis:</p>
-        <ul>
-            <li>Data is used solely for improving SafeTalk's features and user experience</li>
-            <li>Analysis results are used internally and not shared with third parties</li>
-            <li>This processing is conducted under our legitimate interest in improving our services</li>
-        </ul>
-
-        <h3>4.3 Data Protection</h3>
-        <ul>
-            <li>We do not sell your personal information to third parties</li>
-            <li>Data is shared with third-party services only as necessary to provide SafeTalk features</li>
-            <li>All data transmission is encrypted using industry-standard security protocols (HTTPS/TLS)</li>
-            <li>Third-party service providers are contractually bound to protect your data</li>
-        </ul>
-
-        <h2>5. Data Security</h2>
-        <ul>
-            <li>All data is transmitted over secure HTTPS/TLS connections</li>
-            <li>Firebase security rules restrict data access to authorized users only</li>
-            <li>Message content is processed securely through encrypted channels</li>
-            <li>We implement appropriate technical and organizational security measures</li>
-        </ul>
-
-        <h2>6. Data Retention</h2>
-        <ul>
-            <li>Account data: Retained while your account is active</li>
-            <li>Messages and conversations: Retained to provide ongoing service</li>
-            <li>Analytics data: Retained for up to 26 months (if consent given)</li>
-            <li>Crash/diagnostic data: Retained for up to 90 days</li>
-            <li><strong>Call metadata</strong> (date, time, duration, participants): Retained while your account is active</li>
-            <li><strong>Call recordings</strong> (if enabled with mutual consent): Retained for up to 12 months or until you delete them</li>
-            <li>You can delete individual messages through the app interface</li>
-            <li>Account deletion will result in removal of your personal data</li>
-            <li>Some data may be retained for safety, legal, or security purposes</li>
-        </ul>
-
-        <h3>6.1 Call Recording Consent</h3>
-        <p><strong>Recording requires explicit consent from all parties.</strong> If call recording is enabled:</p>
-        <ul>
-            <li>Both participants must consent to recording before a call can be recorded</li>
-            <li>A clear visual and/or audio indicator will show when recording is active</li>
-            <li>Either party can disable recording at any time</li>
-            <li>Recordings are stored securely and accessible only to call participants</li>
-            <li>Some jurisdictions require all-party consent for recording (California, Florida, Illinois, and others). By using the recording feature, you confirm you understand and will comply with applicable laws.</li>
-        </ul>
-
-        <h2>7. Your Rights</h2>
-        <p>You have the right to:</p>
-        <ul>
-            <li>Access your personal information stored by SafeTalk</li>
-            <li>Request correction of inaccurate data</li>
-            <li>Request deletion of your account and associated data</li>
-            <li>Export your data in a machine-readable format (available through the app's Profile screen)</li>
-            <li>Opt out of analytics tracking (on iOS, through App Tracking Transparency settings)</li>
-            <li>Withdraw consent for data processing at any time</li>
-        </ul>
-
-        <h3>7.1 Data Export</h3>
-        <p>You can export all your SafeTalk data at any time through the "Export My Data" feature in your Profile screen. This export includes:</p>
-        <ul>
-            <li>Your profile information</li>
-            <li>All mediation requests and conversations</li>
-            <li>Chat messages and threads</li>
-            <li>Any other data associated with your account</li>
-        </ul>
-        <p>The export file is provided in JSON format for easy portability and complies with GDPR and CCPA data portability requirements.</p>
-
-        <h2>8. Children's Privacy</h2>
-        <p>SafeTalk is intended for use by parents and guardians aged 18 and older. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us immediately.</p>
-
-        <h2>9. International Data Transfers</h2>
-        <p>Your information may be transferred to and processed in countries other than your country of residence. We ensure appropriate safeguards are in place to protect your information during such transfers.</p>
-
-        <h2>10. Changes to This Privacy Policy</h2>
-        <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new Privacy Policy in the app and updating the "Last updated" date.</p>
-
-        <h2>11. California Consumer Privacy Act (CCPA) Rights</h2>
-        <p>If you are a California resident, you have additional rights under the CCPA:</p>
-
-        <h3>11.1 Your CCPA Rights</h3>
-        <ul>
-            <li><strong>Right to Know:</strong> You can request information about the categories and specific pieces of personal information we collect</li>
-            <li><strong>Right to Delete:</strong> You can request deletion of your personal information (available through account deletion)</li>
-            <li><strong>Right to Opt-Out:</strong> You can opt-out of the sale of personal information (we do not sell personal information)</li>
-            <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising your CCPA rights</li>
-        </ul>
-
-        <h3>11.2 Do Not Sell My Personal Information</h3>
-        <p><strong>SafeTalk does not sell your personal information to third parties.</strong> We do not engage in the sale of personal information as defined by the CCPA. Your data is used solely for the purposes described in this Privacy Policy.</p>
-
-        <h3>11.3 CCPA Data Sharing</h3>
-        <p>We may share personal information with service providers (Firebase, OpenAI) solely for business purposes as described in this Privacy Policy. This sharing does not constitute a "sale" under CCPA.</p>
-
-        <h2>12. GDPR Compliance (EU Users)</h2>
-        <p>For users in the European Union, we process your data under the following legal bases:</p>
-        <ul>
-            <li><strong>Contractual Necessity:</strong> To provide SafeTalk services</li>
-            <li><strong>Legitimate Interest:</strong> For app improvement and safety features</li>
-            <li><strong>Consent:</strong> For analytics and optional features</li>
-        </ul>
-
-        <h2>13. Contact Information</h2>
-        <div class="contact-info">
-            <p>If you have any questions about this Privacy Policy or our data practices, please contact us at:</p>
-            <p>
-                <strong>Email:</strong> info@safetalk-coparent.com<br>
-                <strong>Privacy Inquiries:</strong> info@safetalk-coparent.com<br>
-                <strong>Data Protection:</strong> info@safetalk-coparent.com
-            </p>
-        </div>
-
-        <h2>14. Legal Compliance</h2>
-        <p>This Privacy Policy complies with applicable privacy laws, including GDPR, CCPA, and other regional privacy regulations. We are committed to protecting your privacy rights regardless of your location.</p>
     </div>
 </body>
 </html>
